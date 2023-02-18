@@ -60,7 +60,9 @@ function findFirstName(element){
 
     firstName = firstNameFirstChar.concat(lowerFirstName.slice(1));
 
+
     return firstName;
+    
     
 }
 
@@ -111,18 +113,77 @@ function findMiddleName(element){
 
     middleName = middleNameFirstChar.concat(lowerMiddleName.slice(1));
 
-    // finally, check if the middle name is not actually a nickname
-
     if (middleName.includes('"')){
-        // cut the quotes and grab the first char
-        let byeQuotes = middleName.slice(1, -1).charAt(0).toUpperCase();
-        middleName = byeQuotes.concat(middleName.slice(2, -1));
-        return middleName;
+        return "This is actually a nickname"
     } else{
-        return middleName;
+
+       
+    return middleName;
+
     }
 
+}
+
+
+function findLastName(element){
+
+    let lastName = element.fullname.trimStart();
     
+
+    // find the first white space, that's where the first name ends
+
+    let whiteSpace1 = lastName.indexOf(' ');
+    
+
+    // if there is a white space...
+
+    if (whiteSpace1 === -1){
+          // if it doesn't have a space it means there is no last name
+          return "There is no last name";  
+    
+     } else {
+   
+        // cut the first name off and trim the end in case of extra white space
+
+        lastName = lastName.slice(whiteSpace1).trimStart().trimEnd();        
+
+        // find if there is another white space
+
+        let whiteSpace2 = lastName.indexOf(' ');
+        
+        
+        // if there is, cut the word from 0 until that second space
+        if(whiteSpace2 === -1){
+            lastName = lastName;
+            
+
+            
+        } else {
+            lastName = lastName.slice(whiteSpace2);
+            
+        }
+    
+    } 
+
+    // set middlename to lower case
+
+    let lowerLastName = lastName.trimStart().toLowerCase();
+    
+   
+    // grab first letter and set it to upper case
+   
+    let lastNameFirstChar =  lowerLastName.charAt(0).toUpperCase();
+
+    
+
+    // concat first capital letter with the rest of the lower case word 
+
+    lastName = lastNameFirstChar.concat(lowerLastName.slice(1));
+
+ 
+    return lastName;
+
+
 }
 
 
@@ -134,12 +195,22 @@ function handleWizards(wizards){
 
         // FIND FIRST NAME
         newStudent.name = findFirstName(wizard);
-        console.log(newStudent.name);
+       console.log(newStudent.name);
 
         // FIND MIDDLE NAME
         newStudent.middleName = findMiddleName(wizard);
         console.log(newStudent.middleName);
-        }
+
+        // FIND NICK NAME
+      //  newStudent.nickName = findNickName(wizard);
+      //  console.log(newStudent.nickName);
+    
+        // FIND LAST NAME
+        newStudent.lastName = findLastName(wizard);
+      console.log(newStudent.lastName);  
+
+    }
+    
     )
 }
 
