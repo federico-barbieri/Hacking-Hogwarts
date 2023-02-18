@@ -209,6 +209,16 @@ function handleWizards(wizards){
         newStudent.lastName = findLastName(wizard);
       console.log(newStudent.lastName);  
 
+      // attach to template
+
+      const myTemplate = document.getElementById('my-template').content;
+
+      const clone = myTemplate.cloneNode(true);
+
+      clone.querySelector("p").textContent = newStudent.name;
+
+      const daddy = document.querySelector('#dashboard').append(clone);
+
     }
     
     )
@@ -241,3 +251,4 @@ function makeItLevitate(element){
 }
 
 makeItLevitate(schoolLogo);
+

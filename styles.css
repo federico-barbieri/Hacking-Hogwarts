@@ -11,6 +11,8 @@ body{
     background: url(imgs/background/castle2.png);
     background-repeat: no-repeat;
     background-size: auto;
+    width: 100vw;
+    height: 100vh;
 }
 
 /* header */
@@ -51,4 +53,41 @@ body{
     0% {margin-bottom: 0;}
     50% {margin-bottom: 1rem;}
     100% {margin-bottom: 0;}
+}
+
+main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#dashboard{
+    width: 80vw;
+    height: 70vh;
+    border: 5px solid white;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+.wizard-card{
+    display: block;
+    width: 50%;
+    height: 300rem;
+    background-color: blue;
+    margin: 1rem;
+    border-radius: 10px;
+    filter: drop-shadow(10px 12px 10px black);
+    transition: all 0.5s ease-out;
+    
+}
+
+.wizard-card:hover{
+    transition: all 0.5s ease-in;
+    transform: scale(1.1);
 }
