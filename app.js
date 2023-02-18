@@ -27,28 +27,34 @@ fetch(students)
 function findFirstName(element){
 
     let firstName = element.fullname.trimStart();
+    
 
     // find the first white space, that's where the first name ends
 
     let firstSpace = firstName.indexOf(' ');
+    
 
     // if there is a white space...
 
     if (firstSpace !== -1){
         firstName = firstName.slice(0,firstSpace);
+        
     
     } else{
            // if it doesn't have a space it means there is no last name
-        firstName = firstName;        
+        firstName = firstName;     
+        
     }
 
     // set name to lower case
 
     let lowerFirstName = firstName.toLowerCase();
+    
    
     // grab first letter and set it to upper case
    
     let firstNameFirstChar =  lowerFirstName.charAt(0).toUpperCase();
+    
 
     // concat first capital letter with the rest of the lower case word 
 
@@ -65,26 +71,26 @@ function findMiddleName(element){
 
     // find the first white space, that's where the first name ends
 
-    let firstSpace = middleName.indexOf(' ');
+    let whiteSpace = middleName.indexOf(' ');
 
     // if there is a white space...
 
-    if (firstSpace !== -1){
+    if (whiteSpace !== -1){
         
 
         // cut the first name off and trim the end in case of extra white space
 
-        middleName = middleName.slice(firstSpace).trimStart().trimEnd();
+        middleName = middleName.slice(whiteSpace).trimStart().trimEnd();
 
         // find if there is another white space
 
-        let secondSpace = middleName.indexOf(' ');
+        let secondWhiteSpace = middleName.indexOf(' ');
 
         // if there is, cut the word from 0 until that second space
-        if(secondSpace !== -1){
-            middleName = middleName.slice(0, secondSpace)
+        if(secondWhiteSpace !== -1){
+            middleName = middleName.slice(0, secondWhiteSpace);
         } else {
-            middleName = "No middlename"
+            middleName = "No middlename";
         }
     
     } else{
@@ -105,7 +111,17 @@ function findMiddleName(element){
 
     middleName = middleNameFirstChar.concat(lowerMiddleName.slice(1));
 
-    return middleName;
+    // finally, check if the middle name is not actually a nickname
+
+    if (middleName.includes('"')){
+        // cut the quotes and grab the first char
+        let byeQuotes = middleName.slice(1, -1).charAt(0).toUpperCase();
+        middleName = byeQuotes.concat(middleName.slice(2, -1));
+        return middleName;
+    } else{
+        return middleName;
+    }
+
     
 }
 
@@ -118,6 +134,7 @@ function handleWizards(wizards){
 
         // FIND FIRST NAME
         newStudent.name = findFirstName(wizard);
+        console.log(newStudent.name);
 
         // FIND MIDDLE NAME
         newStudent.middleName = findMiddleName(wizard);
