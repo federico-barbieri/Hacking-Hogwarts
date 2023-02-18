@@ -58,16 +58,70 @@ function findFirstName(element){
     
 }
 
+
+function findMiddleName(element){
+
+    let middleName = element.fullname.trimStart();
+
+    // find the first white space, that's where the first name ends
+
+    let firstSpace = middleName.indexOf(' ');
+
+    // if there is a white space...
+
+    if (firstSpace !== -1){
+        
+
+        // cut the first name off and trim the end in case of extra white space
+
+        middleName = middleName.slice(firstSpace).trimStart().trimEnd();
+
+        // find if there is another white space
+
+        let secondSpace = middleName.indexOf(' ');
+
+        // if there is, cut the word from 0 until that second space
+        if(secondSpace !== -1){
+            middleName = middleName.slice(0, secondSpace)
+        } else {
+            middleName = "No middlename"
+        }
+    
+    } else{
+      
+           // if it doesn't have a space it means there is no middle name
+        middleName = "No middlename";        
+    }
+
+    // set middlename to lower case
+
+    let lowerMiddleName = middleName.toLowerCase();
+   
+    // grab first letter and set it to upper case
+   
+    let middleNameFirstChar =  lowerMiddleName.charAt(0).toUpperCase();
+
+    // concat first capital letter with the rest of the lower case word 
+
+    middleName = middleNameFirstChar.concat(lowerMiddleName.slice(1));
+
+    return middleName;
+    
+}
+
+
 function handleWizards(wizards){
     wizards.forEach(wizard => {
 
         // create new student object
         let newStudent = Object.create(Wizard);
 
-        // FIRST NAME
-         
+        // FIND FIRST NAME
         newStudent.name = findFirstName(wizard);
 
+        // FIND MIDDLE NAME
+        newStudent.middleName = findMiddleName(wizard);
+        console.log(newStudent.middleName);
         }
     )
 }
