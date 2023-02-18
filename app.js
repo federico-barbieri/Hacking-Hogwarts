@@ -207,17 +207,55 @@ function handleWizards(wizards){
     
         // FIND LAST NAME
         newStudent.lastName = findLastName(wizard);
-      console.log(newStudent.lastName);  
 
-      // attach to template
+
+      // BUILD TEMPLATE
 
       const myTemplate = document.getElementById('my-template').content;
 
       const clone = myTemplate.cloneNode(true);
 
-      clone.querySelector("p").textContent = newStudent.name;
+      // img
 
-      const daddy = document.querySelector('#dashboard').append(clone);
+    //  function findImage(element, img){
+    //    if(img.some(element.fullname)){
+    //        return 
+    //    }
+    //    element.fullname.includes()
+    //  }
+
+      if(newStudent.name === "Leanne"){
+        clone.querySelector("img").src = `imgs/students/leanne.png`;
+      } else{
+        clone.querySelector("img").src = `imgs/students/${newStudent.lastName.toLowerCase()}_${newStudent.name.charAt(0).toLowerCase()}.png`;
+
+      }
+      
+      clone.querySelector("img").classList.add("student-pic");
+
+
+      // name
+
+
+
+      // middle name
+
+      // last name
+      
+      // house
+
+      // blood
+      
+
+
+      clone.querySelector(".li-name").textContent = `Name: ${newStudent.name}`;
+      clone.querySelector(".li-middlename").textContent = `Middle name: ${newStudent.middleName}`;
+      clone.querySelector(".li-lastname").textContent = `Last name: ${newStudent.lastName}`;
+
+
+      const daddy = document.querySelector('#dashboard');
+      
+      daddy.appendChild(clone);
 
     }
     

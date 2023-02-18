@@ -23,13 +23,14 @@ body{
     align-items: center;
     justify-content: center;
     width: 100vw;
-    height: 15rem;
+    height: 10rem;
+    position: fixed;
 }
 
 #top-nav{
     width: 100%;
-    height: 15rem;
-    border: 2px solid red;
+    height: 10rem;
+
     z-index: 5;
     display: flex;
     flex-direction: row;
@@ -38,8 +39,8 @@ body{
 }
 
 .school-logo{
-    width: 10rem;
-    height: 10rem;
+    width: 8rem;
+    height: 8rem;
     border-radius: 50%;
     filter: drop-shadow(10px 12px 10px black);
 }
@@ -60,34 +61,41 @@ main{
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
 }
 
 #dashboard{
     width: 80vw;
-    height: 70vh;
+    height: 90vh;
     border: 5px solid white;
     overflow-y: scroll;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    margin-top: 10rem;
 }
 
+.inner-card{
+    width: 60%;
+    height: 20rem;
+    background-color:burlywood;
+    border-radius: 30px;
+    filter: drop-shadow(10px 12px 12px black);
+    margin: 2rem 0;
+    padding: 10rem 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
 
-
-.wizard-card{
-    display: block;
-    width: 50%;
-    height: 300rem;
-    background-color: blue;
-    margin: 1rem;
-    border-radius: 10px;
+.student-pic{
+    width: 10rem;
+    height: 10rem;
     filter: drop-shadow(10px 12px 10px black);
-    transition: all 0.5s ease-out;
-    
 }
 
-.wizard-card:hover{
-    transition: all 0.5s ease-in;
-    transform: scale(1.1);
-}
+
+
