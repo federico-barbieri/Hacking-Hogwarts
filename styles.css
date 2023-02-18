@@ -89,6 +89,10 @@ main{
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
+    background: url("imgs/houses/gryffindor/gryffindor1.png");
+    background-position: top;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .student-pic{

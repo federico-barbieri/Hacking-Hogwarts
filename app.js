@@ -187,6 +187,16 @@ function findLastName(element){
 }
 
 
+function findHouse(element){
+    let firstLetter = element.house.trimStart().charAt(0).toUpperCase();
+    let restOfWord = element.house.trimStart().toLowerCase().slice(1).trimEnd();
+
+    let actualHouse = firstLetter.concat(restOfWord);
+
+    return actualHouse;
+}
+
+
 function handleWizards(wizards){
     wizards.forEach(wizard => {
 
@@ -195,11 +205,9 @@ function handleWizards(wizards){
 
         // FIND FIRST NAME
         newStudent.name = findFirstName(wizard);
-       console.log(newStudent.name);
 
         // FIND MIDDLE NAME
         newStudent.middleName = findMiddleName(wizard);
-        console.log(newStudent.middleName);
 
         // FIND NICK NAME
       //  newStudent.nickName = findNickName(wizard);
@@ -207,6 +215,9 @@ function handleWizards(wizards){
     
         // FIND LAST NAME
         newStudent.lastName = findLastName(wizard);
+
+        // FIND HOUSE
+        newStudent.house = findHouse(wizard);
 
 
       // BUILD TEMPLATE
@@ -217,32 +228,27 @@ function handleWizards(wizards){
 
       // img
 
-    //  function findImage(element, img){
-    //    if(img.some(element.fullname)){
-    //        return 
-    //    }
-    //    element.fullname.includes()
-    //  }
-
       if(newStudent.name === "Leanne"){
         clone.querySelector("img").src = `imgs/students/leanne.png`;
       } else{
         clone.querySelector("img").src = `imgs/students/${newStudent.lastName.toLowerCase()}_${newStudent.name.charAt(0).toLowerCase()}.png`;
 
       }
-      
+
       clone.querySelector("img").classList.add("student-pic");
 
 
-      // name
-
-
-
-      // middle name
-
-      // last name
-      
       // house
+
+      clone.querySelector('.li-house').textContent = `House: ${newStudent.house}`;
+
+      if(newStudent.house === "Gryffindor"){
+        clone.querySelector('.inner-card').style.background = "url('imgs/houses/gryffindor/gryffindor1.png')";
+      } else if (newStudent.house === "Slytherin"){
+        clone.querySelector('.inner-card').style.background = "url('imgs/houses/slytherin/slytherin3.png')";
+      } else if (newStudent.house === "Ravenclaw"){
+        clone.querySelector('.inner-card').style.background = "url('imgs/houses/ravenclaw/ravenclaw2.png')";
+      }
 
       // blood
       
