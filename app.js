@@ -19,6 +19,7 @@ fetch(students)
     console.error("An error has occured.", e.message);
 })
 
+
 //
 //
 //
@@ -235,12 +236,12 @@ function handleWizards(wizards){
 
       }
 
-      clone.querySelector("img").classList.add("student-pic");
+      //clone.querySelector("img").classList.add("student-pic");
 
 
       // house
 
-      clone.querySelector('.li-house').textContent = `House: ${newStudent.house}`;
+      clone.querySelector('.house').textContent = `${newStudent.house}`;
 
       if(newStudent.house === "Gryffindor"){
         clone.querySelector('.inner-card').style.background = "url('imgs/houses/gryffindor/gryffindor1.png')";
@@ -248,9 +249,17 @@ function handleWizards(wizards){
         clone.querySelector('.inner-card').style.background = "url('imgs/houses/slytherin/slytherin3.png')";
       } else if (newStudent.house === "Ravenclaw"){
         clone.querySelector('.inner-card').style.background = "url('imgs/houses/ravenclaw/ravenclaw2.png')";
+      } else{
+        clone.querySelector('.inner-card').style.background = "url('imgs/houses/hufflepuff/hufflepuff2.png')";
+
       }
 
       // blood
+
+      
+
+      clone.querySelector('.li-blood').textContent = `${newStudent.house}`;
+
       
 
 
@@ -280,6 +289,53 @@ const Wizard = {
     image: "",
     house: "",
 }
+
+//blood list JSON
+const blood = "https://petlatkea.dk/2021/hogwarts/families.json";
+
+fetch(blood)
+.then(response => {
+    if (!response.ok) {
+        throw Error(response.statusText);
+    }
+        return response.json();
+})
+.then(families => {
+    // we have the data 
+    console.log(families); 
+    handleBlood(families);
+})
+.catch (e => {
+    // something went wrong
+    console.error("An error has occured.", e.message);
+})
+
+// create halfblood array
+
+let halfBloodArray = [];
+let pureBloodArray = [];
+
+
+function handleBlood(families){
+
+   
+       for (let i=0; i < families.half.length; i++){
+
+        halfBloodArray.push(families.half[i]);
+       }
+       
+
+       for (let i=0; i < families.pure.length; i++){
+        pureBloodArray.push(families.pure[i]);
+        
+       }
+
+       console.log(halfBloodArray);
+       console.log(pureBloodArray);
+
+};
+
+
 
 
 
