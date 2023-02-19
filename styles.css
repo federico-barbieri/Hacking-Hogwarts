@@ -7,8 +7,12 @@
     font-size: 16px;
     --slytherin: #1A472A;
     --gryffindor: #7400028e;
-    --hufflepuff: #FFF4B1;
+    --hufflepuff: #6b6019;
     --ravenclaw: #0E1A40;
+    --gryffindor-font: "p22-mackinac-pro", serif; font-weight: 400; font-style: italic;
+    --slytherin-font: "area-normal", sans-serif; font-weight: 400; font-style: italic;
+    --ravenclaw-font: "blenny", sans-serif; font-weight: 900; font-style: normal;
+    --hufflepuff-font: "bely", serif; font-weight: 400; font-style: italic;;
 }
 
 body{
@@ -56,14 +60,20 @@ body{
 /* levitation animation + class */
 
 .make-it-levitate{
-    animation: levitate 1s ease-in 0.5s 3 forwards;
+    animation: levitateLogo 1s ease-in 0.5s 3 forwards;
 }
 
 
-@keyframes levitate {
+@keyframes levitateLogo {
     0% {margin-bottom: 0;}
     50% {margin-bottom: 1rem;}
     100% {margin-bottom: 0;}
+}
+
+@keyframes levitateCard {
+    0% {transform: translateY(0);}
+    50% {transform: translateY(0.5rem);}
+    100% {transform: translateY(0rem);}
 }
 
 /* MAIN */
@@ -109,6 +119,12 @@ main{
     background-position: top;
     background-size: cover;
     background-repeat: no-repeat;
+    cursor: pointer;
+    animation: none;
+}
+
+.inner-card:hover{
+    animation: levitateCard 1s ease-in 0s infinite forwards;
 }
 
 /* div between the image and the house name */
@@ -121,6 +137,48 @@ main{
     width: 80%;
 }
 
+/* options for the h2 according to each house */
+
+.gryffindor-h2{
+    font-size: 4rem;
+    background-color: rgba(255, 255, 255, 0.5);
+    color: var(--gryffindor);
+    font-family: var(--gryffindor-font);
+    padding: 1rem;
+    width: 70%;
+    text-align: center;
+}
+
+.slytherin-h2{
+    font-size: 4rem;
+    background-color: rgba(255, 255, 255, 0.5);
+    color: var(--slytherin);
+    font-family: var(--slytherin-font);
+    padding: 1rem;
+    width: 70%;
+    text-align: center;
+}
+
+.hufflepuff-h2{
+    font-size: 4rem;
+    background-color: rgba(255, 255, 255, 0.5);
+    color: var(--hufflepuff);
+    font-family: var(--hufflepuff-font);
+    padding: 1rem;
+    width: 70%;
+    text-align: center;
+}
+
+.ravenclaw-h2{
+    font-size: 4rem;
+    background-color: rgba(255, 255, 255, 0.5);
+    color: var(--ravenclaw);
+    font-family: var(--ravenclaw-font);
+    padding: 1rem;
+    width: 70%;
+    text-align: center;
+}
+
 /* student picture */
 
 .student-pic{
@@ -128,6 +186,8 @@ main{
     height: 10rem;
     filter: drop-shadow(10px 12px 10px black);
 }
+
+/* information about the student / hidden until clicked */
 
 
 .info{
@@ -142,15 +202,6 @@ main{
 .card-ul > li {
     list-style-type: none;
     color: white;
-}
-
-.house{
-    font-size: 2rem;
-    background-color: var(--gryffindor);
-    color: white;
-    padding: 1rem;
-    width: 70%;
-    text-align: center;
 }
 
 

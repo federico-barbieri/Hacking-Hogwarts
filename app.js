@@ -1,3 +1,48 @@
+"use strict";
+
+
+//blood list JSON
+const blood = "https://petlatkea.dk/2021/hogwarts/families.json";
+
+fetch(blood)
+.then(response => {
+    if (!response.ok) {
+        throw Error(response.statusText);
+    }
+        return response.json();
+})
+.then(families => {
+    // we have the data 
+   // console.log(families); 
+    handleBlood(families);
+})
+.catch (e => {
+    // something went wrong
+    console.error("An error has occured.", e.message);
+})
+
+// create halfblood array
+
+let halfBloodArray = [];
+let pureBloodArray = [];
+
+function handleBlood(families){
+
+   
+       for (let i=0; i < families.half.length; i++){
+
+        halfBloodArray.push(families.half[i]);
+       }
+       
+
+       for (let i=0; i < families.pure.length; i++){
+        pureBloodArray.push(families.pure[i]);
+       }
+};
+
+
+
+
 
 //student list JSON
 const students = "https://petlatkea.dk/2021/hogwarts/students.json";
@@ -18,6 +63,11 @@ fetch(students)
     // something went wrong
     console.error("An error has occured.", e.message);
 })
+
+
+
+
+
 
 
 //
@@ -198,6 +248,7 @@ function findHouse(element){
 }
 
 
+
 function handleWizards(wizards){
     wizards.forEach(wizard => {
 
@@ -236,29 +287,42 @@ function handleWizards(wizards){
 
       }
 
-      //clone.querySelector("img").classList.add("student-pic");
-
-
       // house
 
-      clone.querySelector('.house').textContent = `${newStudent.house}`;
+      clone.querySelector('.template-h2').textContent = `${newStudent.house}`;
 
       if(newStudent.house === "Gryffindor"){
         clone.querySelector('.inner-card').style.background = "url('imgs/houses/gryffindor/gryffindor1.png')";
+        clone.querySelector('h2').classList.add('gryffindor-h2');
+
       } else if (newStudent.house === "Slytherin"){
         clone.querySelector('.inner-card').style.background = "url('imgs/houses/slytherin/slytherin3.png')";
+        clone.querySelector('h2').classList.add('slytherin-h2');
+
       } else if (newStudent.house === "Ravenclaw"){
         clone.querySelector('.inner-card').style.background = "url('imgs/houses/ravenclaw/ravenclaw2.png')";
+        clone.querySelector('h2').classList.add('ravenclaw-h2');
+
       } else{
         clone.querySelector('.inner-card').style.background = "url('imgs/houses/hufflepuff/hufflepuff2.png')";
+        clone.querySelector('h2').classList.add('hufflepuff-h2');
 
       }
 
       // blood
 
-      
+     
 
-      clone.querySelector('.li-blood').textContent = `${newStudent.house}`;
+      if (halfBloodArray.includes(newStudent.lastName)){
+        newStudent.blood = "Half";
+        clone.querySelector('.li-blood').textContent = `Blood: ${newStudent.blood}`;
+   
+      } else if (pureBloodArray.includes(newStudent.lastName) && halfBloodArray.includes(newStudent.lastName) === false){
+        newStudent.blood = "Pure";
+        clone.querySelector('.li-blood').textContent = `Blood: ${newStudent.blood}`;
+      }
+
+      
 
       
 
@@ -288,52 +352,8 @@ const Wizard = {
     nickName: "",
     image: "",
     house: "",
+    blood: "",
 }
-
-//blood list JSON
-const blood = "https://petlatkea.dk/2021/hogwarts/families.json";
-
-fetch(blood)
-.then(response => {
-    if (!response.ok) {
-        throw Error(response.statusText);
-    }
-        return response.json();
-})
-.then(families => {
-    // we have the data 
-    console.log(families); 
-    handleBlood(families);
-})
-.catch (e => {
-    // something went wrong
-    console.error("An error has occured.", e.message);
-})
-
-// create halfblood array
-
-let halfBloodArray = [];
-let pureBloodArray = [];
-
-
-function handleBlood(families){
-
-   
-       for (let i=0; i < families.half.length; i++){
-
-        halfBloodArray.push(families.half[i]);
-       }
-       
-
-       for (let i=0; i < families.pure.length; i++){
-        pureBloodArray.push(families.pure[i]);
-        
-       }
-
-       console.log(halfBloodArray);
-       console.log(pureBloodArray);
-
-};
 
 
 
