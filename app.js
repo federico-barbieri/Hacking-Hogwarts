@@ -348,6 +348,9 @@ function handleWizards(wizards){
     arrayOfLastNames.sort();
     halfBloodArray.sort();
     pureBloodArray.sort();
+
+    // if I click on a-z
+    
 }
 
 
@@ -364,18 +367,9 @@ const Wizard = {
     blood: "",
 }
 
-//console.log(arrayOfNames);
-//console.log(arrayOfLastNames);
-//console.log(halfBloodArray);
-//console.log(pureBloodArray);
 
 
-
-
-
-
-
-
+// designy stuff
 
 const schoolLogo = document.querySelector('.school-logo');
 
@@ -386,4 +380,8 @@ function makeItLevitate(element){
 }
 
 makeItLevitate(schoolLogo);
+
+const dashboard = document.querySelector('#dashboard');
+
+
 

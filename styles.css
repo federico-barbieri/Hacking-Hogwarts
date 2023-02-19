@@ -21,6 +21,7 @@ body{
     background-size: auto;
     width: 100vw;
     height: 100vh;
+    cursor: url("imgs/cursor/wand10.svg");
 }
 
 /* header */
@@ -32,7 +33,7 @@ body{
     justify-content: center;
     width: 100vw;
     height: 10rem;
-    position: fixed;
+    
 }
 
 /* navbar */
@@ -40,12 +41,12 @@ body{
 #top-nav{
     width: 100%;
     height: 10rem;
-
     z-index: 5;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    border: 2px solid red;
 }
 
 /* school logo */
@@ -85,7 +86,31 @@ main{
     justify-content: center;
     width: 100vw;
     height: 100vh;
-    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+}
+
+#button-section{
+    width: 80vw;
+    height: 10vh;
+}
+
+.button-ul{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    border: 5px solid green;
+    background-color: #0E1A40;
+}
+
+.button-ul > li{
+    list-style-type: none;
+    font-size: 2rem;
+    color: red;
 }
 
 /* DASHBOARD */
@@ -98,8 +123,9 @@ main{
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 10rem;
+   
     background-color: rgba(255, 255, 255, 0.3);
+    
 }
 
 /* ACTUAL CARD */
