@@ -26,6 +26,8 @@ fetch(blood)
 let halfBloodArray = [];
 let pureBloodArray = [];
 
+// create function to handle the blood families
+
 function handleBlood(families){
 
    
@@ -63,9 +65,6 @@ fetch(students)
     // something went wrong
     console.error("An error has occured.", e.message);
 })
-
-
-
 
 
 
@@ -248,6 +247,14 @@ function findHouse(element){
 }
 
 
+// create arrays to sort later
+
+let arrayOfNames = [];
+let arrayOfLastNames = [];
+let arrayOfHouses = [];
+
+
+// create function that handles the data from the fetching
 
 function handleWizards(wizards){
     wizards.forEach(wizard => {
@@ -284,7 +291,6 @@ function handleWizards(wizards){
         clone.querySelector("img").src = `imgs/students/leanne.png`;
       } else{
         clone.querySelector("img").src = `imgs/students/${newStudent.lastName.toLowerCase()}_${newStudent.name.charAt(0).toLowerCase()}.png`;
-
       }
 
       // house
@@ -292,26 +298,24 @@ function handleWizards(wizards){
       clone.querySelector('.template-h2').textContent = `${newStudent.house}`;
 
       if(newStudent.house === "Gryffindor"){
-        clone.querySelector('.inner-card').style.background = "url('imgs/houses/gryffindor/gryffindor1.png')";
+        clone.querySelector('.inner-card').classList.add('gryffindor-background');
         clone.querySelector('h2').classList.add('gryffindor-h2');
 
       } else if (newStudent.house === "Slytherin"){
-        clone.querySelector('.inner-card').style.background = "url('imgs/houses/slytherin/slytherin3.png')";
+        clone.querySelector('.inner-card').classList.add('slytherin-background');
         clone.querySelector('h2').classList.add('slytherin-h2');
 
       } else if (newStudent.house === "Ravenclaw"){
-        clone.querySelector('.inner-card').style.background = "url('imgs/houses/ravenclaw/ravenclaw2.png')";
+        clone.querySelector('.inner-card').classList.add('ravenclaw-background');
         clone.querySelector('h2').classList.add('ravenclaw-h2');
 
       } else{
-        clone.querySelector('.inner-card').style.background = "url('imgs/houses/hufflepuff/hufflepuff2.png')";
+        clone.querySelector('.inner-card').classList.add('hufflepuff-background');
         clone.querySelector('h2').classList.add('hufflepuff-h2');
 
       }
 
       // blood
-
-     
 
       if (halfBloodArray.includes(newStudent.lastName)){
         newStudent.blood = "Half";
@@ -322,23 +326,28 @@ function handleWizards(wizards){
         clone.querySelector('.li-blood').textContent = `Blood: ${newStudent.blood}`;
       }
 
-      
-
-      
-
-
+      // name of student
       clone.querySelector(".li-name").textContent = `Name: ${newStudent.name}`;
+      // middle name of student
       clone.querySelector(".li-middlename").textContent = `Middle name: ${newStudent.middleName}`;
+      // last name of student
       clone.querySelector(".li-lastname").textContent = `Last name: ${newStudent.lastName}`;
 
-
+      // grab parent and append child
       const daddy = document.querySelector('#dashboard');
-      
       daddy.appendChild(clone);
 
+      // add each part of the wizard to specific arrays for later use
+      arrayOfNames.push(newStudent.name);
+      arrayOfLastNames.push(newStudent.lastName);
+      
     }
     
     )
+    arrayOfNames.sort();
+    arrayOfLastNames.sort();
+    halfBloodArray.sort();
+    pureBloodArray.sort();
 }
 
 
@@ -354,6 +363,12 @@ const Wizard = {
     house: "",
     blood: "",
 }
+
+//console.log(arrayOfNames);
+//console.log(arrayOfLastNames);
+//console.log(halfBloodArray);
+//console.log(pureBloodArray);
+
 
 
 

@@ -115,16 +115,42 @@ main{
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
-    background: url("imgs/houses/gryffindor/gryffindor1.png");
-    background-position: top;
-    background-size: cover;
-    background-repeat: no-repeat;
     cursor: pointer;
     animation: none;
 }
 
 .inner-card:hover{
     animation: levitateCard 1s ease-in 0s infinite forwards;
+}
+
+/* backgrounds for each house */
+
+.gryffindor-background{
+    background: url("imgs/houses/gryffindor/gryffindor1.png");
+    background-position: top;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.slytherin-background{
+    background: url("imgs/houses/slytherin/slytherin3.png");
+    background-position: top;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.ravenclaw-background{
+    background: url("imgs/houses/ravenclaw/ravenclaw2.png");
+    background-position: top;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.hufflepuff-background{
+    background: url("imgs/houses/hufflepuff/hufflepuff2.png");
+    background-position: top;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 /* div between the image and the house name */
