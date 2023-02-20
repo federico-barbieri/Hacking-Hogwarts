@@ -69,10 +69,7 @@ fetch(students)
 
 
 
-//
-//
-//
-// HANDLE EACH WIZARD
+// create functions for each part of the wizard
 
 function findFirstName(element){
 
@@ -247,112 +244,6 @@ function findHouse(element){
 }
 
 
-// create arrays to sort later
-
-let arrayOfNames = [];
-let arrayOfLastNames = [];
-let arrayOfHouses = [];
-
-
-// create function that handles the data from the fetching
-
-function handleWizards(wizards){
-    wizards.forEach(wizard => {
-
-        // create new student object
-        let newStudent = Object.create(Wizard);
-
-        // FIND FIRST NAME
-        newStudent.name = findFirstName(wizard);
-
-        // FIND MIDDLE NAME
-        newStudent.middleName = findMiddleName(wizard);
-
-        // FIND NICK NAME
-      //  newStudent.nickName = findNickName(wizard);
-      //  console.log(newStudent.nickName);
-    
-        // FIND LAST NAME
-        newStudent.lastName = findLastName(wizard);
-
-        // FIND HOUSE
-        newStudent.house = findHouse(wizard);
-
-
-      // BUILD TEMPLATE
-
-      const myTemplate = document.getElementById('my-template').content;
-
-      const clone = myTemplate.cloneNode(true);
-
-      // img
-
-      if(newStudent.name === "Leanne"){
-        clone.querySelector("img").src = `imgs/students/leanne.png`;
-      } else{
-        clone.querySelector("img").src = `imgs/students/${newStudent.lastName.toLowerCase()}_${newStudent.name.charAt(0).toLowerCase()}.png`;
-      }
-
-      // house
-
-      clone.querySelector('.template-h2').textContent = `${newStudent.house}`;
-
-      if(newStudent.house === "Gryffindor"){
-        clone.querySelector('.inner-card').classList.add('gryffindor-background');
-        clone.querySelector('h2').classList.add('gryffindor-h2');
-
-      } else if (newStudent.house === "Slytherin"){
-        clone.querySelector('.inner-card').classList.add('slytherin-background');
-        clone.querySelector('h2').classList.add('slytherin-h2');
-
-      } else if (newStudent.house === "Ravenclaw"){
-        clone.querySelector('.inner-card').classList.add('ravenclaw-background');
-        clone.querySelector('h2').classList.add('ravenclaw-h2');
-
-      } else{
-        clone.querySelector('.inner-card').classList.add('hufflepuff-background');
-        clone.querySelector('h2').classList.add('hufflepuff-h2');
-
-      }
-
-      // blood
-
-      if (halfBloodArray.includes(newStudent.lastName)){
-        newStudent.blood = "Half";
-        clone.querySelector('.li-blood').textContent = `Blood: ${newStudent.blood}`;
-   
-      } else if (pureBloodArray.includes(newStudent.lastName) && halfBloodArray.includes(newStudent.lastName) === false){
-        newStudent.blood = "Pure";
-        clone.querySelector('.li-blood').textContent = `Blood: ${newStudent.blood}`;
-      }
-
-      // name of student
-      clone.querySelector(".li-name").textContent = `Name: ${newStudent.name}`;
-      // middle name of student
-      clone.querySelector(".li-middlename").textContent = `Middle name: ${newStudent.middleName}`;
-      // last name of student
-      clone.querySelector(".li-lastname").textContent = `Last name: ${newStudent.lastName}`;
-
-      // grab parent and append child
-      const daddy = document.querySelector('#dashboard');
-      daddy.appendChild(clone);
-
-      // add each part of the wizard to specific arrays for later use
-      arrayOfNames.push(newStudent.name);
-      arrayOfLastNames.push(newStudent.lastName);
-      
-    }
-    
-    )
-    arrayOfNames.sort();
-    arrayOfLastNames.sort();
-    halfBloodArray.sort();
-    pureBloodArray.sort();
-
-    // if I click on a-z
-    
-}
-
 
 
 // create Wizard object
@@ -362,10 +253,104 @@ const Wizard = {
     middleName: "",
     lastName: "",
     nickName: "",
-    image: "",
     house: "",
     blood: "",
 }
+
+// create array to store every student as an object
+
+let studentsBigObject = [];
+
+
+// this function assigns design stuff to each part of the student
+
+function beautifyStudent(myBigArray){
+    myBigArray.forEach(student => {
+  
+        // BUILD TEMPLATE
+        const myTemplate = document.getElementById('my-template').content;
+        const clone = myTemplate.cloneNode(true);
+
+        // name of student
+        clone.querySelector(".li-name").textContent = `Name: ${student.name}`;
+        // middle name of student
+        clone.querySelector(".li-middlename").textContent = `Middle name: ${student.middleName}`;
+        // last name of student
+        clone.querySelector(".li-lastname").textContent = `Last name: ${student.lastName}`;
+
+        // assign student image based on name
+        if(student.name === "Leanne"){
+            clone.querySelector("img").src = `imgs/students/leanne.png`;
+        } else{
+            clone.querySelector("img").src = `imgs/students/${student.lastName.toLowerCase()}_${student.name.charAt(0).toLowerCase()}.png`;
+        }
+
+        // assign house
+        clone.querySelector('.template-h2').textContent = `${student.house}`;
+        
+       // assign background image and H2 based on house 
+        clone.querySelector('.inner-card').classList.add(`${student.house}-background`);
+        clone.querySelector('h2').classList.add(`${student.house}-h2`);
+
+        // assign type of blood
+        clone.querySelector('.li-blood').textContent = `Blood: ${student.blood}`;
+
+        // grab parent and append child
+        const daddy = document.querySelector('#dashboard');
+        daddy.appendChild(clone);
+
+  })       
+};
+
+
+// create function that handles the data from the fetching
+// and pushes each student into a bigger array of objects
+
+function handleWizards(wizards){
+    wizards.forEach(wizard => {
+
+        // create new student object
+        let newStudent = Object.create(Wizard);
+
+        // ASSIGN FIRST NAME
+        newStudent.name = findFirstName(wizard);
+
+        // ASSIGN MIDDLE NAME
+        newStudent.middleName = findMiddleName(wizard);
+
+        // ASSIGN NICK NAME
+      //  newStudent.nickName = findNickName(wizard);
+      //  console.log(newStudent.nickName);
+    
+        // ASSIGN LAST NAME
+        newStudent.lastName = findLastName(wizard);
+
+        // ASSIGN HOUSE
+        newStudent.house = findHouse(wizard);
+
+        // ASSIGN BLOOD
+        if (halfBloodArray.includes(newStudent.lastName)){
+            newStudent.blood = "Half";
+  
+        } else if (pureBloodArray.includes(newStudent.lastName) && halfBloodArray.includes(newStudent.lastName) === false){
+            newStudent.blood = "Pure";
+        }
+
+        // PUSH EACH NEW STUDENT TO THE STUDENT'S BIG OBJECT ARRAY
+
+        studentsBigObject.push(newStudent);
+        
+
+});    
+
+        // call the function that injects design to every aspect of the student
+        beautifyStudent(studentsBigObject);
+    
+}
+
+
+
+
 
 
 
@@ -380,8 +365,3 @@ function makeItLevitate(element){
 }
 
 makeItLevitate(schoolLogo);
-
-const dashboard = document.querySelector('#dashboard');
-
-
-

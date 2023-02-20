@@ -33,7 +33,7 @@ body{
     justify-content: center;
     width: 100vw;
     height: 10rem;
-    
+    display: none;
 }
 
 /* navbar */
@@ -91,9 +91,11 @@ main{
     overflow: auto;
 }
 
+/* btn section */
+
 #button-section{
     width: 80vw;
-    height: 10vh;
+    height: 15vh;
 }
 
 .button-ul{
@@ -110,7 +112,23 @@ main{
 .button-ul > li{
     list-style-type: none;
     font-size: 2rem;
+
+}
+
+.button-ul > li > button:hover{
     color: red;
+}
+
+/* sorting btns */
+
+.sorting-btn{
+    padding: 1rem 2rem;
+    border-radius: 10px;
+    cursor: pointer;
+    outline-style: double;
+    outline-offset: 0.5rem;
+    background-color: transparent;
+    color: white;
 }
 
 /* DASHBOARD */
@@ -152,28 +170,28 @@ main{
 
 /* backgrounds for each house */
 
-.gryffindor-background{
+.Gryffindor-background{
     background: url("imgs/houses/gryffindor/gryffindor1.png");
     background-position: top;
     background-size: cover;
     background-repeat: no-repeat;
 }
 
-.slytherin-background{
+.Slytherin-background{
     background: url("imgs/houses/slytherin/slytherin3.png");
     background-position: top;
     background-size: cover;
     background-repeat: no-repeat;
 }
 
-.ravenclaw-background{
+.Ravenclaw-background{
     background: url("imgs/houses/ravenclaw/ravenclaw2.png");
     background-position: top;
     background-size: cover;
     background-repeat: no-repeat;
 }
 
-.hufflepuff-background{
+.Hufflepuff-background{
     background: url("imgs/houses/hufflepuff/hufflepuff2.png");
     background-position: top;
     background-size: cover;
@@ -192,7 +210,7 @@ main{
 
 /* options for the h2 according to each house */
 
-.gryffindor-h2{
+.Gryffindor-h2{
     font-size: 4rem;
     background-color: rgba(255, 255, 255, 0.5);
     color: var(--gryffindor);
@@ -206,7 +224,7 @@ main{
     outline-color: var(--gryffindor);
 }
 
-.slytherin-h2{
+.Slytherin-h2{
     font-size: 4rem;
     background-color: rgba(255, 255, 255, 0.5);
     color: var(--slytherin);
@@ -220,7 +238,7 @@ main{
     outline-color: var(--slytherin);
 }
 
-.hufflepuff-h2{
+.Hufflepuff-h2{
     font-size: 4rem;
     background-color: rgba(255, 255, 255, 0.5);
     color: var(--hufflepuff);
@@ -234,7 +252,7 @@ main{
     outline-color: var(--hufflepuff);
 }
 
-.ravenclaw-h2{
+.Ravenclaw-h2{
     font-size: 4rem;
     background-color: rgba(255, 255, 255, 0.5);
     color: var(--ravenclaw);
