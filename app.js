@@ -349,6 +349,29 @@ function handleWizards(wizards){
 }
 
 
+// create a function for when the user clicks on the card
+// and a modal shows up
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
