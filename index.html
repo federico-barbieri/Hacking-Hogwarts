@@ -28,24 +28,56 @@
 
         
         <section id="dashboard">
+
+                <article id="student-modal">
+
+                        <div class="modal-img-btns">
+                            <img class="modal-pic modal-student-pic" src="" alt="">
+                            <div class="modal-inner-btns">
+                                <button>Make Inquisitor</button>
+                                <button>Make Prefect</button>
+                            </div>
+                        </div>
+
+                        <ul class="student-information-ul">
+                            <li class="modal-student-name">Name:</li>
+                            <li class="modal-student-middle-name">Middle name:</li>
+                            <li class="modal-student-last-name">Last name: </li>
+                            <li class="modal-student-blood">Type of blood: </li>
+                            <li class="information-inquisitor">Is Inquisitor: </li>
+                            <li class="information-prefect">Is Prefect:  </li>
+                        </ul>
+                        
+                        <div class="close-modal">
+                            <button class="close-modal-btn" type="button">X</button>
+                        </div>
+                    
+
+                        
+
+                   
+                </article>
                 
                     <template id="my-template">
                         <article class="inner-card">
                             <div class="image-house">
                                 <img class="student-pic" src="" alt="">
-                                <h2 class="template-h2"></h2>
+                                <div class="house-btn">
+                                    <h2 class="template-h2"></h2>
+                                    <button class="student-info-btn" type="button">Student Info</button>
+                                </div>
                             </div>
                             
                             <div class="info">
-                            <ul class="card-ul">
-                                <li class="li-name">Name:</li>
-                                <li class="li-middlename">Middle name:</li>
-                                <li class="li-lastname">Last name: </li>
+                                <ul class="card-ul">
+                                    <li class="li-name">Name:</li>
+                                    <li class="li-middlename">Middle name:</li>
+                                    <li class="li-lastname">Last name: </li>
      
-                                <li class="li-blood">Type of blood: </li>
-                                <li>IsInquisitor: </li>
-                                <li>IsPrefect:  </li>
-                            </ul>
+                                    <li class="li-blood">Type of blood: </li>
+                                    <li>IsInquisitor: </li>
+                                    <li>IsPrefect:  </li>
+                                </ul>
                           
                             </div>
                         </article>

@@ -295,6 +295,13 @@ function beautifyStudent(myBigArray){
         // assign type of blood
         clone.querySelector('.li-blood').textContent = `Blood: ${student.blood}`;
 
+        // add class to button
+        clone.querySelector(".student-info-btn").addEventListener('click', () =>{
+            console.log("sup");
+            modalShowTime(student);
+        })
+
+
         // grab parent and append child
         const daddy = document.querySelector('#dashboard');
         daddy.appendChild(clone);
@@ -349,11 +356,55 @@ function handleWizards(wizards){
 }
 
 
-// create a function for when the user clicks on the card
-// and a modal shows up
 
+// create function that deals with the modal
 
+function modalShowTime(student){
 
+    // grab the modal
+    let articleBorn = document.querySelector("#student-modal");
+    // change its display from none to block
+    articleBorn.style.display = "block";
+    articleBorn.style.display = "flex";
+
+    // change font depending on the house
+    articleBorn.style.fontFamily = `var(--${student.house}-font)`;
+
+    // add background according to house
+    articleBorn.classList.add(`${student.house}-background`);
+
+    // grab and reveal the img
+    let modalImg = document.querySelector('.modal-pic');
+
+     if(student.name === "Leanne"){
+        modalImg.src = `imgs/students/leanne.png`;
+    } else{
+        modalImg.src = `imgs/students/${student.lastName.toLowerCase()}_${student.name.charAt(0).toLowerCase()}.png`;
+    }
+
+    // reveal house 
+    let modalH2 = document.querySelector('.modal-h2');
+    modalH2.textContent = `${student.house}`;
+
+    // reveal name
+    let modalStudentName = document.querySelector('.modal-student-name');
+    modalStudentName.textContent = `Name: ${student.name}`;
+
+    // reveal middle name
+    let modalStudentMiddleName = document.querySelector('.modal-student-middle-name');
+    modalStudentMiddleName.textContent = `Middle Name: ${student.middleName}`;
+
+    // reveal last name
+    let modalStudentLastName = document.querySelector('.modal-student-last-name');
+    modalStudentLastName.textContent = `Last Name: ${student.lastName}`;
+
+    // reveal type of blood
+    let modalStudentBlood = document.querySelector('.modal-student-blood');
+    modalStudentBlood.textContent = `Blood: ${student.blood}`;
+
+    
+
+}
 
 
 
