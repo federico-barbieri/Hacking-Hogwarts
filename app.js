@@ -299,8 +299,9 @@ function beautifyStudent(myBigArray){
         clone.querySelector('.school-logo').src = "imgs/logo/school-logo.png";
 
         // FUNCTION THAT OPENS MODAL
-        clone.querySelector(".student-info-btn").addEventListener('click', (event) =>{
-           event.target.removeEventListener('click', modalShowTime(student));
+        clone.querySelector(".student-info-btn").addEventListener('click', () =>{
+            
+            modalShowTime(student);
            // modalShowTime(student);
            // modalShowTime(student);
         })
@@ -349,7 +350,11 @@ function handleWizards(wizards){
         
         } else if (newStudent.name === "Zacharias"){
             newStudent.blood = "Half";
+        
+        } else if (newStudent.name === "Tracey"){
+            newStudent.blood = "Pure";
         }
+
 
         // PUSH EACH NEW STUDENT TO THE STUDENT'S BIG OBJECT ARRAY
         studentsBigObject.push(newStudent);
@@ -440,14 +445,33 @@ function handleWizards(wizards){
         // if the user wants to make the student an inquisitor
         let inquisitorBtn = document.querySelector('.modal-inquisitor-btn');
 
-
-        inquisitorBtn.addEventListener('click', () =>{
-        inquisitorRequest(student);
-        
     
-        })
+
+        // change inquisitors status
+        let inquisitorStatus = document.querySelector('.information-inquisitor');
+        inquisitorStatus.textContent = `Is Inquisitor: ${student.isInquisitor}`;
 
 
+        inquisitorBtn.addEventListener('click',inquisitorBtnClick);
+
+        function inquisitorBtnClick(event) {
+            console.log('Inquisitory clicked');
+            
+            event.target.removeEventListener('click', inquisitorBtnClick);
+            inquisitorRequest(student);
+
+             // change text content based on whether the student is an inquisitor or no
+        if (student.isInquisitor === false){
+            inquisitorBtn.textContent = "Make Inquisitor";
+            inquisitorBtn.style.backgroundColor = "green";
+
+        } else{
+            inquisitorBtn.textContent = "Remove Inquisitor";
+            inquisitorBtn.style.backgroundColor = "red";
+        }
+
+    
+        }
 
 
 
