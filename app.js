@@ -300,6 +300,8 @@ function beautifyStudent(myBigArray){
 
         // FUNCTION THAT OPENS MODAL
         clone.querySelector(".student-info-btn").addEventListener('click', () =>{
+
+            
             
             modalShowTime(student);
            // modalShowTime(student);
@@ -394,16 +396,29 @@ function handleWizards(wizards){
         }
 
 
+        // open modal slowly 
+
+        function openModalSlowly (modal){
+            modal.style.display = "block";
+            modal.style.display = "flex";
+        }
 
         // create function that deals with the modal
 
         function modalShowTime(student){
 
         // grab the modal
-        let articleBorn = document.querySelector("#student-modal");
+        let articleBorn = document.querySelector(".student-modal");
+
+        // add the animation for slow appearence
+         articleBorn.classList.add("injectIntoModal");
+
+         setTimeout(openModalSlowly(articleBorn), 1000);
+         
+
         // change its display from none to block
-        articleBorn.style.display = "block";
-        articleBorn.style.display = "flex";
+        // articleBorn.style.display = "block";
+        // articleBorn.style.display = "flex";
 
         // change font depending on the house
         articleBorn.style.fontFamily = `var(--${student.house}-font)`;

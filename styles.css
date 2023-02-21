@@ -234,15 +234,26 @@ main{
 
 @keyframes openModalSlowly{
     0% {opacity: 0;}
-    50% {opacity: 50%;}
     100% {opacity: 100%;}
 }
 
+
 .injectIntoModal{
-animation: openModalSlowly 2s ease-in 0.1s 1 forwards;
+animation: openModalSlowly 3s ease-in 0s 1 forwards;
+width: 80%;
+height: 70%;
+background-color: #B99B6B;
+z-index: 100;
+position: fixed;
+top: 22%;
+filter: drop-shadow(10px 12px 10px black);
+border-radius: 10px;
+flex-direction: row;
+align-items: center;
+justify-content: space-around;
 }
 
-#student-modal{
+.student-modal{
     width: 80%;
     height: 70%;
     background-color: #B99B6B;
@@ -255,6 +266,7 @@ animation: openModalSlowly 2s ease-in 0.1s 1 forwards;
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
+
 }
 
 /* student picture for modal */
