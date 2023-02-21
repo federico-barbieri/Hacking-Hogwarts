@@ -298,17 +298,15 @@ function beautifyStudent(myBigArray){
         // assign school logo
         clone.querySelector('.school-logo').src = "imgs/logo/school-logo.png";
 
-        // FUNCTION THAT OPENS MODAL
-        clone.querySelector(".student-info-btn").addEventListener('click', () =>{
-
-            
-            
+         // FUNCTION THAT OPENS MODAL
+        function openStudentInfo(event){
             modalShowTime(student);
-           // modalShowTime(student);
-           // modalShowTime(student);
-        })
+            event.target.removeEventListener('click', openStudentInfo);
+        }    
 
+        clone.querySelector(".student-info-btn").addEventListener('click', openStudentInfo);
 
+        
 
         // grab parent and append child
         const daddy = document.querySelector('#dashboard');
@@ -403,6 +401,10 @@ function handleWizards(wizards){
             modal.style.display = "flex";
         }
 
+           
+        
+     
+
         // create function that deals with the modal
 
         function modalShowTime(student){
@@ -411,14 +413,14 @@ function handleWizards(wizards){
         let articleBorn = document.querySelector(".student-modal");
 
         // add the animation for slow appearence
-         articleBorn.classList.add("injectIntoModal");
+       //  articleBorn.classList.add("injectIntoModal");
 
-         setTimeout(openModalSlowly(articleBorn), 1000);
+        // setTimeout(openModalSlowly(articleBorn), 1000);
          
 
         // change its display from none to block
-        // articleBorn.style.display = "block";
-        // articleBorn.style.display = "flex";
+         articleBorn.style.display = "block";
+         articleBorn.style.display = "flex";
 
         // change font depending on the house
         articleBorn.style.fontFamily = `var(--${student.house}-font)`;
@@ -480,7 +482,7 @@ function handleWizards(wizards){
             inquisitorBtn.textContent = "Make Inquisitor";
             inquisitorBtn.style.backgroundColor = "green";
 
-        } else{
+        } else if (student.isInquisitor === true){
             inquisitorBtn.textContent = "Remove Inquisitor";
             inquisitorBtn.style.backgroundColor = "red";
         }
@@ -493,11 +495,13 @@ function handleWizards(wizards){
    // FUNCTION THAT CLOSES MODAL
 
     let closeModalBtn = document.querySelector('.close-modal-btn');
-    closeModalBtn.addEventListener('click', () =>{
+    closeModalBtn.addEventListener('click', closeModal);
+    
+    function closeModal(event){
         articleBorn.style.display = "none";
-
-        
-    })
+        event.target.removeEventListener('click', closeModal);
+    }
+    
     
 
 }

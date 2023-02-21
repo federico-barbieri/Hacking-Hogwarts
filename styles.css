@@ -230,7 +230,7 @@ main{
 
 /* STUDENT MODAL STARTS HERE */
 
-/* animation for the modal */
+/* animation for the modal 
 
 @keyframes openModalSlowly{
     0% {opacity: 0;}
@@ -252,6 +252,8 @@ flex-direction: row;
 align-items: center;
 justify-content: space-around;
 }
+
+*/
 
 .student-modal{
     width: 80%;
