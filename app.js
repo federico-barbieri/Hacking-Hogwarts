@@ -244,8 +244,6 @@ function findHouse(element){
 }
 
 
-
-
 // create Wizard object
 
 const Wizard = {
@@ -255,14 +253,16 @@ const Wizard = {
     nickName: "",
     house: "",
     blood: "",
+    isInquisitor: false,
+    isPrefect: false,
 }
 
-// create array to store every student as an object
+// create array to store every student as an object after the fetching
 
 let studentsBigObject = [];
 
 
-// this function assigns design stuff to each part of the student
+// create a function that styles the future student object
 
 function beautifyStudent(myBigArray){
     myBigArray.forEach(student => {
@@ -285,24 +285,26 @@ function beautifyStudent(myBigArray){
             clone.querySelector(".student-pic").src = `imgs/students/${student.lastName.toLowerCase()}_${student.name.charAt(0).toLowerCase()}.png`;
         }
 
-        // assign house
-      //  clone.querySelector('.template-h2').textContent = `${student.house}`;
-        
-       // assign background image and H2 based on house 
+       // assign background image based on house 
         clone.querySelector('.inner-card').classList.add(`${student.house}-background`);
-      //  clone.querySelector('h2').classList.add(`${student.house}-h2`);
-
+   
         // assign type of blood
-        clone.querySelector('.li-blood').textContent = `Blood: ${student.blood}`;
+        if (student.name === "Zacharias"){
+            clone.querySelector('.li-blood').textContent = "Blood: Half";
+        } else{
+            clone.querySelector('.li-blood').textContent = `Blood: ${student.blood}`;
+        }
 
         // assign school logo
         clone.querySelector('.school-logo').src = "imgs/logo/school-logo.png";
 
         // FUNCTION THAT OPENS MODAL
-        clone.querySelector(".student-info-btn").addEventListener('click', () =>{
-            
-            modalShowTime(student);
+        clone.querySelector(".student-info-btn").addEventListener('click', (event) =>{
+           event.target.removeEventListener('click', modalShowTime(student));
+           // modalShowTime(student);
+           // modalShowTime(student);
         })
+
 
 
         // grab parent and append child
@@ -344,13 +346,14 @@ function handleWizards(wizards){
   
         } else if (pureBloodArray.includes(newStudent.lastName) && halfBloodArray.includes(newStudent.lastName) === false){
             newStudent.blood = "Pure";
+        
+        } else if (newStudent.name === "Zacharias"){
+            newStudent.blood = "Half";
         }
 
         // PUSH EACH NEW STUDENT TO THE STUDENT'S BIG OBJECT ARRAY
-
         studentsBigObject.push(newStudent);
         
-
 });    
 
         // call the function that injects design to every aspect of the student
@@ -360,67 +363,108 @@ function handleWizards(wizards){
 
 
 
-// create function that deals with the modal
+        // CREATE A FUNCTION THAT HANDLES THE INQUISITOR BUTTON
 
-function modalShowTime(student){
+        // create a global variable that handles how many inquisitors exist already
 
-    // grab the modal
-    let articleBorn = document.querySelector("#student-modal");
-    // change its display from none to block
-    articleBorn.style.display = "block";
-    articleBorn.style.display = "flex";
+        let numOfInquisitors = 0;
 
-    // change font depending on the house
-    articleBorn.style.fontFamily = `var(--${student.house}-font)`;
+        function inquisitorRequest(student){
+            if (student.house === "Slytherin" && student.isInquisitor === false || 
+                student.blood === "Pure" && student.isInquisitor === false){
+                numOfInquisitors++;
+                console.log(`The number of current Inquisitors is ${numOfInquisitors}`);
+                student.isInquisitor = true;
+                console.log(`The student is now an inquisitor. Their status is ${student.isInquisitor}`)
 
-    // add background according to house
-    articleBorn.classList.add(`${student.house}-background`);
-    if (student.name === "Terry"){
-    console.log(student);
-    }
+            } else if (student.isInquisitor === true){
+                student.isInquisitor = false;
+                numOfInquisitors--;
+                console.log(`The number of current Inquisitors is ${numOfInquisitors}`);
 
-    // grab and reveal the img of the student
-    let modalImg = document.querySelector('.modal-pic');
+                console.log(`The student is no longer an inquisitor. Their status is ${student.isInquisitor}`)
+        
+            } else {
+                console.log(`The student cannot be an inquisitor. Their status is ${student.isInquisitor}`)}
+        }
 
-     if(student.name === "Leanne"){
-        modalImg.src = `imgs/students/leanne.png`;
-    } else{
-        modalImg.src = `imgs/students/${student.lastName.toLowerCase()}_${student.name.charAt(0).toLowerCase()}.png`;
-    }
 
-    // reveal house 
-   // let modalH2 = document.querySelector('.modal-h2');
-   // modalH2.textContent = `${student.house}`;
 
-    // reveal name
-    let modalStudentName = document.querySelector('.modal-student-name');
-    modalStudentName.textContent = `Name: ${student.name}`;
+        // create function that deals with the modal
 
-    // reveal middle name
-    let modalStudentMiddleName = document.querySelector('.modal-student-middle-name');
-    modalStudentMiddleName.textContent = `Middle Name: ${student.middleName}`;
+        function modalShowTime(student){
 
-    // reveal last name
-    let modalStudentLastName = document.querySelector('.modal-student-last-name');
-    modalStudentLastName.textContent = `Last Name: ${student.lastName}`;
+        // grab the modal
+        let articleBorn = document.querySelector("#student-modal");
+        // change its display from none to block
+        articleBorn.style.display = "block";
+        articleBorn.style.display = "flex";
 
-    // reveal which house it belongs to
-    let modalStudentHouse = document.querySelector('.modal-student-house');
-    modalStudentHouse.textContent = `House: ${student.house}`;
+        // change font depending on the house
+        articleBorn.style.fontFamily = `var(--${student.house}-font)`;
 
-    // reveal type of blood
-    let modalStudentBlood = document.querySelector('.modal-student-blood');
-    modalStudentBlood.textContent = `Blood: ${student.blood}`;
+        // add background according to house
+        articleBorn.classList.add(`${student.house}-background`);
+
+        // grab and reveal the img of the student
+        let modalImg = document.querySelector('.modal-pic');
+
+        if(student.name === "Leanne"){
+            modalImg.src = `imgs/students/leanne.png`;
+        } else{
+            modalImg.src = `imgs/students/${student.lastName.toLowerCase()}_${student.name.charAt(0).toLowerCase()}.png`;
+        }
+
+
+        // reveal name
+        let modalStudentName = document.querySelector('.modal-student-name');
+        modalStudentName.textContent = `Name: ${student.name}`;
+
+        // reveal middle name
+        let modalStudentMiddleName = document.querySelector('.modal-student-middle-name');
+        modalStudentMiddleName.textContent = `Middle Name: ${student.middleName}`;
+
+        // reveal last name
+        let modalStudentLastName = document.querySelector('.modal-student-last-name');
+        modalStudentLastName.textContent = `Last Name: ${student.lastName}`;
+
+        // reveal which house it belongs to
+        let modalStudentHouse = document.querySelector('.modal-student-house');
+        modalStudentHouse.textContent = `House: ${student.house}`;
+
+        // reveal type of blood
+        let modalStudentBlood = document.querySelector('.modal-student-blood');
+        modalStudentBlood.textContent = `Blood: ${student.blood}`;
+
+
+        // if the user wants to make the student an inquisitor
+        let inquisitorBtn = document.querySelector('.modal-inquisitor-btn');
+
+
+        inquisitorBtn.addEventListener('click', () =>{
+        inquisitorRequest(student);
+        
+    
+        })
+
+
+
+
 
    // FUNCTION THAT CLOSES MODAL
 
     let closeModalBtn = document.querySelector('.close-modal-btn');
     closeModalBtn.addEventListener('click', () =>{
         articleBorn.style.display = "none";
+
+        
     })
     
 
 }
+
+
+
 
 
 
