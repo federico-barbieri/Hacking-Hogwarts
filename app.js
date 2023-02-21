@@ -295,9 +295,9 @@ function beautifyStudent(myBigArray){
         // assign type of blood
         clone.querySelector('.li-blood').textContent = `Blood: ${student.blood}`;
 
-        // add class to button
+        // FUNCTION THAT OPENS MODAL
         clone.querySelector(".student-info-btn").addEventListener('click', () =>{
-            console.log("sup");
+            
             modalShowTime(student);
         })
 
@@ -383,8 +383,8 @@ function modalShowTime(student){
     }
 
     // reveal house 
-    let modalH2 = document.querySelector('.modal-h2');
-    modalH2.textContent = `${student.house}`;
+   // let modalH2 = document.querySelector('.modal-h2');
+   // modalH2.textContent = `${student.house}`;
 
     // reveal name
     let modalStudentName = document.querySelector('.modal-student-name');
@@ -402,6 +402,12 @@ function modalShowTime(student){
     let modalStudentBlood = document.querySelector('.modal-student-blood');
     modalStudentBlood.textContent = `Blood: ${student.blood}`;
 
+   // FUNCTION THAT CLOSES MODAL
+
+    let closeModalBtn = document.querySelector('.close-modal-btn');
+    closeModalBtn.addEventListener('click', () =>{
+        articleBorn.style.display = "none";
+    })
     
 
 }
