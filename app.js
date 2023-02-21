@@ -280,20 +280,23 @@ function beautifyStudent(myBigArray){
 
         // assign student image based on name
         if(student.name === "Leanne"){
-            clone.querySelector("img").src = `imgs/students/leanne.png`;
+            clone.querySelector(".student-pic").src = `imgs/students/leanne.png`;
         } else{
-            clone.querySelector("img").src = `imgs/students/${student.lastName.toLowerCase()}_${student.name.charAt(0).toLowerCase()}.png`;
+            clone.querySelector(".student-pic").src = `imgs/students/${student.lastName.toLowerCase()}_${student.name.charAt(0).toLowerCase()}.png`;
         }
 
         // assign house
-        clone.querySelector('.template-h2').textContent = `${student.house}`;
+      //  clone.querySelector('.template-h2').textContent = `${student.house}`;
         
        // assign background image and H2 based on house 
         clone.querySelector('.inner-card').classList.add(`${student.house}-background`);
-        clone.querySelector('h2').classList.add(`${student.house}-h2`);
+      //  clone.querySelector('h2').classList.add(`${student.house}-h2`);
 
         // assign type of blood
         clone.querySelector('.li-blood').textContent = `Blood: ${student.blood}`;
+
+        // assign school logo
+        clone.querySelector('.school-logo').src = "imgs/logo/school-logo.png";
 
         // FUNCTION THAT OPENS MODAL
         clone.querySelector(".student-info-btn").addEventListener('click', () =>{
@@ -372,8 +375,11 @@ function modalShowTime(student){
 
     // add background according to house
     articleBorn.classList.add(`${student.house}-background`);
+    if (student.name === "Terry"){
+    console.log(student);
+    }
 
-    // grab and reveal the img
+    // grab and reveal the img of the student
     let modalImg = document.querySelector('.modal-pic');
 
      if(student.name === "Leanne"){
@@ -397,6 +403,10 @@ function modalShowTime(student){
     // reveal last name
     let modalStudentLastName = document.querySelector('.modal-student-last-name');
     modalStudentLastName.textContent = `Last Name: ${student.lastName}`;
+
+    // reveal which house it belongs to
+    let modalStudentHouse = document.querySelector('.modal-student-house');
+    modalStudentHouse.textContent = `House: ${student.house}`;
 
     // reveal type of blood
     let modalStudentBlood = document.querySelector('.modal-student-blood');
@@ -434,14 +444,3 @@ function modalShowTime(student){
 
 
 
-// designy stuff
-
-const schoolLogo = document.querySelector('.school-logo');
-
-// make something levitate
-
-function makeItLevitate(element){
-    element.classList.add("make-it-levitate");
-}
-
-makeItLevitate(schoolLogo);

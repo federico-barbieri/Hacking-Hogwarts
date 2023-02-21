@@ -24,7 +24,7 @@ body{
     cursor: url("imgs/cursor/wand10.svg");
 }
 
-/* header */
+/* header 
 
 #top-header{
     display: flex;
@@ -36,7 +36,9 @@ body{
     display: none;
 }
 
-/* navbar */
+*/
+
+/* navbar 
 
 #top-nav{
     width: 100%;
@@ -49,14 +51,7 @@ body{
     border: 2px solid red;
 }
 
-/* school logo */
-
-.school-logo{
-    width: 8rem;
-    height: 8rem;
-    border-radius: 50%;
-    filter: drop-shadow(10px 12px 10px black);
-}
+*/
 
 /* levitation animation + class */
 
@@ -160,12 +155,25 @@ main{
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
-    
     animation: none;
+    position: relative;
 }
 
 .inner-card:hover{
     animation: levitateCard 1s ease-in 0s infinite forwards;
+}
+
+/* school logo in card */
+
+.school-logo{
+    width: 6rem;
+    height: 6rem;
+    border-radius: 50%;
+    filter: drop-shadow(2px 4px 2px black);
+    z-index: 100;
+    position: absolute;
+    top:10%;
+    left: 5%;
 }
 
 /* backgrounds for each house */
@@ -208,34 +216,40 @@ main{
     width: 80%;
 }
 
-/* div between h2 and button */
-
-.house-btn{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-}
+/* btn to see students info */
 
 .student-info-btn{
-    background-color: var(--gryffindor);
-    border: 3px solid red;
-    font-size: 1.5rem;
-    color: white;
-    padding: 1rem 1.5rem;
+    padding: 1rem 2rem;
+    border-radius: 10px;
     cursor: pointer;
+    outline-style: double;
+    outline-offset: 0.5rem;
+    background-color: transparent;
+    color: black;
 }
 
-/* student modal */
+/* STUDENT MODAL STARTS HERE */
+
+/* animation for the modal */
+
+@keyframes openModalSlowly{
+    0% {opacity: 0;}
+    50% {opacity: 50%;}
+    100% {opacity: 100%;}
+}
+
+.injectIntoModal{
+animation: openModalSlowly 2s ease-in 0.1s 1 forwards;
+}
 
 #student-modal{
-    width: 70%;
-    height: 60%;
+    width: 80%;
+    height: 70%;
     background-color: #B99B6B;
     display: none;
     z-index: 100;
     position: fixed;
-    top: 27%;
+    top: 22%;
     filter: drop-shadow(10px 12px 10px black);
     border-radius: 10px;
     flex-direction: row;
@@ -250,6 +264,8 @@ main{
     height: 15rem;
     filter: drop-shadow(10px 12px 10px black);
 }
+
+/* MODAL UL */
 
 .student-information-ul{
     background-color: rgba(255, 255, 255, 0.3);
@@ -268,22 +284,62 @@ main{
     font-size: 2rem;
 }
 
+/* DIV BETWEEN IMG AND BTNS */
+
 .modal-img-btns{
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
     width: 40%;
-    height: 70%;
+    height: 80%;
 }
+
+/* DIV BETWEEN BTNS */
 
 .modal-inner-btns{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     justify-content: space-around;
+    height: 100%;
 }
 
+.modal-inquisitor-btn{
+    padding: 1rem 2rem;
+    border-radius: 10px;
+    cursor: pointer;
+    outline-style: double;
+    outline-offset: 0.5rem;
+    background-color: transparent;
+    color: white;
+    transition: all 0.5s ease-out;
+}
+
+.modal-inquisitor-btn:hover{
+    transition: all 0.5s ease-in;
+    color: black;
+    background-color: white;
+}
+
+.modal-prefect-btn{
+    padding: 1rem 2rem;
+    border-radius: 10px;
+    cursor: pointer;
+    outline-style: double;
+    outline-offset: 0.5rem;
+    background-color: transparent;
+    color: white;
+    transition: all 0.5s ease-out;
+}
+
+.modal-prefect-btn:hover{
+    transition: all 0.5s ease-in;
+    color: black;
+    background-color: white;
+}
+
+/* close modal */
 
 .close-modal{
     height: 100%;

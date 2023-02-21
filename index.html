@@ -8,11 +8,13 @@
     <title>Hacking Hogwarts Project</title>
 </head>
 <body>
-    <header id="top-header">
+  <!--  <header id="top-header">
         <nav id="top-nav">
             <img class="school-logo" src="imgs/logo/school-logo.png" alt="Logo of Hogwart's School">
         </nav>
     </header>
+
+    -->
 
     <main>
 
@@ -34,8 +36,8 @@
                         <div class="modal-img-btns">
                             <img class="modal-pic modal-student-pic" src="" alt="">
                             <div class="modal-inner-btns">
-                                <button>Make Inquisitor</button>
-                                <button>Make Prefect</button>
+                                <button class="modal-inquisitor-btn">Make Inquisitor</button>
+                                <button class="modal-prefect-btn">Make Prefect</button>
                             </div>
                         </div>
 
@@ -43,9 +45,10 @@
                             <li class="modal-student-name">Name:</li>
                             <li class="modal-student-middle-name">Middle name:</li>
                             <li class="modal-student-last-name">Last name: </li>
+                            <li class="modal-student-house">House: </li>
                             <li class="modal-student-blood">Type of blood: </li>
-                            <li class="information-inquisitor">Is Inquisitor: </li>
-                            <li class="information-prefect">Is Prefect:  </li>
+                            <li class="information-inquisitor">Is Inquisitor: False </li>
+                            <li class="information-prefect">Is Prefect: False  </li>
                         </ul>
                         
                         <div class="close-modal">
@@ -60,12 +63,13 @@
                 
                     <template id="my-template">
                         <article class="inner-card">
+                            <img class="school-logo" src="imgs/logo/school-logo.png" alt="Logo of Hogwart's School">
+
                             <div class="image-house">
                                 <img class="student-pic" src="" alt="">
-                                <div class="house-btn">
-                                    <h2 class="template-h2"></h2>
+                               
                                     <button class="student-info-btn" type="button">Student Info</button>
-                                </div>
+                                
                             </div>
                             
                             <div class="info">
