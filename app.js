@@ -454,12 +454,22 @@ function handleWizards(wizards){
         let inquisitorStatus = document.querySelector('.information-inquisitor');
         inquisitorStatus.textContent = `Is Inquisitor: ${student.isInquisitor}`;      
 
+        if (student.isInquisitor === false){
+            inquisitorBtn.textContent = "Make Inquisitor";
+            inquisitorBtn.style.backgroundColor = "green";
+
+        } else {
+            inquisitorBtn.textContent = "Remove Inquisitor";
+            inquisitorBtn.style.backgroundColor = "red";
+        }
+        
 
         inquisitorBtn.addEventListener('click',inquisitorBtnClick);
 
 
-        function inquisitorBtnClick(event) {
+        function inquisitorBtnClick() {
             console.log('Inquisitory clicked')
+            console.log(`clicking ${student.name} button`);
 
             inquisitorStatus.textContent = `Is Inquisitor: ${student.isInquisitor}`;
 
@@ -475,7 +485,7 @@ function handleWizards(wizards){
                 inquisitorBtn.style.backgroundColor = "red";
             }
             
-            
+
             
             inquisitorStatus.textContent = `Is Inquisitor: ${student.isInquisitor}`;
 
@@ -488,6 +498,7 @@ function handleWizards(wizards){
             inquisitorBtn.removeEventListener('click', inquisitorBtnClick);
             event.target.removeEventListener('click', closeModal);
             articleBorn.style.display = "none";
+
         
         }
 
