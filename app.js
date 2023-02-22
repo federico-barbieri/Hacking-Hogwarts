@@ -374,20 +374,23 @@ function handleWizards(wizards){
 
         let numOfInquisitors = 0;
 
-        function inquisitorRequest(student){
-            if (student.house === "Slytherin" && student.isInquisitor === false || 
-                student.blood === "Pure" && student.isInquisitor === false){
-                numOfInquisitors++;
-                console.log(`The number of current Inquisitors is ${numOfInquisitors}`);
-                student.isInquisitor = true;
-                console.log(`The student is now an inquisitor. Their status is ${student.isInquisitor}`)
+              
 
+        function inquisitorRequest(student){
+            if (student.house === "Slytherin" && student.isInquisitor === false){
+                numOfInquisitors++;
+                student.isInquisitor = true;
+                console.log(`The number of current Inquisitors is ${numOfInquisitors}. The student is now an inquisitor. Their status is ${student.isInquisitor} `);
+                            
+            } else if (student.blood === "Pure" && student.isInquisitor === false){
+                numOfInquisitors++;
+                student.isInquisitor = true;
+                console.log(`The number of current Inquisitors is ${numOfInquisitors}. The student is now an inquisitor. Their status is ${student.isInquisitor} `);
+                    
             } else if (student.isInquisitor === true){
                 student.isInquisitor = false;
                 numOfInquisitors--;
-                console.log(`The number of current Inquisitors is ${numOfInquisitors}`);
-
-                console.log(`The student is no longer an inquisitor. Their status is ${student.isInquisitor}`)
+                console.log(`The student is no longer an inquisitor. Their status is ${student.isInquisitor}. The number of current Inquisitors is ${numOfInquisitors}`);
         
             } else {
                 console.log(`The student cannot be an inquisitor. Their status is ${student.isInquisitor}`)}
@@ -449,41 +452,49 @@ function handleWizards(wizards){
 
         // change inquisitors status
         let inquisitorStatus = document.querySelector('.information-inquisitor');
-        inquisitorStatus.textContent = `Is Inquisitor: ${student.isInquisitor}`;
+        inquisitorStatus.textContent = `Is Inquisitor: ${student.isInquisitor}`;      
 
 
         inquisitorBtn.addEventListener('click',inquisitorBtnClick);
 
+
         function inquisitorBtnClick(event) {
-            console.log('Inquisitory clicked');
-            
-            event.target.removeEventListener('click', inquisitorBtnClick);
+            console.log('Inquisitory clicked')
+
+            inquisitorStatus.textContent = `Is Inquisitor: ${student.isInquisitor}`;
+
+            // esto está perfecto no lo toques por dios
             inquisitorRequest(student);
 
-             // change text content based on whether the student is an inquisitor or no
-        if (student.isInquisitor === false){
-            inquisitorBtn.textContent = "Make Inquisitor";
-            inquisitorBtn.style.backgroundColor = "green";
+            if (student.isInquisitor === false){
+                inquisitorBtn.textContent = "Make Inquisitor";
+                inquisitorBtn.style.backgroundColor = "green";
 
-        } else{
-            inquisitorBtn.textContent = "Remove Inquisitor";
-            inquisitorBtn.style.backgroundColor = "red";
+            } else {
+                inquisitorBtn.textContent = "Remove Inquisitor";
+                inquisitorBtn.style.backgroundColor = "red";
+            }
+            
+            
+            
+            inquisitorStatus.textContent = `Is Inquisitor: ${student.isInquisitor}`;
+
         }
 
-    
+        let closeModalBtn = document.querySelector('.close-modal-btn');
+
+        function closeModal(event){
+            
+            inquisitorBtn.removeEventListener('click', inquisitorBtnClick);
+            event.target.removeEventListener('click', closeModal);
+            articleBorn.style.display = "none";
+        
         }
-
-
 
    // FUNCTION THAT CLOSES MODAL
 
-    let closeModalBtn = document.querySelector('.close-modal-btn');
-    closeModalBtn.addEventListener('click', () =>{
-        articleBorn.style.display = "none";
-
-        
-    })
-    
+   
+    closeModalBtn.addEventListener('click', closeModal);
 
 }
 

@@ -311,7 +311,18 @@ animation: openModalSlowly 2s ease-in 0.1s 1 forwards;
     cursor: pointer;
     outline-style: double;
     outline-offset: 0.5rem;
-    background-color: transparent;
+    background-color: green;
+    color: white;
+    transition: all 0.5s ease-out;
+}
+
+.modal-inquisitor-btn-red{
+    padding: 1rem 2rem;
+    border-radius: 10px;
+    cursor: pointer;
+    outline-style: double;
+    outline-offset: 0.5rem;
+    background-color: green;
     color: white;
     transition: all 0.5s ease-out;
 }
