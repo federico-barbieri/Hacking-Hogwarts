@@ -302,8 +302,7 @@ function beautifyStudent(myBigArray){
         clone.querySelector(".student-info-btn").addEventListener('click', () =>{
             
             modalShowTime(student);
-           // modalShowTime(student);
-           // modalShowTime(student);
+           
         })
 
 
@@ -396,6 +395,33 @@ function handleWizards(wizards){
                 console.log(`The student cannot be an inquisitor. Their status is ${student.isInquisitor}`)}
         }
 
+        // CREATE A FUNCTION THAT HANDLES THE PREFECTS BUTTON
+
+        // create a global variable that handles how many prefects exist already
+
+      //  let numOfPrefects = 0;
+      //  let numOfGryffindorPrefects = 0;
+      //  let numOfSlytherinPrefects = 0;
+      //  let numOfRavenclawPrefects = 0;
+      //  let numOfHufflepuffPrefects = 0;
+
+        function prefectRequest(student){
+            if(student.isPrefect === false){
+                student.isPrefect = true;
+                
+              //  numOfPrefects++;
+              //  console.log(numOfPrefects);
+                console.log(`${student.name} is now a prefect of ${student.house}`);
+            
+            } else if (student.isPrefect === true){
+            student.isPrefect = false;
+            
+           // numOfPrefects--;
+           // console.log(numOfPrefects);
+            console.log(`${student.name} is no longer a prefect of ${student.house}`);
+            }
+    }
+
 
 
         // create function that deals with the modal
@@ -447,9 +473,7 @@ function handleWizards(wizards){
 
         // if the user wants to make the student an inquisitor
         let inquisitorBtn = document.querySelector('.modal-inquisitor-btn');
-
     
-
         // change inquisitors status
         let inquisitorStatus = document.querySelector('.information-inquisitor');
         inquisitorStatus.textContent = `Is Inquisitor: ${student.isInquisitor}`;      
@@ -462,14 +486,67 @@ function handleWizards(wizards){
             inquisitorBtn.textContent = "Remove Inquisitor";
             inquisitorBtn.style.backgroundColor = "red";
         }
+
+        // if the user wants to make the student a prefect
+        let prefectBtn = document.querySelector('.modal-prefect-btn');
+
+        // what's the actual prefect status on this student when 
+        // I open the modal
+        let prefectStatus = document.querySelector('.information-prefect');
+       prefectStatus.textContent = `Is Prefect: ${student.isPrefect}`;      
+
+        if (student.isPrefect === false){
+            prefectBtn.textContent = "Make Prefect";
+            prefectBtn.style.backgroundColor = "green";
+
+        } else {
+            prefectBtn.textContent = "Remove Prefect";
+            prefectBtn.style.backgroundColor = "red";
+        }
+
+         // prefect function
+         function prefectBtnClick() {
+            console.log('Prefecting attempted')
+            console.log(`clicking ${student.name} button`);
+
+            prefectStatus.textContent = `Is Prefect: ${student.isPrefect}`;
+
+            
+            prefectRequest(student);
+
+            prefectStatus.textContent = `Is Prefect: ${student.isPrefect}`;
+
+
+
+
+            if (student.isPrefect === false){
+                prefectBtn.textContent = "Make Prefect";
+                prefectBtn.style.backgroundColor = "green";
+
+            } else {
+                prefectBtn.textContent = "Remove Prefect";
+                prefectBtn.style.backgroundColor = "red";
+            }
+
+          //  prefectStatus.textContent = `Is Prefect: ${student.isPrefect}`;
+
+        }
+
+        // prefect event listener
+        prefectBtn.addEventListener('click', prefectBtnClick);
+
+        
         
 
+        // inquisitor event listener
         inquisitorBtn.addEventListener('click',inquisitorBtnClick);
 
+        
 
+        // inquisitor function
         function inquisitorBtnClick() {
-            console.log('Inquisitory clicked')
-            console.log(`clicking ${student.name} button`);
+          //  console.log('Inquisitory clicked')
+          //  console.log(`clicking ${student.name} button`);
 
             inquisitorStatus.textContent = `Is Inquisitor: ${student.isInquisitor}`;
 
@@ -484,18 +561,19 @@ function handleWizards(wizards){
                 inquisitorBtn.textContent = "Remove Inquisitor";
                 inquisitorBtn.style.backgroundColor = "red";
             }
-            
 
-            
             inquisitorStatus.textContent = `Is Inquisitor: ${student.isInquisitor}`;
 
         }
+
+       
 
         let closeModalBtn = document.querySelector('.close-modal-btn');
 
         function closeModal(event){
             
             inquisitorBtn.removeEventListener('click', inquisitorBtnClick);
+            prefectBtn.removeEventListener('click', prefectBtnClick);
             event.target.removeEventListener('click', closeModal);
             articleBorn.style.display = "none";
 
