@@ -399,26 +399,44 @@ function handleWizards(wizards){
 
         // create a global variable that handles how many prefects exist already
 
-      //  let numOfPrefects = 0;
-      //  let numOfGryffindorPrefects = 0;
-      //  let numOfSlytherinPrefects = 0;
-      //  let numOfRavenclawPrefects = 0;
-      //  let numOfHufflepuffPrefects = 0;
+        let numOfPrefects = [];
+
+        // create a function that returns the number of prefects per house
+
+        function houseInArray(array, house){
+            let thatHouse = 0;
+            for (let i = 0; i<array.length;i++){
+                if (array[i] === house){
+                    thatHouse++;
+                }
+            }
+            return thatHouse;
+        }
+
 
         function prefectRequest(student){
-            if(student.isPrefect === false){
+
+            let timesInArray = houseInArray(numOfPrefects, student.house);
+
+            if(student.isPrefect === false && timesInArray === 2){
+                console.log("There can only be 2 prefects per house.")
+            
+            } else if (student.isPrefect === false && timesInArray !== 2){
                 student.isPrefect = true;
-                
-              //  numOfPrefects++;
-              //  console.log(numOfPrefects);
+                numOfPrefects.push(student.house);
+                console.log(`Num of prefects is ${numOfPrefects.length}`);
                 console.log(`${student.name} is now a prefect of ${student.house}`);
+                houseInArray(numOfPrefects, student.house);
+                console.log(`${student.house} has ${houseInArray(numOfPrefects, student.house)} prefects`)
             
             } else if (student.isPrefect === true){
             student.isPrefect = false;
             
-           // numOfPrefects--;
-           // console.log(numOfPrefects);
+            numOfPrefects.pop();
+            console.log(`Num of prefects is ${numOfPrefects.length}`);
             console.log(`${student.name} is no longer a prefect of ${student.house}`);
+            console.log(`${student.house} has ${houseInArray(numOfPrefects, student.house)} prefects`)
+
             }
     }
 
