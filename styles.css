@@ -350,6 +350,23 @@ animation: openModalSlowly 2s ease-in 0.1s 1 forwards;
     background-color: white;
 }
 
+.modal-expell-btn{
+    padding: 1rem 2rem;
+    border-radius: 10px;
+    cursor: pointer;
+    outline-style: double;
+    outline-offset: 0.5rem;
+    background-color: red;
+    color: white;
+    transition: all 0.5s ease-out;
+}
+
+.modal-expell-btn:hover{
+    transition: all 0.5s ease-in;
+    color: black;
+    background-color: red;
+}
+
 /* close modal */
 
 .close-modal{

@@ -255,6 +255,7 @@ const Wizard = {
     blood: "",
     isInquisitor: false,
     isPrefect: false,
+    isExpelled: false,
 }
 
 // create array to store every student as an object after the fetching
@@ -286,8 +287,9 @@ function beautifyStudent(myBigArray){
         }
 
        // assign background image based on house 
-        clone.querySelector('.inner-card').classList.add(`${student.house}-background`);
-   
+       clone.querySelector('.inner-card').classList.add(`${student.house}-background`);
+
+
         // assign type of blood
         if (student.name === "Zacharias"){
             clone.querySelector('.li-blood').textContent = "Blood: Half";
@@ -298,12 +300,16 @@ function beautifyStudent(myBigArray){
         // assign school logo
         clone.querySelector('.school-logo').src = "imgs/logo/school-logo.png";
 
-        // FUNCTION THAT OPENS MODAL
-        clone.querySelector(".student-info-btn").addEventListener('click', () =>{
-            
+        function destroyEvt(e){
             modalShowTime(student);
+            e.target.removeEventListener('click', destroyEvt);
+
+        }
+
+        // FUNCTION THAT OPENS MODAL
+        clone.querySelector(".student-info-btn").addEventListener('click', destroyEvt);
            
-        })
+        
 
 
 
@@ -440,6 +446,8 @@ function handleWizards(wizards){
             }
     }
 
+    // create global array of expelled students
+    let expelledStudents = [];
 
 
         // create function that deals with the modal
@@ -508,6 +516,46 @@ function handleWizards(wizards){
         // if the user wants to make the student a prefect
         let prefectBtn = document.querySelector('.modal-prefect-btn');
 
+        // if the user wants to expell the student
+        let expellBtn = document.querySelector('.modal-expell-btn');
+
+        // change expelled status
+        let expelledStatus = document.querySelector('.information-expelled');
+
+        function expellBtnBackToNormal(){
+        expelledStatus.textContent = `Is Expelled: ${student.isExpelled}`;
+        expellBtn.style.display = "block";
+        expellBtn.style.backgroundColor = "green";
+        expelledStatus.style.color = "black";
+        expelledStatus.style.backgroundColor = "transparent";
+        expelledStatus.style.padding = "0";
+        }
+
+        expellBtnBackToNormal();
+
+        function expellTheStudent(){
+            student.isExpelled = true;
+            expelledStatus.textContent = `Is Expelled: ${student.isExpelled}`;
+            expelledStatus.style.color = "white";
+            expelledStatus.style.backgroundColor = "red";
+            expelledStatus.style.padding = "1rem 1.5rem";
+            console.log(`Trying to expell ${student.name}`);
+            expelledStudents.push(student);
+            console.log(expelledStudents);
+            console.log(`${student.name} ${student.lastName} has been expelled from Hogwarts`);
+            expellBtn.removeEventListener('click', expellTheStudent);
+            expellBtn.style.display = "none";
+        }
+
+
+
+        expellBtn.addEventListener('click', expellTheStudent);
+            
+
+        
+
+
+
         // what's the actual prefect status on this student when 
         // I open the modal
         let prefectStatus = document.querySelector('.information-prefect');
@@ -548,7 +596,7 @@ function handleWizards(wizards){
 
           //  prefectStatus.textContent = `Is Prefect: ${student.isPrefect}`;
 
-        }
+            }
 
         // prefect event listener
         prefectBtn.addEventListener('click', prefectBtnClick);
@@ -589,11 +637,16 @@ function handleWizards(wizards){
         let closeModalBtn = document.querySelector('.close-modal-btn');
 
         function closeModal(event){
+
+            // remove event listener for the btns
             
             inquisitorBtn.removeEventListener('click', inquisitorBtnClick);
             prefectBtn.removeEventListener('click', prefectBtnClick);
             event.target.removeEventListener('click', closeModal);
             articleBorn.style.display = "none";
+
+            
+
 
         
         }
