@@ -490,6 +490,10 @@ animation: openModalSlowly 2s ease-in 0.1s 1 forwards;
     color: white;
 }
 
+.expelled-student{
+    display: none;
+}
+
 
 
 

@@ -585,7 +585,6 @@ function handleWizards(wizards){
             console.log(studentsBigObject);
 
 
-
             // for each expelled student we remove it from the array
             // of objects, remove every child element from the dashboard
             // and recreate the new list without expelled students
@@ -701,3 +700,28 @@ function handleWizards(wizards){
 
 }
 
+
+// figuring out sorting
+
+const sortAscendingBtn = document.querySelector('.sortAscending');
+
+const sortDescendingBtn = document.querySelector('.sortDescending');
+
+function sortStudentsDescending(){
+    console.log(studentsBigObject);
+    let studentsSorted = studentsBigObject.sort((a, b) => b.name.localeCompare(a.name));
+    console.log(studentsSorted);
+    event.target.removeEventListener('click', sortStudentsDescending);
+
+}
+
+function sortStudentsAscending(event){
+    console.log(studentsBigObject);
+    let studentsSorted = studentsBigObject.sort((a, b) => a.name.localeCompare(b.name));
+    console.log(studentsSorted);
+    event.target.removeEventListener('click', sortStudentsAscending);
+}
+
+sortAscendingBtn.addEventListener('click', sortStudentsAscending);
+
+sortDescendingBtn.addEventListener('click', sortStudentsDescending);
