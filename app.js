@@ -4,22 +4,26 @@
 //blood list JSON
 const blood = "https://petlatkea.dk/2021/hogwarts/families.json";
 
-fetch(blood)
-.then(response => {
-    if (!response.ok) {
-        throw Error(response.statusText);
-    }
-        return response.json();
-})
-.then(families => {
-    // we have the data 
-   // console.log(families); 
-    handleBlood(families);
-})
-.catch (e => {
-    // something went wrong
-    console.error("An error has occured.", e.message);
-})
+function fetchBlood(){
+    fetch(blood)
+    .then(response => {
+        if (!response.ok) {
+            throw Error(response.statusText);
+        }
+            return response.json();
+    })
+    .then(families => {
+        // we have the data 
+       // console.log(families); 
+        handleBlood(families);
+    })
+    .catch (e => {
+        // something went wrong
+        console.error("An error has occured.", e.message);
+    })
+}
+
+fetchBlood();
 
 // create halfblood array
 
@@ -49,25 +53,28 @@ function handleBlood(families){
 //student list JSON
 const students = "https://petlatkea.dk/2021/hogwarts/students.json";
 
-fetch(students)
-.then(response => {
-    if (!response.ok) {
-        throw Error(response.statusText);
-    }
-        return response.json();
-})
-.then(wizards => {
-    // we have the data 
-   // console.log(students); 
-    handleWizards(wizards);
-})
-.catch (e => {
-    // something went wrong
-    console.error("An error has occured.", e.message);
-})
+
+function fetchStudents(){
+        fetch(students)
+    .then(response => {
+        if (!response.ok) {
+            throw Error(response.statusText);
+        }
+            return response.json();
+    })
+    .then(wizards => {
+        // we have the data 
+       // console.log(students); 
+        handleWizards(wizards);
+    })
+    .catch (e => {
+        // something went wrong
+        console.error("An error has occured.", e.message);
+    })
+}
 
 
-
+fetchStudents();
 
 // create functions for each part of the wizard
 
@@ -268,6 +275,7 @@ let studentsBigObject = [];
 function beautifyStudent(myBigArray){
     myBigArray.forEach(student => {
   
+        if (student.isExpelled === false){
         // BUILD TEMPLATE
         const myTemplate = document.getElementById('my-template').content;
         const clone = myTemplate.cloneNode(true);
@@ -309,15 +317,16 @@ function beautifyStudent(myBigArray){
         }
 
         // FUNCTION THAT OPENS MODAL
-        clone.querySelector(".student-info-btn").addEventListener('click', destroyEvt);
+        let studentInfoBtn = clone.querySelector(".student-info-btn").addEventListener('click', destroyEvt);
            
-        
-
-
 
         // grab parent and append child
-        const daddy = document.querySelector('#dashboard');
+        const daddy = document.querySelector('#trying');
         daddy.appendChild(clone);
+
+    } else{
+        console.log("not this one")
+    }
 
   })       
 };
@@ -360,8 +369,10 @@ function handleWizards(wizards){
         
         } else if (newStudent.name === "Tracey"){
             newStudent.blood = "Pure";
+        
+        } else if (newStudent.name === "Kevin"){
+            newStudent.blood = "Half";
         }
-
 
         // PUSH EACH NEW STUDENT TO THE STUDENT'S BIG OBJECT ARRAY
         studentsBigObject.push(newStudent);
@@ -526,19 +537,37 @@ function handleWizards(wizards){
         // change expelled status
         let expelledStatus = document.querySelector('.information-expelled');
 
-        function expellBtnBackToNormal(){
+        // what's the actual prefect status on this student when 
+        // I open the modal
+        let prefectStatus = document.querySelector('.information-prefect');
+       prefectStatus.textContent = `Is Prefect: ${student.isPrefect}`;  
+
+        function btnsBackToNormal(){
         expelledStatus.textContent = `Is Expelled: ${student.isExpelled}`;
         expellBtn.style.display = "block";
         expellBtn.style.backgroundColor = "green";
         expelledStatus.style.color = "black";
         expelledStatus.style.backgroundColor = "transparent";
         expelledStatus.style.padding = "0";
+        inquisitorStatus.textContent = `Is Inquisitor: ${student.isInquisitor}`;
+        inquisitorBtn.style.display = "block";
+        inquisitorBtn.style.backgroundColor = "green";
+        inquisitorStatus.style.color = "black";
+        inquisitorStatus.style.backgroundColor = "transparent";
+        inquisitorStatus.style.padding = "0";
+        prefectStatus.textContent = `Is Prefect: ${student.isPrefect}`;
+        prefectBtn.style.display = "block";
+        prefectBtn.style.backgroundColor = "green";
+        prefectStatus.style.color = "black";
+        prefectStatus.style.backgroundColor = "transparent";
+        prefectStatus.style.padding = "0";
         }
 
-        expellBtnBackToNormal();
+        btnsBackToNormal();
 
 
         function expellTheStudent(){
+
             student.isExpelled = true;
             studentsBigObject = studentsBigObject.filter((element) => element.isExpelled === false);
             expelledStatus.textContent = `Is Expelled: ${student.isExpelled}`;
@@ -551,8 +580,21 @@ function handleWizards(wizards){
             console.log(`${student.name} ${student.lastName} has been expelled from Hogwarts`);
             expellBtn.removeEventListener('click', expellTheStudent);
             expellBtn.style.display = "none";
-
+            prefectBtn.style.display = "none";
+            inquisitorBtn.style.display = "none";
             console.log(studentsBigObject);
+
+
+
+            // for each expelled student we remove it from the array
+            // of objects, remove every child element from the dashboard
+            // and recreate the new list without expelled students
+
+            // while the dashboard has children, remove them
+            // so we can display new stuff again
+
+           
+            
         }
 
 
@@ -564,10 +606,7 @@ function handleWizards(wizards){
 
 
 
-        // what's the actual prefect status on this student when 
-        // I open the modal
-        let prefectStatus = document.querySelector('.information-prefect');
-       prefectStatus.textContent = `Is Prefect: ${student.isPrefect}`;      
+            
 
         if (student.isPrefect === false){
             prefectBtn.textContent = "Make Prefect";
@@ -591,8 +630,6 @@ function handleWizards(wizards){
             prefectStatus.textContent = `Is Prefect: ${student.isPrefect}`;
 
 
-
-
             if (student.isPrefect === false){
                 prefectBtn.textContent = "Make Prefect";
                 prefectBtn.style.backgroundColor = "green";
@@ -602,9 +639,9 @@ function handleWizards(wizards){
                 prefectBtn.style.backgroundColor = "red";
             }
 
-          //  prefectStatus.textContent = `Is Prefect: ${student.isPrefect}`;
+       
 
-            }
+        }
 
         // prefect event listener
         prefectBtn.addEventListener('click', prefectBtnClick);
@@ -646,13 +683,15 @@ function handleWizards(wizards){
 
         function closeModal(event){
 
+           
+
             // remove event listener for the btns
             
             inquisitorBtn.removeEventListener('click', inquisitorBtnClick);
             prefectBtn.removeEventListener('click', prefectBtnClick);
             event.target.removeEventListener('click', closeModal);
             articleBorn.style.display = "none";
-
+            
         }
 
    // FUNCTION THAT CLOSES MODAL
@@ -661,29 +700,4 @@ function handleWizards(wizards){
     closeModalBtn.addEventListener('click', closeModal);
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
