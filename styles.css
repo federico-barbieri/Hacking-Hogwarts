@@ -206,6 +206,10 @@ main{
     background-repeat: no-repeat;
 }
 
+.expelled-background{
+    background-color: red;
+}
+
 /* div between the image and the house name */
 
 .image-house{

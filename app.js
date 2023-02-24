@@ -287,8 +287,10 @@ function beautifyStudent(myBigArray){
         }
 
        // assign background image based on house 
-       clone.querySelector('.inner-card').classList.add(`${student.house}-background`);
+        let innerCard = clone.querySelector('.inner-card').classList.add(`${student.house}-background`);
 
+               
+      
 
         // assign type of blood
         if (student.name === "Zacharias"){
@@ -363,6 +365,8 @@ function handleWizards(wizards){
 
         // PUSH EACH NEW STUDENT TO THE STUDENT'S BIG OBJECT ARRAY
         studentsBigObject.push(newStudent);
+
+       
         
 });    
 
@@ -533,8 +537,10 @@ function handleWizards(wizards){
 
         expellBtnBackToNormal();
 
+
         function expellTheStudent(){
             student.isExpelled = true;
+            studentsBigObject = studentsBigObject.filter((element) => element.isExpelled === false);
             expelledStatus.textContent = `Is Expelled: ${student.isExpelled}`;
             expelledStatus.style.color = "white";
             expelledStatus.style.backgroundColor = "red";
@@ -545,6 +551,8 @@ function handleWizards(wizards){
             console.log(`${student.name} ${student.lastName} has been expelled from Hogwarts`);
             expellBtn.removeEventListener('click', expellTheStudent);
             expellBtn.style.display = "none";
+
+            console.log(studentsBigObject);
         }
 
 
@@ -645,10 +653,6 @@ function handleWizards(wizards){
             event.target.removeEventListener('click', closeModal);
             articleBorn.style.display = "none";
 
-            
-
-
-        
         }
 
    // FUNCTION THAT CLOSES MODAL
