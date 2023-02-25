@@ -707,8 +707,8 @@ const sortAscendingBtn = document.querySelector('.sortAscending');
 
 const sortDescendingBtn = document.querySelector('.sortDescending');
 
-function sortStudentsDescending(){
-    console.log(studentsBigObject);
+function sortStudentsDescending(event){
+    
     let studentsSorted = studentsBigObject.sort((a, b) => b.name.localeCompare(a.name));
     console.log(studentsSorted);
     event.target.removeEventListener('click', sortStudentsDescending);
@@ -716,7 +716,7 @@ function sortStudentsDescending(){
 }
 
 function sortStudentsAscending(event){
-    console.log(studentsBigObject);
+    
     let studentsSorted = studentsBigObject.sort((a, b) => a.name.localeCompare(b.name));
     console.log(studentsSorted);
     event.target.removeEventListener('click', sortStudentsAscending);

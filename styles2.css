@@ -1,0 +1,167 @@
+*{
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    font-size: 16px;
+    --slytherin: #1A472A;
+    --gryffindor: #7400028e;
+    --hufflepuff: #6b6019;
+    --ravenclaw: #0E1A40;
+    --Gryffindor-font: "p22-mackinac-pro", serif; font-weight: 400; font-style: italic;
+    --Slytherin-font: "area-normal", sans-serif; font-weight: 400; font-style: italic;
+    --Ravenclaw-font: "blenny", sans-serif; font-weight: 900; font-style: normal;
+    --Hufflepuff-font: "bely", serif; font-weight: 400; font-style: italic;;
+}
+
+body{
+    background: url(imgs/background/castle2.png);
+    background-repeat: no-repeat;
+    background-size: auto;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* header */
+
+#top-header{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 15rem;
+    display: none;
+}
+
+/* navbar */
+
+#top-nav{
+    width: 100%;
+    height: 15rem;
+    z-index: 5;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+
+/* btn section */
+
+#button-section{
+    width: 100vw;
+    height: 15rem;
+    
+}
+
+.button-ul{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    background-color: rgba(255, 255, 255, 0.3);
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+.button-ul > li{
+    list-style-type: none;
+    font-size: 2rem;
+}
+
+.button-ul > li > button:hover{
+    color: white;
+}
+
+/* sorting btns */
+
+.sorting-btn{
+    padding: 1rem 1rem;
+    border-radius: 10px;
+    cursor: pointer;
+    outline-style: double;
+    outline-offset: 0.5rem;
+    background-color:burlywood;
+    color: black;
+    display: inline-block;
+}
+
+/* main */
+
+main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    overflow: auto;
+}
+
+/* welcoming modal */
+
+.welcoming-modal{
+    display: block;
+    background-color: rgba(255, 255, 255, 0.3);
+    width: 40rem;
+    height: 20rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    filter: drop-shadow(10px 12px 10px black);
+    border-radius: 10px;
+    font-family: var(--Gryffindor-font);
+    opacity: 0;
+}
+
+.welcoming-modal-h1{
+    font-size: 3rem;
+}
+
+.welcoming-modal-btn{
+    margin-top: 2rem;
+    padding: 1rem 1rem;
+    border-radius: 10px;
+    cursor: pointer;
+    outline-style: double;
+    outline-offset: 0.5rem;
+    background-color: transparent;
+    color: white;
+    display: inline-block;
+    transition: all 0.5s ease-out;
+}
+
+.welcoming-modal-btn:hover{
+    transition: all 0.5s ease-in;
+    background-color: white;
+    color: black;
+}
+
+@keyframes makingThingsAppearSlow{
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+    }
+
+.makingThingsAppearSlow{
+    animation: makingThingsAppearSlow 1s ease-in 1 forwards;
+}
+
+/* DASHBOARD */
+
+#dashboard{
+    width: 100vw;
+    height: 70vh;
+    border: 5px solid white;
+    overflow-y: scroll;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.3);
+    margin: -15rem auto 0 auto;
+    
+}
