@@ -271,6 +271,7 @@ const Wizard = {
     house: "",
     blood: "",
     image: "",
+    background: "",
     isInquisitor: false,
     isPrefect: false,
     isExpelled: false,
@@ -305,6 +306,9 @@ function handleWizards(wizards){
 
         // ASSIGN HOUSE
         newStudent.house = findHouse(wizard);
+
+        // assign background image based on house 
+        newStudent.background = `${newStudent.house}` + "-background";
 
         // ASSIGN BLOOD
         if (halfBloodArray.includes(newStudent.lastName)){
@@ -366,7 +370,7 @@ function beautifyStudent(){
         
 
        // assign background image based on house 
-        clone.querySelector('.inner-card').classList.add(`${student.house}-background`);
+        clone.querySelector('.inner-card').classList.add(`${student.background}`);
 
                
       
@@ -382,13 +386,13 @@ function beautifyStudent(){
         clone.querySelector('.school-logo').src = "imgs/logo/school-logo.png";
 
         function destroyEvt(e){
+            console.log("trying to open student modal")
             modalShowTime(student);
-            e.target.removeEventListener('click', destroyEvt);
-
+          //  e.target.removeEventListener('click', destroyEvt);
         }
 
         // FUNCTION THAT OPENS MODAL
-        let studentInfoBtn = clone.querySelector(".student-info-btn").addEventListener('click', destroyEvt);
+        clone.querySelector(".student-info-btn").addEventListener('click', destroyEvt);
            
 
         // grab parent and append child
@@ -698,34 +702,35 @@ function beautifyStudent(){
 }
 
 
-// figuring out sorting
-
-const sortAscendingBtn = document.querySelector('.sortAscending');
-
-function sortStudentsAscending(event){
-    console.log(studentsBigObject);
-    let studentsSorted = studentsBigObject.sort((a, b) => a.name.localeCompare(b.name));
-    console.log(studentsSorted);
-    event.target.removeEventListener('click', sortStudentsAscending);
-}
-
-sortAscendingBtn.addEventListener('click', sortStudentsAscending);
-
+// SORT DESCENDING
 
 const sortDescendingBtn = document.querySelector('.sortDescending');
 
-function sortStudentsDescending(event){
+function sortStudentsDescending(){
     console.log(studentsBigObject);
-    let studentsSorted = studentsBigObject.sort((a, b) => b.name.localeCompare(a.name));
-    console.log(studentsSorted);
-    event.target.removeEventListener('click', sortStudentsDescending);
-
+    studentsBigObject.sort((a, b) => b.name.localeCompare(a.name));
+    beautifyStudent();
+  //  event.target.removeEventListener('click', sortStudentsDescending);
 }
 
 sortDescendingBtn.addEventListener('click', sortStudentsDescending);
+
+// SORTING ASCENDING
+
+const sortAscendingBtn = document.querySelector('.sortAscending');
+
+sortAscendingBtn.addEventListener('click', sortStudentsAscending);
+
+function sortStudentsAscending(){
+    console.log(studentsBigObject);
+    studentsBigObject.sort((a, b) => a.name.localeCompare(b.name));
+    beautifyStudent();
+  //  event.target.removeEventListener('click', sortStudentsAscending);
+}
 
 
 function start(){
     fetchBlood();
     fetchStudents();
+
 }
