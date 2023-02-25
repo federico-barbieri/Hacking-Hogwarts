@@ -400,6 +400,9 @@ function beautifyStudent(){
         daddy.appendChild(clone);
 
   }      
+  currentEnrolledStudents.textContent = `There are currently ${studentsBigObject.length} enrolled students`;
+
+
 };
 
 
@@ -646,6 +649,8 @@ function beautifyStudent(){
                 prefectBtn.style.backgroundColor = "red";
             }
 
+            currentPrefects.textContent = `There are currently ${numOfPrefects.length} prefects`;
+
        
 
         }
@@ -681,6 +686,9 @@ function beautifyStudent(){
             }
 
             inquisitorStatus.textContent = `Is Inquisitor: ${student.isInquisitor}`;
+
+            // change global num of inquisitors 
+            currentInquisitors.textContent = `There are currently ${numOfInquisitors} inquisitors`;
 
         }
 
@@ -846,6 +854,15 @@ const btnSection = document.querySelector('#button-section');
 // grab dashboard
 const dashboard = document.querySelector('#dashboard');
 
+// grab current stats
+const currentStats = document.querySelector('.current-stats');
+
+const currentEnrolledStudents = document.querySelector('.current-enrolled-students');
+const currentPrefects = document.querySelector('.current-prefects');
+const currentInquisitors = document.querySelector('.current-inquisitors');
+
+
+
 // create function that closes the modal and shows the header and the dashboard
 function showDashboard(event){
     welcomingModal.style.display = "none";
@@ -853,6 +870,8 @@ function showDashboard(event){
     btnSection.style.display = "flex";
     dashboard.classList.add('makingThingsAppearSlow');
     dashboard.style.display = "flex";
+    currentStats.classList.add('makingThingsAppearSlow');
+    currentStats.style.display = "flex";
     event.target.removeEventListener('click', showDashboard);
 }
 
