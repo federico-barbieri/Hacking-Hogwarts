@@ -91,6 +91,7 @@ main{
 #button-section{
     width: 80vw;
     height: 15vh;
+   
 }
 
 .button-ul{
@@ -102,12 +103,16 @@ main{
     justify-content: space-around;
     border: 5px solid green;
     background-color: #0E1A40;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+    padding-left: 20rem;
 }
 
 .button-ul > li{
     list-style-type: none;
     font-size: 2rem;
-
+    margin-right: 1rem;
 }
 
 .button-ul > li > button:hover{
@@ -117,10 +122,10 @@ main{
 /* sorting btns */
 
 .sorting-btn{
-    padding: 1rem 2rem;
+    padding: 1rem 1.5rem;
     border-radius: 10px;
     cursor: pointer;
-    outline-style: double;
+    display: inline-block;
     outline-offset: 0.5rem;
     background-color: transparent;
     color: white;

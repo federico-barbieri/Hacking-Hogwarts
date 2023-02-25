@@ -695,8 +695,6 @@ function beautifyStudent(){
         }
 
    // FUNCTION THAT CLOSES MODAL
-
-   
     closeModalBtn.addEventListener('click', closeModal);
 
 }
@@ -728,6 +726,81 @@ function sortStudentsAscending(){
   //  event.target.removeEventListener('click', sortStudentsAscending);
 }
 
+
+// sort by house (gryffindor)
+
+const sortGryffindorBtn = document.querySelector('.sortGryffindor');
+
+sortGryffindorBtn.addEventListener('click', sortGryffindor);
+
+function sortGryffindor(){
+    console.log(`original array: ${studentsBigObject.length}`);
+    let originalArray = studentsBigObject;
+    let gryffindorStudents = studentsBigObject.filter((student) => student.house === "Gryffindor");
+    studentsBigObject = gryffindorStudents;
+    console.log(`gryffindor: ${studentsBigObject.length}`);
+
+    beautifyStudent();
+    studentsBigObject = originalArray;
+    console.log(`original array: ${studentsBigObject.length}`);
+}
+
+// sort by house (Slytherin)
+
+const sortSlytherinBtn = document.querySelector('.sortSlytherin');
+
+sortSlytherinBtn.addEventListener('click', sortSlytherin);
+
+function sortSlytherin(){
+    console.log(`original array: ${studentsBigObject.length}`);
+    let originalArray = studentsBigObject;
+    let slytherinStudents = studentsBigObject.filter((student) => student.house === "Slytherin");
+    studentsBigObject = slytherinStudents;
+    console.log(`Slytherin: ${studentsBigObject.length}`);
+
+    beautifyStudent();
+    studentsBigObject = originalArray;
+    console.log(`original array: ${studentsBigObject.length}`);
+}
+
+// sort by house (Ravenclaw)
+
+const sortRavenclawBtn = document.querySelector('.sortRavenclaw');
+
+sortRavenclawBtn.addEventListener('click', sortRavenclaw);
+
+function sortRavenclaw(){
+    console.log(`original array: ${studentsBigObject.length}`);
+    let originalArray = studentsBigObject;
+    let ravenclawStudents = studentsBigObject.filter((student) => student.house === "Ravenclaw");
+    studentsBigObject = ravenclawStudents;
+    console.log(`Ravenclaw: ${studentsBigObject.length}`);
+
+    beautifyStudent();
+    studentsBigObject = originalArray;
+    console.log(`original array: ${studentsBigObject.length}`);
+}
+
+// sort by house (Hufflepuff)
+
+const sortHufflepuffBtn = document.querySelector('.sortHufflepuff');
+
+sortHufflepuffBtn.addEventListener('click', sortHufflepuff);
+
+function sortHufflepuff(){
+    console.log(`original array: ${studentsBigObject.length}`);
+    let originalArray = studentsBigObject;
+    let hufflepuffStudents = studentsBigObject.filter((student) => student.house === "Hufflepuff");
+    studentsBigObject = hufflepuffStudents;
+    console.log(`Hufflepuff: ${studentsBigObject.length}`);
+
+    beautifyStudent();
+    studentsBigObject = originalArray;
+    console.log(`original array: ${studentsBigObject.length}`);
+}
+
+
+// start the show
 
 function start(){
     fetchBlood();
