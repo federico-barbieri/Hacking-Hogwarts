@@ -1,3 +1,16 @@
+// MVC model view controller
+
+// model is the json fetching and object creation
+
+// view is using the template and assigning stuff to it + appending
+
+// controller 
+
+
+window.addEventListener('DOMContentLoaded', start);
+
+
+
 "use strict";
 
 
@@ -23,7 +36,6 @@ function fetchBlood(){
     })
 }
 
-fetchBlood();
 
 // create halfblood array
 
@@ -73,8 +85,6 @@ function fetchStudents(){
     })
 }
 
-
-fetchStudents();
 
 // create functions for each part of the wizard
 
@@ -260,6 +270,7 @@ const Wizard = {
     nickName: "",
     house: "",
     blood: "",
+    image: "",
     isInquisitor: false,
     isPrefect: false,
     isExpelled: false,
@@ -268,68 +279,6 @@ const Wizard = {
 // create array to store every student as an object after the fetching
 
 let studentsBigObject = [];
-
-
-// create a function that styles the future student object
-
-function beautifyStudent(myBigArray){
-    myBigArray.forEach(student => {
-  
-        if (student.isExpelled === false){
-        // BUILD TEMPLATE
-        const myTemplate = document.getElementById('my-template').content;
-        const clone = myTemplate.cloneNode(true);
-
-        // name of student
-        clone.querySelector(".li-name").textContent = `Name: ${student.name}`;
-        // middle name of student
-        clone.querySelector(".li-middlename").textContent = `Middle name: ${student.middleName}`;
-        // last name of student
-        clone.querySelector(".li-lastname").textContent = `Last name: ${student.lastName}`;
-
-        // assign student image based on name
-        if(student.name === "Leanne"){
-            clone.querySelector(".student-pic").src = `imgs/students/leanne.png`;
-        } else{
-            clone.querySelector(".student-pic").src = `imgs/students/${student.lastName.toLowerCase()}_${student.name.charAt(0).toLowerCase()}.png`;
-        }
-
-       // assign background image based on house 
-        let innerCard = clone.querySelector('.inner-card').classList.add(`${student.house}-background`);
-
-               
-      
-
-        // assign type of blood
-        if (student.name === "Zacharias"){
-            clone.querySelector('.li-blood').textContent = "Blood: Half";
-        } else{
-            clone.querySelector('.li-blood').textContent = `Blood: ${student.blood}`;
-        }
-
-        // assign school logo
-        clone.querySelector('.school-logo').src = "imgs/logo/school-logo.png";
-
-        function destroyEvt(e){
-            modalShowTime(student);
-            e.target.removeEventListener('click', destroyEvt);
-
-        }
-
-        // FUNCTION THAT OPENS MODAL
-        let studentInfoBtn = clone.querySelector(".student-info-btn").addEventListener('click', destroyEvt);
-           
-
-        // grab parent and append child
-        const daddy = document.querySelector('#trying');
-        daddy.appendChild(clone);
-
-    } else{
-        console.log("not this one")
-    }
-
-  })       
-};
 
 
 // create function that handles the data from the fetching
@@ -377,14 +326,77 @@ function handleWizards(wizards){
         // PUSH EACH NEW STUDENT TO THE STUDENT'S BIG OBJECT ARRAY
         studentsBigObject.push(newStudent);
 
-       
-        
+     
 });    
 
         // call the function that injects design to every aspect of the student
-        beautifyStudent(studentsBigObject);
+        beautifyStudent();
     
 }
+
+// create a function that styles the future student object
+
+function beautifyStudent(){
+
+    document.querySelector("#dashboard").innerHTML = "";
+
+    studentsBigObject.forEach( displayStudent);
+
+    function displayStudent(student){
+        
+    //    if (student.isExpelled === false){
+        // BUILD TEMPLATE
+        let myTemplate = document.querySelector('#my-template').content;
+        const clone = myTemplate.cloneNode(true);
+
+        // name of student
+        clone.querySelector(".li-name").textContent = `Name: ${student.name}`;
+        // middle name of student
+        clone.querySelector(".li-middlename").textContent = `Middle name: ${student.middleName}`;
+        // last name of student
+        clone.querySelector(".li-lastname").textContent = `Last name: ${student.lastName}`;
+
+        // assign student image based on name
+        if(student.name === "Leanne"){
+            clone.querySelector(".student-pic").src = `imgs/students/leanne.png`;
+        } else{
+            clone.querySelector(".student-pic").src = `imgs/students/${student.lastName.toLowerCase()}_${student.name.charAt(0).toLowerCase()}.png`;
+        }
+
+        
+
+       // assign background image based on house 
+        clone.querySelector('.inner-card').classList.add(`${student.house}-background`);
+
+               
+      
+
+        // assign type of blood
+        if (student.name === "Zacharias"){
+            clone.querySelector('.li-blood').textContent = "Blood: Half";
+        } else{
+            clone.querySelector('.li-blood').textContent = `Blood: ${student.blood}`;
+        }
+
+        // assign school logo
+        clone.querySelector('.school-logo').src = "imgs/logo/school-logo.png";
+
+        function destroyEvt(e){
+            modalShowTime(student);
+            e.target.removeEventListener('click', destroyEvt);
+
+        }
+
+        // FUNCTION THAT OPENS MODAL
+        let studentInfoBtn = clone.querySelector(".student-info-btn").addEventListener('click', destroyEvt);
+           
+
+        // grab parent and append child
+        const daddy = document.querySelector('#dashboard');
+        daddy.appendChild(clone);
+
+  }      
+};
 
 
 
@@ -574,7 +586,7 @@ function handleWizards(wizards){
             expelledStatus.style.color = "white";
             expelledStatus.style.backgroundColor = "red";
             expelledStatus.style.padding = "1rem 1.5rem";
-            console.log(`Trying to expell ${student.name}`);
+          //  console.log(`Trying to expell ${student.name}`);
             expelledStudents.push(student);
             console.log(expelledStudents);
             console.log(`${student.name} ${student.lastName} has been expelled from Hogwarts`);
@@ -582,29 +594,16 @@ function handleWizards(wizards){
             expellBtn.style.display = "none";
             prefectBtn.style.display = "none";
             inquisitorBtn.style.display = "none";
-            console.log(studentsBigObject);
 
-
-            // for each expelled student we remove it from the array
-            // of objects, remove every child element from the dashboard
-            // and recreate the new list without expelled students
-
-            // while the dashboard has children, remove them
-            // so we can display new stuff again
-
-           
+            // remove everything from the dashboard and 
+            // recreate the list again without the expelled student!!
+            beautifyStudent();           
             
         }
 
 
 
         expellBtn.addEventListener('click', expellTheStudent);
-            
-
-        
-
-
-
             
 
         if (student.isPrefect === false){
@@ -682,8 +681,6 @@ function handleWizards(wizards){
 
         function closeModal(event){
 
-           
-
             // remove event listener for the btns
             
             inquisitorBtn.removeEventListener('click', inquisitorBtnClick);
@@ -705,16 +702,6 @@ function handleWizards(wizards){
 
 const sortAscendingBtn = document.querySelector('.sortAscending');
 
-const sortDescendingBtn = document.querySelector('.sortDescending');
-
-function sortStudentsDescending(){
-    console.log(studentsBigObject);
-    let studentsSorted = studentsBigObject.sort((a, b) => b.name.localeCompare(a.name));
-    console.log(studentsSorted);
-    event.target.removeEventListener('click', sortStudentsDescending);
-
-}
-
 function sortStudentsAscending(event){
     console.log(studentsBigObject);
     let studentsSorted = studentsBigObject.sort((a, b) => a.name.localeCompare(b.name));
@@ -724,4 +711,21 @@ function sortStudentsAscending(event){
 
 sortAscendingBtn.addEventListener('click', sortStudentsAscending);
 
+
+const sortDescendingBtn = document.querySelector('.sortDescending');
+
+function sortStudentsDescending(event){
+    console.log(studentsBigObject);
+    let studentsSorted = studentsBigObject.sort((a, b) => b.name.localeCompare(a.name));
+    console.log(studentsSorted);
+    event.target.removeEventListener('click', sortStudentsDescending);
+
+}
+
 sortDescendingBtn.addEventListener('click', sortStudentsDescending);
+
+
+function start(){
+    fetchBlood();
+    fetchStudents();
+}
