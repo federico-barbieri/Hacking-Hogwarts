@@ -131,6 +131,55 @@ main{
     color: white;
 }
 
+/* welcoming modal */
+
+.welcoming-modal{
+    display: block;
+    background-color: rgba(255, 255, 255, 0.3);
+    width: 40rem;
+    height: 20rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    filter: drop-shadow(10px 12px 10px black);
+    border-radius: 10px;
+    font-family: var(--Gryffindor-font);
+    opacity: 0;
+}
+
+.welcoming-modal-h1{
+    font-size: 3rem;
+}
+
+.welcoming-modal-btn{
+    margin-top: 2rem;
+    padding: 1rem 1rem;
+    border-radius: 10px;
+    cursor: pointer;
+    outline-style: double;
+    outline-offset: 0.5rem;
+    background-color: transparent;
+    color: white;
+    display: inline-block;
+    transition: all 0.5s ease-out;
+}
+
+.welcoming-modal-btn:hover{
+    transition: all 0.5s ease-in;
+    background-color: white;
+    color: black;
+}
+
+@keyframes makingThingsAppearSlow{
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+    }
+
+.makingThingsAppearSlow{
+    animation: makingThingsAppearSlow 1s ease-in 1 forwards;
+}
+
 /* DASHBOARD */
 
 #dashboard{
