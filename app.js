@@ -836,10 +836,32 @@ function showNonExpelled(){
 
 }
 
+// grab initial modal
+const welcomingModal = document.querySelector('.welcoming-modal');
+const welcomingModalBtn = document.querySelector('.welcoming-modal-btn');
+
+// grab top header
+const btnSection = document.querySelector('#button-section');
+
+// grab dashboard
+const dashboard = document.querySelector('#dashboard');
+
+// create function that closes the modal and shows the header and the dashboard
+function showDashboard(event){
+    welcomingModal.style.display = "none";
+    btnSection.classList.add('makingThingsAppearSlow');
+    btnSection.style.display = "flex";
+    dashboard.classList.add('makingThingsAppearSlow');
+    dashboard.style.display = "flex";
+    event.target.removeEventListener('click', showDashboard);
+}
+
 
 // start the show
 
 function start(){
+    welcomingModal.classList.add('makingThingsAppearSlow');
+    welcomingModalBtn.addEventListener('click', showDashboard);
     fetchBlood();
     fetchStudents();
 
