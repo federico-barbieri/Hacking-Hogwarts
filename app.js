@@ -559,6 +559,7 @@ function beautifyStudent(){
        prefectStatus.textContent = `Is Prefect: ${student.isPrefect}`;  
 
         function btnsBackToNormal(){
+      //      if(student.isExpelled !== true){
         expelledStatus.textContent = `Is Expelled: ${student.isExpelled}`;
         expellBtn.style.display = "block";
         expellBtn.style.backgroundColor = "green";
@@ -577,12 +578,16 @@ function beautifyStudent(){
         prefectStatus.style.color = "black";
         prefectStatus.style.backgroundColor = "transparent";
         prefectStatus.style.padding = "0";
-        }
+     //   }
+    }
 
         btnsBackToNormal();
 
 
         function expellTheStudent(){
+
+            // figure out how to remove the btns once
+            // the student has been expelled
 
             student.isExpelled = true;
             studentsBigObject = studentsBigObject.filter((element) => element.isExpelled === false);
@@ -590,7 +595,7 @@ function beautifyStudent(){
             expelledStatus.style.color = "white";
             expelledStatus.style.backgroundColor = "red";
             expelledStatus.style.padding = "1rem 1.5rem";
-          //  console.log(`Trying to expell ${student.name}`);
+            console.log(`Trying to expell ${student.name}`);
             expelledStudents.push(student);
             console.log(expelledStudents);
             console.log(`${student.name} ${student.lastName} has been expelled from Hogwarts`);
@@ -797,6 +802,38 @@ function sortHufflepuff(){
     beautifyStudent();
     studentsBigObject = originalArray;
     console.log(`original array: ${studentsBigObject.length}`);
+}
+
+// SHOW EXPELLED STUDENTS
+
+const expelledStudentsBtn = document.querySelector('.expelled-students');
+
+expelledStudentsBtn.addEventListener('click', showExpelled);
+
+function showExpelled(){
+    console.log(`original array: ${studentsBigObject.length}`);
+    let originalArray = studentsBigObject;
+  //  let alreadyExpelled = studentsBigObject.filter((student) => student.isExpelled === true);
+    studentsBigObject = expelledStudents;
+    console.log(`already expelled: ${studentsBigObject.length}`);
+
+    beautifyStudent();
+    studentsBigObject = originalArray;
+    console.log(`original array: ${studentsBigObject.length}`);
+}
+
+// SHOW NON-EXPELLED STUDENTS
+
+const nonExpelledStudentsBtn = document.querySelector('.non-expelled-students');
+
+nonExpelledStudentsBtn.addEventListener('click', showNonExpelled);
+
+function showNonExpelled(){
+    console.log(`original array: ${studentsBigObject.length}`);
+
+
+    beautifyStudent();
+
 }
 
 
