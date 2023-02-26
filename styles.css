@@ -82,28 +82,29 @@ main{
     width: 100vw;
     height: 100vh;
     position: relative;
-    overflow: auto;
+    overflow: hidden;
 }
 
 /* btn section */
 
 #button-section{
-    width: 81vw;
-    height: 15vh;
+    max-width: 81vw;
+    height: 25vh;
    display: none;
+   align-items: center;
+   border-bottom: none;
+   border-top-left-radius: 10px;
 }
 
 .button-ul{
-    width: 100%;
+    max-width: auto;
     height: 100%;
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
     
-    border: 1px solid white;
-    border-bottom: none;
-    border-top-left-radius: 10px;
+   
     overflow-x: scroll;
     overflow-y: hidden;
     white-space: nowrap;
@@ -112,7 +113,7 @@ main{
 
 .button-ul > li{
     list-style-type: none;
-    font-size: 2rem;
+    font-size: 1.5rem;
     
 }
 
@@ -123,7 +124,7 @@ main{
 /* sorting btns */
 
 .sorting-btn{
-    padding: 1rem 1.5rem;
+    
     border-radius: 10px;
     cursor: pointer;
     display: inline-block;
@@ -132,21 +133,22 @@ main{
     background: url("imgs/buttons/button-background.png");
     filter: drop-shadow(10px 12px 10px black);
     margin-right: 1rem;
+    
 }
 
 .sortAscending{
-    padding: 1rem 1.5rem;
+    
     border-radius: 10px;
-    width: 10rem;
-    height: 2rem;
+    width: 18rem;
+    height: 10rem;
     cursor: pointer;
     display: inline-block;
     border: none;
     color: white;
-    background: url("imgs/buttons/sort-a-z.png");
+    background: url("imgs/buttons/sort-a-z-owl.png");
     background-size: cover;
     filter: drop-shadow(10px 12px 10px black);
-    margin-left: 15rem;
+    
 }
 
 .sortAscending:hover{
@@ -155,15 +157,15 @@ main{
 }
 
 .sortDescending{
-    padding: 1rem 1.5rem;
+    
     border-radius: 10px;
-    width: 10rem;
-    height: 2rem;
+    width: 18rem;
+    height: 10rem;
     cursor: pointer;
     display: inline-block;
     border: none;
     color: white;
-    background: url("imgs/buttons/sort-z-a.png");
+    background: url("imgs/buttons/sort-z-a-owl.png");
     background-size: cover;
     filter: drop-shadow(10px 12px 10px black);
 }
@@ -174,15 +176,15 @@ main{
 }
 
 .sortGryffindor{
-    padding: 1rem 1.5rem;
+    
     border-radius: 10px;
-    width: 12rem;
-    height: 2rem;
+    width: 18rem;
+    height: 10rem;
     cursor: pointer;
     display: inline-block;
     border: none;
     color: white;
-    background: url("imgs/buttons/gryffindor.png");
+    background: url("imgs/buttons/gryffindor-owl.png");
     background-size: cover;
     filter: drop-shadow(10px 12px 10px black);
 }
@@ -193,15 +195,15 @@ main{
 }
 
 .sortSlytherin{
-    padding: 1rem 1.5rem;
+    
     border-radius: 10px;
-    width: 12rem;
-    height: 2rem;
+    width: 18rem;
+    height: 10rem;
     cursor: pointer;
     display: inline-block;
     border: none;
     color: white;
-    background: url("imgs/buttons/slytherin.png");
+    background: url("imgs/buttons/slytherin-owl.png");
     background-size: cover;
     filter: drop-shadow(10px 12px 10px black);
 }
@@ -212,15 +214,15 @@ main{
 }
 
 .sortRavenclaw{
-    padding: 1rem 1.5rem;
+   
     border-radius: 10px;
-    width: 12rem;
-    height: 2rem;
+    width: 18rem;
+    height: 10rem;
     cursor: pointer;
     display: inline-block;
     border: none;
     color: white;
-    background: url("imgs/buttons/ravenclaw.png");
+    background: url("imgs/buttons/ravenclaw-owl.png");
     background-size: cover;
     filter: drop-shadow(10px 12px 10px black);
 }
@@ -231,15 +233,15 @@ main{
 }
 
 .sortHufflepuff{
-    padding: 1rem 1.5rem;
+    
     border-radius: 10px;
-    width: 12rem;
-    height: 2rem;
+    width: 18rem;
+    height: 10rem;
     cursor: pointer;
     display: inline-block;
     border: none;
     color: white;
-    background: url("imgs/buttons/hufflepuff.png");
+    background: url("imgs/buttons/hufflepuff-owl.png");
     background-size: cover;
     filter: drop-shadow(10px 12px 10px black);
 }
@@ -250,15 +252,15 @@ main{
 }
 
 .expelled-students{
-    padding: 1rem 1.5rem;
+    
     border-radius: 10px;
-    width: 12rem;
-    height: 2rem;
+    width: 18rem;
+    height: 10rem;
     cursor: pointer;
     display: inline-block;
     border: none;
     color: white;
-    background: url("imgs/buttons/expelled.png");
+    background: url("imgs/buttons/expelled-owl.png");
     background-size: cover;
     filter: drop-shadow(10px 12px 10px black);
 }
@@ -269,15 +271,15 @@ main{
 }
 
 .non-expelled-students{
-    padding: 1rem 1.5rem;
+   
     border-radius: 10px;
-    width: 12rem;
-    height: 2rem;
+    width: 18rem;
+    height: 10rem;
     cursor: pointer;
     display: inline-block;
     border: none;
     color: white;
-    background: url("imgs/buttons/enrolled.png");
+    background: url("imgs/buttons/enrolled-owl.png");
     background-size: cover;
     filter: drop-shadow(10px 12px 10px black);
 }
@@ -328,6 +330,7 @@ main{
     transition: all 0.5s ease-in;
     background-color: white;
     color: black;
+    cursor: pointer;
 }
 
 @keyframes makingThingsAppearSlow{
@@ -351,18 +354,21 @@ main{
     flex-direction: column;
     align-items: center;
     background-color: rgba(255, 255, 255, 0.3);
-    margin: 5rem auto 0 1rem;
-    
+    margin: 2rem auto 0 1rem;
+    border: none;
     background: url("imgs/borders/staircase.webp");
-    background-position: bottom;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background: transparent;
 }
 
 /* CURRENT STATS */
 
 .current-stats{
     width: 18vw;
-    background: url("imgs/borders/stone-border.webp");
-    height: 85vh;
+    
+    height: 90vh;
     border: 1px solid white;
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
@@ -498,13 +504,14 @@ animation: openModalSlowly 2s ease-in 0.1s 1 forwards;
 }
 
 #student-modal{
-    width: 80%;
-    height: 70%;
+    width: 75%;
+    height: 68%;
     background-color: #B99B6B;
     display: none;
     z-index: 100;
     position: fixed;
-    top: 22%;
+    top: 30%;
+    left: 6%;
     filter: drop-shadow(10px 12px 10px black);
     border-radius: 10px;
     flex-direction: row;
@@ -633,13 +640,15 @@ animation: openModalSlowly 2s ease-in 0.1s 1 forwards;
     margin-top: 3rem;
     font-size: 2rem;
     background-color: transparent;
-    border: none;
+    border: 2px dashed white;
+    color: red;
     cursor: pointer;
+
 }
 
 .close-modal > button:hover{
     transition: all 0.5s ease-in;
-    color: red;
+    color: white;
 }
 
 /* options for the h2 according to each house */
