@@ -846,7 +846,8 @@ function showNonExpelled(){
 
 // grab initial modal
 const welcomingModal = document.querySelector('.welcoming-modal');
-const welcomingModalBtn = document.querySelector('.welcoming-modal-btn');
+//const welcomingModalBtn = document.querySelector('.welcoming-modal-btn');
+const welcomingModalImg = document.querySelector('.welcoming-modal-img');
 
 // grab top header
 const btnSection = document.querySelector('#button-section');
@@ -880,7 +881,8 @@ function showDashboard(event){
 
 function start(){
     welcomingModal.classList.add('makingThingsAppearSlow');
-    welcomingModalBtn.addEventListener('click', showDashboard);
+   // welcomingModalBtn.addEventListener('click', showDashboard);
+   welcomingModalImg.addEventListener('click', showDashboard);
     fetchBlood();
     fetchStudents();
 

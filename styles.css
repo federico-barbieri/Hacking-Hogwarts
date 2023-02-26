@@ -329,31 +329,38 @@ main{
 
 .welcoming-modal{
     display: block;
-    background-color: rgba(255, 255, 255, 0.3);
-    width: 40rem;
-    height: 20rem;
+    width: 100vw;
+    height: 100vh;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
-    filter: drop-shadow(10px 12px 10px black);
-    border-radius: 10px;
     font-family: var(--Gryffindor-font);
     opacity: 0;
     position: absolute;
-    top: 40%;
-    left: 31%;
+  
+    
 }
 
 .welcoming-modal-h1{
     font-size: 3rem;
+    width: 30%;
+    display: inline-block;
 }
 
-.welcoming-modal-btn{
-    background: url("imgs/buttons/first-modal-owl.png");
-    width: 20rem;
-    height: 20rem;
+.welcoming-modal-img{
+    width: 20%;
+    height: auto;
+    
 }
+
+/*
+
+.welcoming-modal-btn{
+    
+}
+
+*/
 
 .welcoming-modal-btn:hover{
     transition: all 0.5s ease-in;
