@@ -370,7 +370,7 @@ function beautifyStudent(){
         
 
        // assign background image based on house 
-        clone.querySelector('.inner-card').classList.add(`${student.background}`);
+       // clone.querySelector('.inner-card').classList.add(`${student.background}`);
 
                
       
