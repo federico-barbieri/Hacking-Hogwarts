@@ -904,13 +904,77 @@ const currentInquisitors = document.querySelector('.current-inquisitors');
 
 const gameArea = document.querySelector('#game-area');
 
+const titleSnitch = document.querySelector('.golden-snitch-title');
+
+const gameH2 = document.querySelector('.game-h2');
+
+const gameBtn = document.querySelector('.game-btn');
+
 const snitch = document.querySelector('.golden-snitch');
+
+const winningP = document.querySelector('.winning-game-p');
+
+const gameBtnStop = document.querySelector('.game-btn-stop');
+
+const gameBtnPlayAgain = document.querySelector('.game-btn-play-again');
+
+// this function starts the snitch game
+
+function startSnitchGame(evt){
+    titleSnitch.style.display = "none";
+    gameBtn.style.display = "none";
+    gameH2.style.display = "none";
+    evt.target.removeEventListener('click', startSnitchGame);
+    snitch.style.display = "flex";
+    setInterval(randomPosition, 1000);
+    gameBtnStop.style.display = "flex";
+}
+
+// this is the game's event listener
+
+gameBtn.addEventListener('click', startSnitchGame);
+
+// this function is called when the snitch is caught
+
+function snitchCaught(){
+   // clearInterval(randomPosition);
+    winningP.style.display = "flex";
+    gameBtnPlayAgain.style.display = "flex";
+    gameBtnStop.style.display = "none";
+    snitch.style.display = "none";
+  //  evt.target.removeEventListener('click', snitchCaught);
+}
+
+// this is the caught snitch's event listener
+
+snitch.addEventListener('click', snitchCaught);
+
+// this function is called when you play the game again
+
+function playGameAgain(){
+    snitch.style.display = "flex";
+  //  setInterval(randomPosition, 1000);
+    winningP.style.display = "none";
+    gameBtnPlayAgain.style.display = "none";
+    gameBtnStop.style.display = "flex";
+  //  evt.target.removeEventListener('click', playGameAgain);
+}
+
+// this is the play again btn event listener
+
+gameBtnPlayAgain.addEventListener('click', playGameAgain);
+
+// this function sets the snitch's position randomly
 
 function randomPosition(){
 
-    snitch.style.left = `${Math.floor(Math.random() * 100)}%`;
-    snitch.style.top = `${Math.floor(Math.random() * 100)}%`;
+    snitch.style.left = `${Math.floor(Math.random() * 80)}%`;
+    snitch.style.top = `${Math.floor(Math.random() * 80)}%`;
 }
+
+
+
+
 
 // create function that closes the modal and shows the header and the dashboard
 function showDashboard(event){
@@ -930,7 +994,7 @@ function showDashboard(event){
 // start the show
 
 function start(){
-   // setInterval(randomPosition, 100);
+   
     welcomingModal.classList.add('makingThingsAppearSlow');
    // welcomingModalBtn.addEventListener('click', showDashboard);
    welcomingModalImg.addEventListener('click', showDashboard);
