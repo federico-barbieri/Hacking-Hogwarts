@@ -918,15 +918,15 @@ const gameBtnStop = document.querySelector('.game-btn-stop');
 
 const gameBtnPlayAgain = document.querySelector('.game-btn-play-again');
 
+
 // this function starts the snitch game
 
-function startSnitchGame(evt){
+function startSnitchGame(){
     titleSnitch.style.display = "none";
     gameBtn.style.display = "none";
     gameH2.style.display = "none";
-    evt.target.removeEventListener('click', startSnitchGame);
+   // evt.target.removeEventListener('click', startSnitchGame);
     snitch.style.display = "flex";
-    setInterval(randomPosition, 1000);
     gameBtnStop.style.display = "flex";
 }
 
@@ -934,10 +934,24 @@ function startSnitchGame(evt){
 
 gameBtn.addEventListener('click', startSnitchGame);
 
+// this function pauses the game
+
+function stopGame(){
+    snitch.style.display = "none";
+    gameBtnStop.style.display = "none";
+    gameBtn.style.display = "flex";
+    gameH2.style.display = "flex";
+    titleSnitch.style.display = "flex";
+}
+
+// this is the event listener for pausing the game
+
+gameBtnStop.addEventListener('click', stopGame);
+
 // this function is called when the snitch is caught
 
 function snitchCaught(){
-   // clearInterval(randomPosition);
+   //clearInterval(randomPosition);
     winningP.style.display = "flex";
     gameBtnPlayAgain.style.display = "flex";
     gameBtnStop.style.display = "none";
@@ -970,6 +984,7 @@ function randomPosition(){
 
     snitch.style.left = `${Math.floor(Math.random() * 80)}%`;
     snitch.style.top = `${Math.floor(Math.random() * 80)}%`;
+    snitch.style.transform = `scale(${Math.random() * 3})`;
 }
 
 
@@ -1000,5 +1015,5 @@ function start(){
    welcomingModalImg.addEventListener('click', showDashboard);
     fetchBlood();
     fetchStudents();
-    
+    setInterval(randomPosition, 1000);
 }
