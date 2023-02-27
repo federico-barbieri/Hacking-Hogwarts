@@ -881,6 +881,7 @@ function showNonExpelled(){
 
 }
 
+
 // grab initial modal
 const welcomingModal = document.querySelector('.welcoming-modal');
 //const welcomingModalBtn = document.querySelector('.welcoming-modal-btn');
@@ -899,7 +900,17 @@ const currentEnrolledStudents = document.querySelector('.current-enrolled-studen
 const currentPrefects = document.querySelector('.current-prefects');
 const currentInquisitors = document.querySelector('.current-inquisitors');
 
+// GAME AREA
 
+const gameArea = document.querySelector('#game-area');
+
+const snitch = document.querySelector('.golden-snitch');
+
+function randomPosition(){
+
+    snitch.style.left = `${Math.floor(Math.random() * 100)}%`;
+    snitch.style.top = `${Math.floor(Math.random() * 100)}%`;
+}
 
 // create function that closes the modal and shows the header and the dashboard
 function showDashboard(event){
@@ -910,6 +921,8 @@ function showDashboard(event){
     dashboard.style.display = "flex";
     currentStats.classList.add('makingThingsAppearSlow');
     currentStats.style.display = "flex";
+    gameArea.classList.add('makingThingsAppearSlow');
+    gameArea.style.display = "flex";
     event.target.removeEventListener('click', showDashboard);
 }
 
@@ -917,10 +930,11 @@ function showDashboard(event){
 // start the show
 
 function start(){
+   // setInterval(randomPosition, 100);
     welcomingModal.classList.add('makingThingsAppearSlow');
    // welcomingModalBtn.addEventListener('click', showDashboard);
    welcomingModalImg.addEventListener('click', showDashboard);
     fetchBlood();
     fetchStudents();
-
+    
 }
