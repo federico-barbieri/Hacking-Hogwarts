@@ -561,28 +561,43 @@ function beautifyStudent(){
         let prefectStatus = document.querySelector('.information-prefect');
        prefectStatus.textContent = `Is Prefect: ${student.isPrefect}`;  
 
+       // make btns go back to normal for the other students
+
         function btnsBackToNormal(){
-      //      if(student.isExpelled !== true){
-        expelledStatus.textContent = `Is Expelled: ${student.isExpelled}`;
-        expellBtn.style.display = "block";
-        expellBtn.style.backgroundColor = "green";
-        expelledStatus.style.color = "black";
-        expelledStatus.style.backgroundColor = "transparent";
-        expelledStatus.style.padding = "0";
-        inquisitorStatus.textContent = `Is Inquisitor: ${student.isInquisitor}`;
-        inquisitorBtn.style.display = "block";
-        inquisitorBtn.style.backgroundColor = "green";
-        inquisitorStatus.style.color = "black";
-        inquisitorStatus.style.backgroundColor = "transparent";
-        inquisitorStatus.style.padding = "0";
-        prefectStatus.textContent = `Is Prefect: ${student.isPrefect}`;
-        prefectBtn.style.display = "block";
-        prefectBtn.style.backgroundColor = "green";
-        prefectStatus.style.color = "black";
-        prefectStatus.style.backgroundColor = "transparent";
-        prefectStatus.style.padding = "0";
-     //   }
-    }
+            if(student.isExpelled === false){
+                expelledStatus.textContent = `Is Expelled: ${student.isExpelled}`;
+                expellBtn.style.display = "block";
+                expellBtn.style.backgroundColor = "green";
+                expelledStatus.style.color = "black";
+                expelledStatus.style.backgroundColor = "transparent";
+                expelledStatus.style.padding = "0";
+                inquisitorStatus.textContent = `Is Inquisitor: ${student.isInquisitor}`;
+                inquisitorBtn.style.display = "block";
+                inquisitorBtn.style.backgroundColor = "green";
+                inquisitorStatus.style.color = "black";
+                inquisitorStatus.style.backgroundColor = "transparent";
+                inquisitorStatus.style.padding = "0";
+                prefectStatus.textContent = `Is Prefect: ${student.isPrefect}`;
+                prefectBtn.style.display = "block";
+                prefectBtn.style.backgroundColor = "green";
+                prefectStatus.style.color = "black";
+                prefectStatus.style.backgroundColor = "transparent";
+                prefectStatus.style.padding = "0";
+        
+            } else{
+                expelledStatus.textContent = `Is Expelled: ${student.isExpelled}`;
+                expellBtn.style.display = "none";
+                
+                inquisitorStatus.textContent = `Is Inquisitor: ${student.isInquisitor}`;
+                inquisitorBtn.style.display = "none";
+                
+                prefectStatus.textContent = `Is Prefect: ${student.isPrefect}`;
+                prefectBtn.style.display = "none";              
+                }
+
+                
+        
+}
 
         btnsBackToNormal();
 
@@ -593,8 +608,26 @@ function beautifyStudent(){
             // the student has been expelled
 
             student.isExpelled = true;
+
+            if(student.isPrefect === true){
+                student.isPrefect = false;
+                let indexOfHouse = numOfPrefects.indexOf(`${student.house}`);
+                numOfPrefects.splice(indexOfHouse, 1);
+                currentPrefects.textContent = `There are currently ${numOfPrefects.length} prefects`;
+                prefectStatus.textContent = `Is Prefect: ${student.isPrefect}`;
+
+                if(student.isInquisitor === true){
+                    student.isInquisitor = false;
+                    numOfInquisitors--;
+                    currentInquisitors.textContent = `There are currently ${numOfInquisitors} inquisitors`;
+                    inquisitorStatus.textContent = `Is Inquisitor: ${student.isInquisitor}`;      
+
+                }
+            }
+
             studentsBigObject = studentsBigObject.filter((element) => element.isExpelled === false);
-            expelledStatus.textContent = `Is Expelled: ${student.isExpelled}`;
+            expelledStatus.textContent = `Is Expelled: ${student.isExpelled}`;           
+
             expelledStatus.style.color = "white";
             expelledStatus.style.backgroundColor = "red";
             expelledStatus.style.padding = "1rem 1.5rem";
@@ -607,9 +640,13 @@ function beautifyStudent(){
             prefectBtn.style.display = "none";
             inquisitorBtn.style.display = "none";
 
+        
+
             // remove everything from the dashboard and 
             // recreate the list again without the expelled student!!
-            beautifyStudent();           
+            beautifyStudent();   
+            
+            
             
         }
 

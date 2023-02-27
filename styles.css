@@ -351,7 +351,10 @@ main{
 .welcoming-modal-img{
     width: 20%;
     height: auto;
-    
+}
+
+.welcoming-modal-img:hover{
+    cursor: pointer;
 }
 
 /*
