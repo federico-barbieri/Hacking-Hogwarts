@@ -21,7 +21,7 @@ body{
     background-size: auto;
     width: 100vw;
     height: 100vh;
-    cursor: url("imgs/cursor/wand10.svg");
+  /*  cursor: url("imgs/cursor/wand10.svg"); */
 }
 
 
@@ -844,6 +844,17 @@ animation: openModalSlowly 2s ease-in 0.1s 1 forwards;
 }
 
 @media only screen and (max-width: 1000px){
+    body{
+        background: url(imgs/background/castle2.webp);
+        background-repeat: no-repeat;
+        background-size: auto;
+        background-position: top;
+        background-position: right;
+        width: 100vw;
+        height: 100vh;
+      /*  cursor: url("imgs/cursor/wand10.svg"); */
+    }
+
     main{
         display: grid;
         grid-template-columns: 1fr;
@@ -890,6 +901,16 @@ animation: openModalSlowly 2s ease-in 0.1s 1 forwards;
 }
 
 @media only screen and (max-width: 800px){
+    body{
+        background: url(imgs/background/castle2.webp);
+        background-repeat: no-repeat;
+        background-size: auto;
+        background-position: top;
+        background-position: center;
+        width: 100vw;
+        height: 100vh;
+      /*  cursor: url("imgs/cursor/wand10.svg"); */
+    }
 
     /* welcoming modal */
 
@@ -1009,6 +1030,18 @@ animation: openModalSlowly 2s ease-in 0.1s 1 forwards;
 }
 
 @media only screen and (max-width: 500px){
+
+    body{
+        background: url(imgs/background/castle2.webp);
+        background-repeat: no-repeat;
+        background-size: auto;
+        background-position: top;
+        background-position: center;
+        width: 100vw;
+        height: 100vh;
+      /*  cursor: url("imgs/cursor/wand10.svg"); */
+    }
+
     .welcoming-modal{
         display: block;
         width: 100vw;
