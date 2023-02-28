@@ -443,12 +443,9 @@ main{
 }
 
 .game-btn{
-    width: 8rem;
     padding: 1rem 1.5rem;
     background-color: transparent;
-    outline: auto;
-    outline-offset: 0.5rem;
-    border: none;
+    border: 2px solid white;
     margin: 2rem auto 0 auto;
     z-index: 200;
 }
@@ -480,7 +477,7 @@ main{
     position: absolute;
     font-size: 3rem;
     top: 30%;
-    left: 20%;
+    left: 25%;
     width: 80%;
     height: 10rem;
     text-align: center;
@@ -488,15 +485,14 @@ main{
 }
 
 .game-btn-play-again{
-    width: 8rem;
+    
     padding: 1rem 1.5rem;
     background-color: transparent;
-    outline: auto;
-    outline-offset: 0.5rem;
-    border: none;
+    border: 2px solid white;
     margin: 2rem auto 0 auto;
     z-index: 200;
     display: none;
+    cursor: pointer;
 }
 
 

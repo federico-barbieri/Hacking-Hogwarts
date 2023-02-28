@@ -1015,5 +1015,5 @@ function start(){
    welcomingModalImg.addEventListener('click', showDashboard);
     fetchBlood();
     fetchStudents();
-    setInterval(randomPosition, 1000);
+    setInterval(randomPosition, 800);
 }
