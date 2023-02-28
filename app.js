@@ -325,7 +325,10 @@ function handleWizards(wizards){
         
         } else if (newStudent.name === "Kevin"){
             newStudent.blood = "Half";
-        }
+        
+        } else if (newStudent.name === "Justin"){
+            newStudent.blood = "Half";
+        } 
 
         // PUSH EACH NEW STUDENT TO THE STUDENT'S BIG OBJECT ARRAY
         studentsBigObject.push(newStudent);

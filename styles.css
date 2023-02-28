@@ -24,34 +24,7 @@ body{
     cursor: url("imgs/cursor/wand10.svg");
 }
 
-/* header 
 
-#top-header{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    width: 100vw;
-    height: 10rem;
-    display: none;
-}
-
-*/
-
-/* navbar 
-
-#top-nav{
-    width: 100%;
-    height: 10rem;
-    z-index: 5;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    border: 2px solid red;
-}
-
-*/
 
 /* levitation animation + class */
 
@@ -77,13 +50,10 @@ body{
 .current-stats{
     width: 100vw;
     height: 10vh;
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
     display: none;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    
 }
 
 .current-stats-ul{
@@ -102,25 +72,10 @@ body{
     font-size: 1.5rem;
     color: white;
     background-color: var(--ravenclaw);
-    padding: 0 0.5rem; 
+    padding: 0 0rem; 
     filter: drop-shadow(10px 12px 10px black);
    
 }
-
-/* MAIN 
-
-main{
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: flex-start;
-    width: 100vw;
-    height: 80vh;
-    position: relative;
-    overflow: hidden;
-}
-
-*/
 
 main{
     display: grid;
@@ -374,13 +329,7 @@ main{
     cursor: pointer;
 }
 
-/*
 
-.welcoming-modal-btn{
-    
-}
-
-*/
 
 .welcoming-modal-btn:hover{
     transition: all 0.5s ease-in;
@@ -414,7 +363,6 @@ main{
     border: none;
     background: transparent;
     grid-area: dashboard;
-
 }
 
 #game-area{
@@ -482,6 +430,7 @@ main{
     height: 10rem;
     text-align: center;
     display: none;
+    padding: 1rem;
 }
 
 .game-btn-play-again{
@@ -841,6 +790,267 @@ animation: openModalSlowly 2s ease-in 0.1s 1 forwards;
 }
 
 
+@media only screen and (max-width: 1400px){
+    .inner-card{
+        width: 70%;
+        height: 20rem;
+        background-color:transparent;
+        border-radius: 30px;
+        filter: drop-shadow(10px 12px 12px black);
+        margin: 2rem 0;
+        padding: 15rem 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        animation: none;
+        position: relative;
+        border: 1px dashed white;
+    }
+
+    .image-house{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        width: 80%;
+        padding: 5rem;
+    }
+    .student-info-btn{
+        padding: 1rem 2rem;
+        border-radius: 10px;
+        cursor: pointer;
+        outline-style: double;
+        outline-offset: 0.5rem;
+        background-color: transparent;
+        color: white;
+        margin-top: 3rem;
+    }
+}
+
+@media only screen and (max-width: 1100px){
+    /* CURRENT STATS */
+.current-stats-li {
+    list-style-image: none;
+    list-style-type: none;
+    font-size: 1rem;
+    color: white;
+    background-color: var(--ravenclaw);
+    padding: 0 0.5rem; 
+    margin: 0 auto;
+    filter: drop-shadow(10px 12px 10px black);
+   
+}
+}
+
+@media only screen and (max-width: 1000px){
+    main{
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1/5fr 4/5fr;
+        grid-template-areas: 
+        "owls"
+        "dashboard";
+        width: 100vw;
+        height: 90vh;
+        position: relative;
+        overflow: hidden;
+    }
+
+    #dashboard{
+        width: 100vw;
+        background-color: rgba(255, 255, 255, 0.3);
+        height: 65vh;
+        overflow-y: scroll;
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        background-color: rgba(255, 255, 255, 0.3);
+        margin: 0rem auto 0 0;
+        border: none;
+        background: transparent;
+        grid-area: dashboard;
+ 
+    }
+
+    #game-area{
+        width: 50vw;
+        background-color: rgba(255, 255, 255, 0.3);
+        height: 100vh;
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin: 0rem auto 0 0;
+        grid-area: game;
+        position: relative;
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 800px){
+
+    /* welcoming modal */
+
+.welcoming-modal{
+    display: block;
+    width: 100vw;
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    font-family: var(--Gryffindor-font);
+    opacity: 0;
+    position: absolute;
+    z-index: 100;
+    top: 25%;
+}
+
+.welcoming-modal-h1{
+    font-size: 3rem;
+    width: 100%;
+    display: block;
+    text-align: center;
+}
+
+.welcoming-modal-img{
+    width: 30%;
+    height: auto;
+}
+
+.welcoming-modal-img:hover{
+    cursor: pointer;
+}
+
+
+
+    .current-stats{
+        width: 100vw;
+        height: 15vh;
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+        display: none;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        
+        
+    }
+
+    .current-stats-ul{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        font-family: var(--Gryffindor-font);
+        text-align: center;
+        
+    }
+
+    .inner-card{
+        width: 70%;
+        height: 20rem;
+        background-color:transparent;
+        border-radius: 30px;
+        filter: drop-shadow(10px 12px 12px black);
+        margin: 2rem 0;
+        padding: 15rem 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        animation: none;
+        position: relative;
+        border: 1px dashed white;
+    }
+    
+    .inner-card:hover{
+        animation: levitateCard 1s ease-in 0s infinite forwards;
+    }
+    
+    /* school logo in card */
+    
+    .school-logo{
+        width: 6rem;
+        height: 6rem;
+        border-radius: 50%;
+        filter: drop-shadow(2px 4px 2px black);
+        z-index: 100;
+        position: absolute;
+        top:10%;
+        left: 5%;
+    }
+
+    .image-house{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        width: 80%;
+        padding: 5rem;
+    }
+
+    /* btn to see students info */
+
+.student-info-btn{
+    padding: 1rem 2rem;
+    border-radius: 10px;
+    cursor: pointer;
+    outline-style: double;
+    outline-offset: 0.5rem;
+    background-color: transparent;
+    color: white;
+    margin-top: 3rem;
+}
+}
+
+@media only screen and (max-width: 500px){
+    .welcoming-modal{
+        display: block;
+        width: 100vw;
+        height: 30vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        font-family: var(--Gryffindor-font);
+        opacity: 0;
+        position: absolute;
+        z-index: 100;
+        top: 30%;
+    }
+    
+    .welcoming-modal-h1{
+        font-size: 2rem;
+        width: 100%;
+        display: block;
+        text-align: center;
+        color: white;
+    }
+    
+    .welcoming-modal-img{
+        width: 30%;
+        height: auto;
+    }
+    
+    .welcoming-modal-img:hover{
+        cursor: pointer;
+    }
+}
+
+@media only screen and (max-width: 350px){
+    .welcoming-modal-h1{
+        font-size: 1.5rem;
+        width: 100%;
+        display: block;
+        text-align: center;
+        color: white;
+    }
+}
 
 
 
