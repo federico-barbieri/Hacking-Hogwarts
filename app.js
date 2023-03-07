@@ -1093,10 +1093,6 @@ function hackingTime(){
 
     studentsBigObject.push(myself);
     beautifyStudent();
-
-
-
-
     }
 
 
