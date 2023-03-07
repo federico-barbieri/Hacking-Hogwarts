@@ -18,7 +18,7 @@
 body{
     background: url(imgs/background/castle2.webp);
     background-repeat: no-repeat;
-    background-size: auto;
+    background-size: cover;
     width: 100vw;
     height: 100vh;
   /*  cursor: url("imgs/cursor/wand10.svg"); */
@@ -509,6 +509,13 @@ main{
 .Hufflepuff-background{
     background: url("imgs/houses/hufflepuff/hufflepuff2.png");
     background-position: top;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.argentina-background{
+    background: url("imgs/houses/argentina/messi.jpg");
+    background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
 }

@@ -309,6 +309,7 @@ function handleWizards(wizards){
 
         // assign background image based on house 
         newStudent.background = `${newStudent.house}` + "-background";
+        console.log(newStudent.background);
 
         // ASSIGN BLOOD
         if (halfBloodArray.includes(newStudent.lastName)){
@@ -366,8 +367,11 @@ function beautifyStudent(){
         // assign student image based on name
         if(student.name === "Leanne"){
             clone.querySelector(".student-pic").src = `imgs/students/leanne.png`;
-        } else{
+        } else if (student.name !== "Federico"){
             clone.querySelector(".student-pic").src = `imgs/students/${student.lastName.toLowerCase()}_${student.name.charAt(0).toLowerCase()}.png`;
+        } else {
+            clone.querySelector(".student-pic").src = `imgs/students/shrek.jpg`;
+
         }
 
         
@@ -497,25 +501,47 @@ function beautifyStudent(){
         articleBorn.style.display = "block";
         articleBorn.style.display = "flex";
 
+        if (student.name !== "Federico"){
+            // add background according to house
+            articleBorn.classList.add(`${student.house}-background`);
+        
+        } else{
+            // hack my background
+            articleBorn.classList.add("argentina-background");
+
+        } 
+        
+
+    
+
         // change font depending on the house
         articleBorn.style.fontFamily = `var(--${student.house}-font)`;
 
-        // add background according to house
-        articleBorn.classList.add(`${student.house}-background`);
+       
 
         // grab and reveal the img of the student
         let modalImg = document.querySelector('.modal-pic');
 
         if(student.name === "Leanne"){
             modalImg.src = `imgs/students/leanne.png`;
-        } else{
+        } else if(student.name !== "Federico"){
             modalImg.src = `imgs/students/${student.lastName.toLowerCase()}_${student.name.charAt(0).toLowerCase()}.png`;
+        
+        } else if (myself.name = "Federico") {
+            // hack my image
+            modalImg.src = myself.image;
         }
 
 
         // reveal name
         let modalStudentName = document.querySelector('.modal-student-name');
-        modalStudentName.textContent = `Name: ${student.name}`;
+
+        if (student.name !== "Federico"){
+            modalStudentName.textContent = `Name: ${student.name}`;
+        
+        } else{
+            modalStudentName.textContent = `Name: ${myself.name}`;
+        }
 
         // reveal middle name
         let modalStudentMiddleName = document.querySelector('.modal-student-middle-name');
@@ -732,6 +758,11 @@ function beautifyStudent(){
 
         }
 
+
+        // hack the system
+
+
+
        
 
         let closeModalBtn = document.querySelector('.close-modal-btn');
@@ -743,6 +774,10 @@ function beautifyStudent(){
             inquisitorBtn.removeEventListener('click', inquisitorBtnClick);
             prefectBtn.removeEventListener('click', prefectBtnClick);
             event.target.removeEventListener('click', closeModal);
+            
+            // remove background according to house
+            articleBorn.classList.remove(`${student.house}-background`);
+
             articleBorn.style.display = "none";
             
         }
@@ -1008,6 +1043,11 @@ function showDashboard(event){
     event.target.removeEventListener('click', showDashboard);
 }
 
+// is the system hacked already?
+
+let systemHacked = false;
+
+
 
 // start the show
 
@@ -1017,6 +1057,52 @@ function start(){
    // welcomingModalBtn.addEventListener('click', showDashboard);
    welcomingModalImg.addEventListener('click', showDashboard);
     fetchBlood();
+    hackingTime();
     fetchStudents();
     setInterval(randomPosition, 800);
+    
 }
+
+// hack yourself into the game
+
+    // here goes the event listener that calls the function that follows
+
+function hackingTime(){
+
+    // a counter prevents from this to be called more than once
+    systemHacked = true;
+
+    if(systemHacked === true){
+
+    // create an object of myself and fill it up
+
+    let myself = Object.create(Wizard);
+
+    myself.name = "Federico";
+    myself.middleName = "Pedro"
+    myself.lastName = "Barbieri"
+    myself.house = "Argentina";
+    myself.blood = "Null positiv"
+    myself.background = "imgs/houses/argentina/messi.webp";
+    myself.image = "imgs/students/shrek.jpg";
+    myself.isInquisitor = false;
+    myself.isPrefect = false;
+    myself.isExpelled = false;
+
+    // push me into the array of objects
+
+    studentsBigObject.push(myself);
+    beautifyStudent();
+
+
+
+
+    }
+
+
+}
+
+    // randomize the blood types of the students
+
+    // work with the prefects to remove their status after 1 sec
+
