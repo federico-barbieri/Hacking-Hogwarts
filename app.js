@@ -1020,3 +1020,34 @@ function start(){
     fetchStudents();
     setInterval(randomPosition, 800);
 }
+
+function hackingTime(){
+
+    // a counter prevents from this to be called more than once
+    systemHacked = true;
+
+    if(systemHacked === true){
+
+    // create an object of myself and fill it up
+
+    let myself = Object.create(Wizard);
+
+    myself.name = "Federico";
+    myself.middleName = "Pedro"
+    myself.lastName = "Barbieri"
+    myself.house = "Argentina";
+    myself.blood = "Null positiv"
+    myself.background = "imgs/houses/argentina/messi.webp";
+    myself.image = "imgs/students/shrek.jpg";
+    myself.isInquisitor = false;
+    myself.isPrefect = false;
+    myself.isExpelled = false;
+
+    // push me into the array of objects
+
+    studentsBigObject.push(myself);
+    beautifyStudent();
+    }
+
+
+}
