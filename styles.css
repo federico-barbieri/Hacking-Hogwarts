@@ -740,9 +740,10 @@ animation: openModalSlowly 2s ease-in 0.1s 1 forwards;
 .student-information-ul{
     background-color: rgba(255, 255, 255, 0.5);
     color: black;
-    padding: 2rem;
+    padding: 2.5rem;
     border-radius: 10px;
     height: 75%;
+    width: 50%;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -752,7 +753,7 @@ animation: openModalSlowly 2s ease-in 0.1s 1 forwards;
 
 .student-information-ul > li{
     list-style-type: none;
-    font-size: 2rem;
+    font-size: 1.5rem;
 }
 
 /* DIV BETWEEN IMG AND BTNS */
@@ -780,8 +781,6 @@ animation: openModalSlowly 2s ease-in 0.1s 1 forwards;
     padding: 1rem 2rem;
     border-radius: 10px;
     cursor: pointer;
-    outline-style: double;
-    outline-offset: 0.5rem;
     background-color: green;
     color: white;
     transition: all 0.5s ease-out;
@@ -791,8 +790,6 @@ animation: openModalSlowly 2s ease-in 0.1s 1 forwards;
 .modal-inquisitor-btn-red{
     padding: 1rem 2rem;
     border-radius: 10px;
-    cursor: pointer;
-    outline-style: double;
     outline-offset: 0.5rem;
     background-color: green;
     color: white;
@@ -809,8 +806,6 @@ animation: openModalSlowly 2s ease-in 0.1s 1 forwards;
 .modal-prefect-btn{
     padding: 1rem 2rem;
     border-radius: 10px;
-    cursor: pointer;
-    outline-style: double;
     outline-offset: 0.5rem;
     background-color: green;
     color: white;
@@ -827,8 +822,6 @@ animation: openModalSlowly 2s ease-in 0.1s 1 forwards;
 .modal-expell-btn{
     padding: 1rem 2rem;
     border-radius: 10px;
-    cursor: pointer;
-    outline-style: double;
     outline-offset: 0.5rem;
     background-color: red;
     color: white;
@@ -851,7 +844,7 @@ animation: openModalSlowly 2s ease-in 0.1s 1 forwards;
 .close-modal > button{
     display: block;
     margin-top: 3rem;
-    font-size: 3rem;
+    font-size: 1rem;
     background-color: transparent;
     border: 2px dashed red;
     color: red;
