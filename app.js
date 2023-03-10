@@ -694,6 +694,12 @@ function beautifyStudent(){
 
         btnsBackToNormal();
 
+         // grab expelled modal
+
+         let expelledModal = document.querySelector('#expelled-modal');
+
+         let expelledModalP = document.querySelector('.expelled-modal-p');
+
 
         function expellTheStudent(){
 
@@ -701,6 +707,10 @@ function beautifyStudent(){
             // the student has been expelled
 
             student.isExpelled = true;
+
+            expelledModal.style.display = "flex";
+            expelledModalP.textContent = `${student.name} ${student.lastName} has been expelled from Hogwarts`;
+
 
             if(student.isPrefect === true){
                 student.isPrefect = false;
@@ -732,6 +742,20 @@ function beautifyStudent(){
             expellBtn.style.display = "none";
             prefectBtn.style.display = "none";
             inquisitorBtn.style.display = "none";
+
+
+            // expelled modal 
+            let closeExpelledModalBtn = document.querySelector('.close-expelled-modal-btn');
+
+            function closeExpelledModal(event){
+    
+                // remove event listener for the modal
+                expelledModal.style.display = "none";    
+                event.target.removeEventListener('click', closeExpelledModal);                
+            }
+    
+            // FUNCTION THAT CLOSES MODAL
+            closeExpelledModalBtn.addEventListener('click', closeExpelledModal);
 
         
 

@@ -643,6 +643,48 @@ animation: openModalSlowly 2s ease-in 0.1s 1 forwards;
     color: white;
 }
 
+/* expelled MODAL */
+
+#expelled-modal{
+    width: 60%;
+    height: 40%;
+    background-color: #B99B6B;
+    display: none;
+    z-index: 100;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 30%;
+    left: 20%;
+    filter: drop-shadow(10px 12px 10px black);
+    border-radius: 10px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around; 
+}
+
+/* close expelled modal */
+
+.close-inquisitor-modal{
+    height: 100%;
+}
+
+.close-expelled-modal > button{
+    display: block;
+    margin-top: 3rem;
+    font-size: 2rem;
+    background-color: transparent;
+    border: 2px dashed white;
+    color: red;
+    cursor: pointer;
+    padding: 1rem;
+}
+
+.close-expelled-modal > button:hover{
+    transition: all 0.5s ease-in;
+    color: white;
+}
+
 /* STUDENT MODAL */
 
 #student-modal{
