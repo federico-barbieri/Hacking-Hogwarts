@@ -3,6 +3,10 @@
     box-sizing: border-box;
 }
 
+a{
+    color: inherit;
+}
+
 :root{
     font-size: 16px;
     --slytherin: #1A472A;
@@ -16,6 +20,7 @@
     --hogwarts-font: "mythos-std", sans-serif; font-weight: 400; font-style: normal;
     --deco: "charcuterie-deco", sans-serif; font-weight: 400; font-style: normal;
     --owl-brown: #54371D;
+    --owl-font: "p22-mackinac-pro", serif; font-weight: 800; font-style: italic;
 }
 
 body{
@@ -66,13 +71,13 @@ body{
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
-    font-family: var(--Slytherin-font);
+    font-family: var(--owl-font);
 }
 
 .current-stats-li {
     list-style-image: none;
     list-style-type: none;
-    font-size: 1.5rem;
+    font-size: 1rem;
     color: white;
     background-color: var(--owl-brown);
     padding: 0.5rem 1rem;
@@ -124,8 +129,7 @@ main{
 
 .button-ul > li{
     list-style-type: none;
-    font-size: 1.5rem;
-    
+    font-size: 1.5rem; 
 }
 
 .button-ul > li > button:hover{
@@ -144,7 +148,6 @@ main{
     background: url("imgs/buttons/button-background.png");
     filter: drop-shadow(10px 12px 10px black);
     margin-right: 1rem;
-    
 }
 
 .sortAscending{
@@ -550,7 +553,6 @@ main{
     padding: 1rem 2rem;
     border-radius: 10px;
     cursor: pointer;
-
     background-color: transparent;
     color: white;
 }
@@ -587,6 +589,18 @@ animation: openModalSlowly 2s ease-in 0.1s 1 forwards;
     flex-direction: row;
     align-items: center;
     justify-content: space-around; 
+    background: url("imgs/modals/burn-paper.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.prefect-modal-p{
+    font-family: var(--deco);
+    font-size: 2rem;
+    padding: 3rem;
+    color: white;
+    filter: drop-shadow(10px 12px 10px black);
 }
 
 /* close prefect modal */
@@ -940,6 +954,7 @@ animation: openModalSlowly 2s ease-in 0.1s 1 forwards;
 }
 
 
+
 @media only screen and (max-width: 1400px){
     .inner-card{
         width: 70%;
@@ -967,30 +982,228 @@ animation: openModalSlowly 2s ease-in 0.1s 1 forwards;
         padding: 5rem;
     }
     .student-info-btn{
-        padding: 1rem 2rem;
-        border-radius: 10px;
-        cursor: pointer;
-        outline-style: double;
-        outline-offset: 0.5rem;
-        background-color: transparent;
-        color: white;
         margin-top: 3rem;
     }
 }
 
-@media only screen and (max-width: 1100px){
+@media only screen and (max-width: 1000px){
+
+    #button-section{
+        max-width: 100vw;
+        height: 25vh;
+       display: none;
+       align-items: center;
+       justify-content: flex-start;
+       border-bottom: none;
+       border-top-left-radius: 10px;
+       grid-area: owls;
+       margin-top: 2rem;
+    }
+
+    .sortAscending{
+        width: 10rem;
+        height: 6rem;        
+    }
+
+    .sortDescending{
+        width: 10rem;
+        height: 6rem;  
+    }
+ 
+    .sortGryffindor{
+        width: 10rem;
+        height: 6rem;  
+    }
+    
+    .sortSlytherin{
+        width: 10rem;
+        height: 6rem;  
+    }
+
+    
+    .sortRavenclaw{
+        width: 10rem;
+        height: 6rem;  
+    }
+    
+
+    
+    .sortHufflepuff{
+        width: 10rem;
+        height: 6rem;  
+    }
+    
+
+    
+    .expelled-students{
+        width: 10rem;
+        height: 6rem;  
+    }
+    
+
+    
+    .non-expelled-students{
+        width: 10rem;
+        height: 6rem;  
+    }
+    
+
+
+    
     /* CURRENT STATS */
-.current-stats-li {
-    list-style-image: none;
-    list-style-type: none;
-    font-size: 1rem;
-    color: white;
-    background-color: var(--ravenclaw);
-    padding: 0 0rem; 
-    margin: 0 0;
+    .current-stats-ul{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        text-align: center;
+        margin: 0rem 0;
+        padding: 5rem 0 2rem 0;
+    }
+
+    .current-stats-li {
+        font-size: 1rem;
+        padding-bottom: 1rem;
+        background-color: transparent;
+        filter: drop-shadow(2px 4px 2px black);
+    }
+
+    /* FIXING STUDENT CARD */
+
+#student-modal{
+    width: 85%;
+    height: 75%;
+    background-color: #B99B6B;
+    display: none;
+    z-index: 100;
+    position: fixed;
+    top: 15%;
+    left: 8%;
     filter: drop-shadow(10px 12px 10px black);
-   
+    border-radius: 10px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
 }
+
+/* student picture for modal */
+
+.modal-student-pic{
+    width: 8rem;
+    height: 8rem;
+    filter: drop-shadow(10px 12px 10px black);
+}
+
+/* MODAL UL */
+
+.student-information-ul{
+    background-color: rgba(255, 255, 255, 0.5);
+    color: black;
+    padding: 2rem;
+    border-radius: 10px;
+    height: 75%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-around;
+    filter: drop-shadow(10px 12px 10px black);
+}
+
+.student-information-ul > li{
+    list-style-type: none;
+    font-size: 1.5rem;
+}
+
+/* DIV BETWEEN IMG AND BTNS */
+
+.modal-img-btns{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    width: 30%;
+    height: 90%;
+}
+
+/* DIV BETWEEN BTNS */
+
+.modal-inner-btns{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    height: 100%;
+}
+
+.modal-inquisitor-btn{
+    padding: 1rem 2rem;
+    border-radius: 10px;
+    cursor: pointer;
+    outline-style: none;
+    outline-offset: 0rem;
+    background-color: green;
+    color: white;
+    transition: all 0.5s ease-out;
+    filter: drop-shadow(10px 12px 10px black);
+}
+
+.modal-inquisitor-btn-red{
+    padding: 1rem 2rem;
+    border-radius: 10px;
+    cursor: pointer;
+    outline-style: none;
+    outline-offset: 0rem;
+    background-color: green;
+    color: white;
+    transition: all 0.5s ease-out;
+    filter: drop-shadow(10px 12px 10px black);
+}
+
+.modal-prefect-btn{
+    padding: 1rem 2rem;
+    border-radius: 10px;
+    cursor: pointer;
+    outline-style: none;
+    outline-offset: 0rem;
+    background-color: green;
+    color: white;
+    transition: all 0.5s ease-out;
+    filter: drop-shadow(10px 12px 10px black);
+}
+
+.modal-expell-btn{
+    padding: 1rem 2rem;
+    border-radius: 10px;
+    cursor: pointer;
+    outline-style: none;
+    outline-offset: 0rem;
+    background-color: red;
+    color: white;
+    transition: all 0.5s ease-out;
+    filter: drop-shadow(10px 12px 10px black);
+}
+
+/* close modal */
+
+.close-modal{
+    height: 100%;
+}
+
+.close-modal > button{
+    display: block;
+    margin-top: 3rem;
+    font-size: 1rem;
+    background-color: transparent;
+    border: 2px dashed red;
+    color: red;
+    cursor: pointer;
+    padding: 1rem;
+    font-family: var(--hogwarts-font);
+    transition: all 0.5s ease-in;
+}
+
 }
 
 @media only screen and (max-width: 1000px){
@@ -1050,6 +1263,98 @@ animation: openModalSlowly 2s ease-in 0.1s 1 forwards;
     }
 }
 
+
+@media only screen and (max-width: 900px){
+     /* FIXING STUDENT CARD */
+
+#student-modal{
+    width: 90%;
+    height: 80%;
+    top: 10%;
+    left: 5%;
+}
+
+/* student picture for modal */
+
+.modal-student-pic{
+    width: 5rem;
+    height: 5rem;
+}
+
+/* MODAL UL */
+
+.student-information-ul{
+    padding: 2rem;
+    width: 50%;
+    height: 75%;
+}
+
+.student-information-ul > li{
+    font-size: 1rem;
+}
+
+/* DIV BETWEEN IMG AND BTNS */
+
+.modal-img-btns{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    width: 30%;
+    height: 60%;
+}
+
+/* DIV BETWEEN BTNS */
+
+.modal-inner-btns{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    height: 80%;
+    
+}
+
+.modal-inquisitor-btn{
+    padding: 0.5rem 1rem;
+}
+
+.modal-inquisitor-btn-red{
+    padding: 0.5rem 1rem;
+}
+
+.modal-prefect-btn{
+    padding: 0.5rem 1rem;
+}
+
+.modal-expell-btn{
+    padding: 0.5rem 1rem;
+}
+
+/* close modal */
+
+.close-modal{
+    height: 100%;
+}
+
+.close-modal > button{
+    display: block;
+    margin-top: 3rem;
+    font-size: 1rem;
+    background-color: transparent;
+    border: 2px dashed red;
+    color: red;
+    cursor: pointer;
+    padding: 1rem;
+    font-family: var(--hogwarts-font);
+    transition: all 0.5s ease-in;
+}
+
+
+}
+
+
+
 @media only screen and (max-width: 800px){
     body{
         background: url(imgs/background/castle2.webp);
@@ -1064,36 +1369,36 @@ animation: openModalSlowly 2s ease-in 0.1s 1 forwards;
 
     /* welcoming modal */
 
-.welcoming-modal{
-    display: block;
-    width: 100vw;
-    height: 50vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-    font-family: var(--Gryffindor-font);
-    opacity: 0;
-    position: absolute;
-    z-index: 100;
-    top: 25%;
-}
+    .welcoming-modal{
+        display: block;
+        width: 100vw;
+        height: 50vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        font-family: var(--Gryffindor-font);
+        opacity: 0;
+        position: absolute;
+        z-index: 100;
+        top: 25%;
+    }
 
-.welcoming-modal-h1{
-    font-size: 3rem;
-    width: 100%;
-    display: block;
-    text-align: center;
-}
+    .welcoming-modal-h1{
+        font-size: 3rem;
+        width: 100%;
+        display: block;
+        text-align: center;
+    }
 
-.welcoming-modal-img{
-    width: 30%;
-    height: auto;
-}
+    .welcoming-modal-img{
+        width: 30%;
+        height: auto;
+    }
 
-.welcoming-modal-img:hover{
-    cursor: pointer;
-}
+    .welcoming-modal-img:hover{
+        cursor: pointer;
+    }
 
 
 
@@ -1110,22 +1415,9 @@ animation: openModalSlowly 2s ease-in 0.1s 1 forwards;
         
     }
 
-    .current-stats-ul{
-        width: 100%;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-around;
-        font-family: var(--Gryffindor-font);
-        text-align: center;
-        margin: 0 0;
-
-    }
-
     .inner-card{
-        width: 70%;
-        height: 20rem;
+        width: 60%;
+        height: 10rem;
         background-color:transparent;
         border-radius: 30px;
         filter: drop-shadow(10px 12px 12px black);
@@ -1147,8 +1439,8 @@ animation: openModalSlowly 2s ease-in 0.1s 1 forwards;
     /* school logo in card */
     
     .school-logo{
-        width: 6rem;
-        height: 6rem;
+        width: 4rem;
+        height: 4rem;
         border-radius: 50%;
         filter: drop-shadow(2px 4px 2px black);
         z-index: 100;
@@ -1166,18 +1458,25 @@ animation: openModalSlowly 2s ease-in 0.1s 1 forwards;
         padding: 5rem;
     }
 
+    /* student picture */
+
+    .student-pic{
+        width: 7rem;
+        height: 7rem;
+        filter: drop-shadow(10px 12px 10px black);
+    }
+
     /* btn to see students info */
 
-.student-info-btn{
-    padding: 1rem 2rem;
-    border-radius: 10px;
-    cursor: pointer;
-    outline-style: double;
-    outline-offset: 0.5rem;
-    background-color: transparent;
-    color: white;
-    margin-top: 3rem;
+    .student-info-btn{
+        font-size: 1rem;
+    }
 }
+
+@media only screen and (max-width: 700px){
+    .student-info-btn{
+        padding: 0.5rem 2rem;
+    }
 }
 
 @media only screen and (max-width: 500px){
@@ -1224,15 +1523,213 @@ animation: openModalSlowly 2s ease-in 0.1s 1 forwards;
     .welcoming-modal-img:hover{
         cursor: pointer;
     }
+
+    .inner-card{
+        width: 60%;
+        height: 10rem;
+        background-color:transparent;
+        border-radius: 30px;
+        filter: drop-shadow(10px 12px 12px black);
+        margin: 2rem 0;
+        padding: 15rem 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        animation: none;
+        position: relative;
+        border: 1px dashed white;
+    }
+    
+    .inner-card:hover{
+        animation: levitateCard 1s ease-in 0s infinite forwards;
+    }
+    
+    /* school logo in card */
+    
+    .school-logo{
+        width: 4rem;
+        height: 4rem;
+        border-radius: 50%;
+        filter: drop-shadow(2px 4px 2px black);
+        z-index: 100;
+        position: absolute;
+        top:10%;
+        left: 5%;
+    }
+
+    .image-house{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        width: 80%;
+        padding: 5rem;
+    }
+
+    /* student picture */
+
+    .student-pic{
+        width: 5rem;
+        height: 5rem;
+        filter: drop-shadow(10px 12px 10px black);
+    }
+
+    /* btn to see students info */
+
+    .student-info-btn{
+        font-size: 1rem;
+        width: 10rem;
+    }
+        
+    /* FIXING STUDENT CARD */
+   
+   #student-modal{
+        flex-direction: column;
+   }
+   
+   /* student picture for modal */
+   
+   .modal-student-pic{
+       width: 5rem;
+       height: 5rem;
+       margin: 0;
+   }
+   
+   /* MODAL UL */
+   
+   .student-information-ul{
+       padding: 2rem;
+       width: 100%;
+       height: 50%;
+   }
+   
+   .student-information-ul > li{
+       font-size: 1rem;
+   }
+   
+   /* DIV BETWEEN IMG AND BTNS */
+   
+   .modal-img-btns{
+       display: flex;
+       flex-direction: row;
+       align-items: center;
+       justify-content: flex-start;
+       width: 80%;
+       height: 40%;
+   }
+   
+   /* DIV BETWEEN BTNS */
+   
+   .modal-inner-btns{
+       display: flex;
+       flex-direction: column;
+       align-items: center;
+       justify-content: space-around;
+       height: 80%;
+       margin-left: 1rem;
+   }
+   
+   .modal-inquisitor-btn{
+       padding: 0.5rem 1rem;
+       transform: scale(0.9);
+
+   }
+   
+   .modal-inquisitor-btn-red{
+       padding: 0.5rem 1rem;
+       transform: scale(0.9);
+
+   }
+   
+   .modal-prefect-btn{
+       padding: 0.5rem 1rem;
+       transform: scale(0.9);
+
+   }
+   
+   .modal-expell-btn{
+       padding: 0.5rem 1rem;
+       transform: scale(0.9);
+   }
+   
+   /* close modal */
+   
+   .close-modal{
+       height: 10%;
+   }
+   
+   .close-modal > button{
+       display: block;
+       margin-top: 3rem;
+       font-size: 1rem;
+       background-color: transparent;
+       border: 2px dashed red;
+       color: red;
+       cursor: pointer;
+       padding: 1rem;
+       font-family: var(--hogwarts-font);
+       transition: all 0.5s ease-in;
+       position: absolute;
+       top: -5%;
+       right: 5%;
+       padding: 1;
+   }
+   
 }
 
-@media only screen and (max-width: 350px){
+@media only screen and (max-width: 400px){
     .welcoming-modal-h1{
         font-size: 1.5rem;
         width: 100%;
         display: block;
         text-align: center;
         color: white;
+    }
+
+    .student-info-btn{
+        font-size: 1rem;
+        width: 8rem;
+    }
+
+    .close-modal > button{
+        display: block;
+        margin-top: 3rem;
+        font-size: 1rem;
+        background-color: transparent;
+        border: 2px dashed red;
+        color: red;
+        cursor: pointer;
+        padding: 1rem;
+        font-family: var(--hogwarts-font);
+        transition: all 0.5s ease-in;
+        position: absolute;
+        top: -5%;
+        right: 5%;
+        padding: 0;
+    }
+
+    .modal-inquisitor-btn{
+        padding: 0.5rem 1rem;
+        transform: scale(0.8);
+ 
+    }
+    
+    .modal-inquisitor-btn-red{
+        padding: 0.5rem 1rem;
+        transform: scale(0.8);
+ 
+    }
+    
+    .modal-prefect-btn{
+        padding: 0.5rem 1rem;
+        transform: scale(0.8);
+ 
+    }
+    
+    .modal-expell-btn{
+        padding: 0.5rem 1rem;
+        transform: scale(0.8);
     }
 }
 
