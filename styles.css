@@ -72,9 +72,9 @@ body{
     font-size: 1.5rem;
     color: white;
     background-color: var(--ravenclaw);
-    padding: 0 0rem; 
+    padding: 0.5rem 1rem;
     filter: drop-shadow(10px 12px 10px black);
-   
+    border-radius: 10px;
 }
 
 main{
@@ -508,6 +508,13 @@ main{
 
 .Hufflepuff-background{
     background: url("imgs/houses/hufflepuff/hufflepuff2.png");
+    background-position: top;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.argentina-background{
+    background: url("imgs/houses/argentina/messi.webp");
     background-position: top;
     background-size: cover;
     background-repeat: no-repeat;

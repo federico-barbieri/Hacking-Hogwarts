@@ -130,7 +130,6 @@ function findFirstName(element){
     
 }
 
-
 function findMiddleName(element){
 
     let middleName = element.fullname.trimStart();
@@ -187,7 +186,6 @@ function findMiddleName(element){
     }
 
 }
-
 
 function findLastName(element){
 
@@ -249,7 +247,6 @@ function findLastName(element){
 
 
 }
-
 
 function findHouse(element){
     let firstLetter = element.house.trimStart().charAt(0).toUpperCase();
@@ -328,6 +325,16 @@ function handleWizards(wizards){
         
         } else if (newStudent.name === "Justin"){
             newStudent.blood = "Half";
+        
+        } else if (newStudent.name === "Hermione"){
+            newStudent.blood = "Half";
+
+        } else if (newStudent.name === "Lisa"){
+            newStudent.blood = "Half";
+
+        } else if (newStudent.name === "Leanne"){
+            newStudent.blood = "Half";
+
         } 
 
         // PUSH EACH NEW STUDENT TO THE STUDENT'S BIG OBJECT ARRAY
@@ -355,6 +362,16 @@ function beautifyStudent(){
         // BUILD TEMPLATE
         let myTemplate = document.querySelector('#my-template').content;
         const clone = myTemplate.cloneNode(true);
+
+        // try an if else statement for the hacking 
+
+        if (student.name === "Federico"){
+                    // assign student image based on name
+                    clone.querySelector(".student-pic").src = `imgs/students/shrek.jpg`;
+
+        } else {
+
+        
 
         // name of student
         clone.querySelector(".li-name").textContent = `Name: ${student.name}`;
@@ -384,6 +401,8 @@ function beautifyStudent(){
         } else{
             clone.querySelector('.li-blood').textContent = `Blood: ${student.blood}`;
         }
+
+    }
 
         // assign school logo
         clone.querySelector('.school-logo').src = "imgs/logo/school-logo.png";
@@ -500,17 +519,32 @@ function beautifyStudent(){
         // change font depending on the house
         articleBorn.style.fontFamily = `var(--${student.house}-font)`;
 
-        // add background according to house
-        articleBorn.classList.add(`${student.house}-background`);
+        // add background according to house / hack
+        if (student.name !== "Federico"){
+            articleBorn.classList.add(`${student.house}-background`);
+            console.log(`My students background is ${student.house} style`);
+
+        } else {
+            articleBorn.classList.add(`argentina-background`);
+
+        }
 
         // grab and reveal the img of the student
         let modalImg = document.querySelector('.modal-pic');
 
+
         if(student.name === "Leanne"){
             modalImg.src = `imgs/students/leanne.png`;
-        } else{
+        } else if (student.name !== "Leanne" && student.name !== "Federico"){
+            
             modalImg.src = `imgs/students/${student.lastName.toLowerCase()}_${student.name.charAt(0).toLowerCase()}.png`;
+
+        } else {
+            modalImg.src = "imgs/students/shrek.jpg";
+
         }
+
+    
 
 
         // reveal name
@@ -732,6 +766,8 @@ function beautifyStudent(){
 
         }
 
+
+
        
 
         let closeModalBtn = document.querySelector('.close-modal-btn');
@@ -739,7 +775,10 @@ function beautifyStudent(){
         function closeModal(event){
 
             // remove event listener for the btns
-            
+            articleBorn.classList.remove(`argentina-background`);
+            articleBorn.classList.remove(`${student.house}-background`);
+
+
             inquisitorBtn.removeEventListener('click', inquisitorBtnClick);
             prefectBtn.removeEventListener('click', prefectBtnClick);
             event.target.removeEventListener('click', closeModal);
@@ -1008,6 +1047,8 @@ function showDashboard(event){
     event.target.removeEventListener('click', showDashboard);
 }
 
+let systemHacked = false;
+
 
 // start the show
 
@@ -1018,15 +1059,31 @@ function start(){
    welcomingModalImg.addEventListener('click', showDashboard);
     fetchBlood();
     fetchStudents();
+    // hack myself
+    
     setInterval(randomPosition, 800);
+
+    document.onkeydown = function (e) {
+        if (e.code === "KeyH"){
+        hackingTime();
+      }};
 }
+
+    // a counter prevents from this to be called more than once
+
+let hackCount = 0;
 
 function hackingTime(){
 
-    // a counter prevents from this to be called more than once
-    systemHacked = true;
+    hackCount++;
 
-    if(systemHacked === true){
+    beautifyStudent();
+
+
+    // a counter prevents from this to be called more than once
+
+
+    if(hackCount === 1){
 
     // create an object of myself and fill it up
 
