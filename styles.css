@@ -643,6 +643,18 @@ animation: openModalSlowly 2s ease-in 0.1s 1 forwards;
     flex-direction: row;
     align-items: center;
     justify-content: space-around; 
+    background: url("imgs/modals/burn-paper.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.inquisitor-modal-p{
+    font-family: var(--deco);
+    font-size: 2rem;
+    padding: 3rem;
+    color: white;
+    filter: drop-shadow(10px 12px 10px black);
 }
 
 /* close inquisitor modal */
@@ -685,6 +697,19 @@ animation: openModalSlowly 2s ease-in 0.1s 1 forwards;
     flex-direction: row;
     align-items: center;
     justify-content: space-around; 
+    background: url("imgs/modals/burn-paper.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.expelled-modal-p{
+    font-family: var(--deco);
+    font-size: 2rem;
+    padding: 3rem;
+    color: white;
+    filter: drop-shadow(10px 12px 10px black);
+    text-align: center;
 }
 
 /* close expelled modal */
