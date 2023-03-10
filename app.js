@@ -435,27 +435,61 @@ function beautifyStudent(){
 
         let numOfInquisitors = 0;
 
+        // grab inquisitor modal
+
+         let inquisitorModal = document.querySelector('#inquisitor-modal');
+
+         let inquisitorModalP = document.querySelector('.inquisitor-modal-p');
+
               
 
         function inquisitorRequest(student){
             if (student.house === "Slytherin" && student.isInquisitor === false){
                 numOfInquisitors++;
                 student.isInquisitor = true;
-                console.log(`The number of current Inquisitors is ${numOfInquisitors}. The student is now an inquisitor. Their status is ${student.isInquisitor} `);
                             
+                inquisitorModalP.textContent = `${student.name} ${student.lastName} is now an inquisitor.`;
+                inquisitorModal.style.display = "flex";
+
             } else if (student.blood === "Pure" && student.isInquisitor === false){
                 numOfInquisitors++;
                 student.isInquisitor = true;
-                console.log(`The number of current Inquisitors is ${numOfInquisitors}. The student is now an inquisitor. Their status is ${student.isInquisitor} `);
-                    
+                
+                inquisitorModalP.textContent = `${student.name} ${student.lastName} is now an inquisitor.`;
+                inquisitorModal.style.display = "flex";                    
+            
             } else if (student.isInquisitor === true){
                 student.isInquisitor = false;
                 numOfInquisitors--;
-                console.log(`The student is no longer an inquisitor. Their status is ${student.isInquisitor}. The number of current Inquisitors is ${numOfInquisitors}`);
         
-            } else {
-                console.log(`The student cannot be an inquisitor. Their status is ${student.isInquisitor}`)}
+                inquisitorModalP.textContent = `${student.name} ${student.lastName} is no longer an inquisitor.`;
+                inquisitorModal.style.display = "flex";
+
+            } else {            
+                inquisitorModalP.textContent = `${student.name} ${student.lastName} cannot be an inquisitor.`;
+                inquisitorModal.style.display = "flex";
+            }
+
+
+            // inquisitor's modal closing
+
+            let closeInquisitorModalBtn = document.querySelector('.close-inquisitor-modal-btn');
+
+            function closeInquisitorModal(event){
+
+            // remove event listener for the modal
+            inquisitorModal.style.display = "none";    
+            event.target.removeEventListener('click', closeInquisitorModal);                
+            }
+
+            // FUNCTION THAT CLOSES MODAL
+            closeInquisitorModalBtn.addEventListener('click', closeInquisitorModal);
+        
+        
         }
+
+
+        
 
         // CREATE A FUNCTION THAT HANDLES THE PREFECTS BUTTON
 
@@ -522,7 +556,6 @@ function beautifyStudent(){
     
             // FUNCTION THAT CLOSES MODAL
             closePrefectModalBtn.addEventListener('click', closePrefectModal);
-    
         }
 
     // create global array of expelled students
