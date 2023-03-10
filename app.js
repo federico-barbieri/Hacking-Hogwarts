@@ -475,32 +475,55 @@ function beautifyStudent(){
             return thatHouse;
         }
 
+         // grab the prefect modal for displaying it
+
+         let prefectModal = document.querySelector('#prefect-modal');
+
+         let prefectModalP = document.querySelector('.prefect-modal-p');
+         
+
 
         function prefectRequest(student){
 
             let timesInArray = houseInArray(numOfPrefects, student.house);
 
             if(student.isPrefect === false && timesInArray === 2){
-                console.log("There can only be 2 prefects per house.")
+                prefectModalP.textContent = "There can only be 2 prefects per house.";
+                prefectModal.style.display = "flex";
+
             
             } else if (student.isPrefect === false && timesInArray !== 2){
                 student.isPrefect = true;
                 numOfPrefects.push(student.house);
-                console.log(`Num of prefects is ${numOfPrefects.length}`);
-                console.log(`${student.name} is now a prefect of ${student.house}`);
                 houseInArray(numOfPrefects, student.house);
-                console.log(`${student.house} has ${houseInArray(numOfPrefects, student.house)} prefects`)
-            
+                prefectModal.style.display = "flex";
+                prefectModalP.textContent = `${student.name} is now a prefect of ${student.house}. 
+                ${student.house} has ${houseInArray(numOfPrefects, student.house)} prefects`;
+
             } else if (student.isPrefect === true){
             student.isPrefect = false;
             
             numOfPrefects.pop();
-            console.log(`Num of prefects is ${numOfPrefects.length}`);
-            console.log(`${student.name} is no longer a prefect of ${student.house}`);
-            console.log(`${student.house} has ${houseInArray(numOfPrefects, student.house)} prefects`)
+          
+            prefectModal.style.display = "flex";
+            prefectModalP.textContent = `${student.name} is no longer a prefect of ${student.house}. 
+            ${student.house} has ${houseInArray(numOfPrefects, student.house)} prefects`;
 
             }
-    }
+    
+            let closePrefectModalBtn = document.querySelector('.close-prefect-modal-btn');
+
+            function closePrefectModal(event){
+    
+                // remove event listener for the modal
+                prefectModal.style.display = "none";    
+                event.target.removeEventListener('click', closePrefectModal);                
+            }
+    
+            // FUNCTION THAT CLOSES MODAL
+            closePrefectModalBtn.addEventListener('click', closePrefectModal);
+    
+        }
 
     // create global array of expelled students
     let expelledStudents = [];
@@ -701,10 +724,13 @@ function beautifyStudent(){
             prefectBtn.style.backgroundColor = "red";
         }
 
+
          // prefect function
          function prefectBtnClick() {
-            console.log('Prefecting attempted')
-            console.log(`clicking ${student.name} button`);
+
+
+          //  console.log('Prefecting attempted')
+          //  console.log(`clicking ${student.name} button`);
 
             prefectStatus.textContent = `Is Prefect: ${student.isPrefect}`;
 
