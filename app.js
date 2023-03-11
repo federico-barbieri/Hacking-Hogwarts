@@ -792,9 +792,6 @@ function beautifyStudent(){
 
             } else {
 
-            // figure out how to remove the btns once
-            // the student has been expelled
-
             student.isExpelled = true;
 
             expelledModal.style.display = "flex";
@@ -1018,31 +1015,20 @@ function searching(){
     // save original array
 
     let originalArray = studentsBigObject;
-    console.log(`Original array is ${originalArray.length}`);
 
     // grab current search
     let searchingFor = searchBar.value.toLowerCase();
-    console.log(`Searching for is ${searchingFor}`);
 
     // filter the big array with the current search
-
     let currentSearch = studentsBigObject.filter ((student) => 
     student.name.toLowerCase().includes(searchingFor) || 
     student.lastName.toLowerCase().includes(searchingFor));
 
-
-
     studentsBigObject = currentSearch;
-
-    console.log(`students big object is ${studentsBigObject.length}`);
-
     
     beautifyStudent();
 
     studentsBigObject = originalArray;
-
-    console.log(`students big object is ${studentsBigObject.length}`);
-
 }
 
 
@@ -1107,15 +1093,12 @@ const sortHufflepuffBtn = document.querySelector('.sortHufflepuff');
 sortHufflepuffBtn.addEventListener('click', sortHufflepuff);
 
 function sortHufflepuff(){
-    console.log(`original array: ${studentsBigObject.length}`);
     let originalArray = studentsBigObject;
     let hufflepuffStudents = studentsBigObject.filter((student) => student.house === "Hufflepuff");
     studentsBigObject = hufflepuffStudents;
-    console.log(`Hufflepuff: ${studentsBigObject.length}`);
 
     beautifyStudent();
     studentsBigObject = originalArray;
-    console.log(`original array: ${studentsBigObject.length}`);
 }
 
 // SHOW EXPELLED STUDENTS
@@ -1305,7 +1288,7 @@ function start(){
 
 
 
-    // a counter prevents from this to be called more than once
+// a counter prevents from this to be called more than once
 
 let hackCount = 0;
 
@@ -1313,22 +1296,17 @@ function hackingTime(){
 
     hackCount++;
 
-   // beautifyStudent();
-
-
-    // a counter prevents from this to be called more than once
-
-
     if(hackCount === 1){
 
+        // fire background
+
         const body = document.querySelector("body");
-
         body.classList.add("makingThingsAppearSlow");
-
         body.style.background = "url(imgs/background/castle-fire.webp)";
         body.style.backgroundSize = "cover";
         body.style.backgroundRepeat = "no-repeat";
-    // create an object of myself and fill it up
+    
+        // create an object of myself and fill it up
 
     let myself = Object.create(Wizard);
 
