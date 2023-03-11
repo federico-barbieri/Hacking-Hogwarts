@@ -378,6 +378,8 @@ function handleWizards(wizards){
         // PUSH EACH NEW STUDENT TO THE STUDENT'S BIG OBJECT ARRAY
         studentsBigObject.push(newStudent);
 
+        
+
      
 });    
 
@@ -389,6 +391,8 @@ function handleWizards(wizards){
 // create a function that styles the future student object
 
 function beautifyStudent(){
+
+
 
     document.querySelector("#dashboard").innerHTML = "";
 
@@ -463,7 +467,11 @@ function beautifyStudent(){
   currentEnrolledStudents.textContent = `There are currently ${studentsBigObject.length} enrolled students`;
 
 
+
+
+
 };
+
 
 
 
@@ -913,6 +921,9 @@ function beautifyStudent(){
 }
 
 
+
+
+
 // SORT DESCENDING
 
 const sortDescendingBtn = document.querySelector('.sortDescending');
@@ -937,6 +948,45 @@ function sortStudentsAscending(){
     studentsBigObject.sort((a, b) => a.name.localeCompare(b.name));
     beautifyStudent();
   //  event.target.removeEventListener('click', sortStudentsAscending);
+}
+
+
+// make the search of the search bar happen :)
+
+const searchBar = document.querySelector('.searchStudents');
+
+searchBar.addEventListener("input", searching);
+
+function searching(){
+
+    // save original array
+
+    let originalArray = studentsBigObject;
+    console.log(`Original array is ${originalArray.length}`);
+
+    // grab current search
+    let searchingFor = searchBar.value.toLowerCase();
+    console.log(`Searching for is ${searchingFor}`);
+
+    // filter the big array with the current search
+
+    let currentSearch = studentsBigObject.filter ((student) => 
+    student.name.toLowerCase().includes(searchingFor) || 
+    student.lastName.toLowerCase().includes(searchingFor));
+
+
+
+    studentsBigObject = currentSearch;
+
+    console.log(`students big object is ${studentsBigObject.length}`);
+
+    
+    beautifyStudent();
+
+    studentsBigObject = originalArray;
+
+    console.log(`students big object is ${studentsBigObject.length}`);
+
 }
 
 
@@ -1180,6 +1230,7 @@ function start(){
    welcomingModalImg.addEventListener('click', showDashboard);
     fetchBlood();
     fetchStudents();
+
     // hack myself
     
     setInterval(randomPosition, 800);
@@ -1226,6 +1277,4 @@ function hackingTime(){
     studentsBigObject.push(myself);
     beautifyStudent();
     }
-
-
 }

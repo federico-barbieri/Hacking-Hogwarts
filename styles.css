@@ -1651,7 +1651,6 @@ animation: openModalSlowly 2s ease-in 0.1s 1 forwards;
     height: 30%;
     top: 35%;
     left: 8%;
-    display: flex;
     align-items: center;
     justify-content: center;
 }
@@ -1684,7 +1683,6 @@ animation: openModalSlowly 2s ease-in 0.1s 1 forwards;
     height: 30%;
     top: 35%;
     left: 8%;
-    display: flex;
     align-items: center;
     justify-content: center;
 }
