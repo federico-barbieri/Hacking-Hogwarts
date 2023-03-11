@@ -150,6 +150,38 @@ main{
     margin-right: 1rem;
 }
 
+/* SORTING HAT AND SEARCH BAR */
+
+.search-li{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.sorting-hat{
+    width: 13rem;
+    height: 10rem;
+}
+
+.search-li > input{
+    font-family: var(--owl-font);
+    color: white;
+    filter: drop-shadow(10px 12px 10px black);
+    font-size: 1rem;
+    text-align: center;
+    position: absolute;
+    top: 80%;
+    background-color: transparent;
+}
+
+::placeholder{
+    opacity: 1;
+    color: white;
+    font-family: var(--owl-font);
+}
+
 .sortAscending{
     
     border-radius: 10px;
@@ -390,11 +422,10 @@ main{
     width: 10rem;
     height: auto;
     animation: levitateLogo 1s ease-in 0.5s 5 forwards;
-    font-family: var(--Slytherin-font);
 }
 
 .game-h2{
-    font-family: var(--Slytherin-font);
+    font-family: var(--owl-font);
     margin: 2rem auto 0 auto;
 }
 
@@ -405,6 +436,8 @@ main{
     margin: 2rem auto 0 auto;
     z-index: 200;
     font-family: var(--Slytherin-font);
+    cursor: pointer;
+
 }
 
 .golden-snitch{
@@ -442,7 +475,10 @@ main{
     text-align: center;
     display: none;
     padding: 1rem;
-    font-family: var(--Slytherin-font);
+    font-family: var(--owl-font);
+    color: white;
+    filter: drop-shadow(10px 12px 10px black);
+
 }
 
 .game-btn-play-again{
@@ -454,7 +490,8 @@ main{
     z-index: 200;
     display: none;
     cursor: pointer;
-    font-family: var(--Slytherin-font);
+    color: white;
+    filter: drop-shadow(10px 12px 10px black);    
 }
 
 
@@ -820,6 +857,8 @@ animation: openModalSlowly 2s ease-in 0.1s 1 forwards;
     color: white;
     transition: all 0.5s ease-out;
     filter: drop-shadow(10px 12px 10px black);
+    cursor: pointer;
+
 }
 
 .modal-inquisitor-btn:hover{
@@ -836,6 +875,8 @@ animation: openModalSlowly 2s ease-in 0.1s 1 forwards;
     color: white;
     transition: all 0.5s ease-out;
     filter: drop-shadow(10px 12px 10px black);
+    cursor: pointer;
+
 }
 
 .modal-prefect-btn:hover{
@@ -852,6 +893,8 @@ animation: openModalSlowly 2s ease-in 0.1s 1 forwards;
     color: white;
     transition: all 0.5s ease-out;
     filter: drop-shadow(10px 12px 10px black);
+    cursor: pointer;
+
 }
 
 .modal-expell-btn:hover{
@@ -961,6 +1004,35 @@ animation: openModalSlowly 2s ease-in 0.1s 1 forwards;
        grid-area: owls;
        margin-top: 2rem;
     }
+
+    /* SORTING HAT AND SEARCH BAR */
+
+.search-li{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.sorting-hat{
+    width: 9.5rem;
+    height: 6rem;
+}
+
+.search-li > input{
+    font-family: var(--owl-font);
+    color: white;
+    filter: drop-shadow(10px 12px 10px black);
+    font-size: 1rem;
+    text-align: center;
+    position: absolute;
+    top: 77%;
+    background-color: transparent;
+    width: 85%;
+    border: none;
+}
+
 
     .sortAscending{
         width: 10rem;
@@ -1461,8 +1533,35 @@ animation: openModalSlowly 2s ease-in 0.1s 1 forwards;
         align-items: center;
         justify-content: center;
         
-        
     }
+
+    /* SORTING HAT AND SEARCH BAR */
+
+.search-li{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.sorting-hat{
+    width: 9rem;
+    height: 5.5rem;
+}
+
+.search-li > input{
+    font-family: var(--owl-font);
+    color: white;
+    filter: drop-shadow(10px 12px 10px black);
+    font-size: 1rem;
+    text-align: center;
+    position: absolute;
+    top: 77%;
+    background-color: transparent;
+    width: 85%;
+    border: none;
+}
 
     .inner-card{
         width: 60%;

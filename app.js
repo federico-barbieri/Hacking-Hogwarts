@@ -1285,7 +1285,7 @@ function start(){
 
     // snitch position
     
-    setInterval(randomPosition, 800);
+    setInterval(randomPosition, 500);
 
     // hack myself
 
