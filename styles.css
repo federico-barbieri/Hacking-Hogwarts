@@ -2290,6 +2290,24 @@ position: relative;
     width: 13rem;
     left: 15%;
 }
+.sorting-hat{
+    width: 9rem;
+    height: 5.5rem;
+}
+
+.search-li > input{
+    font-family: var(--owl-font);
+    color: white;
+    filter: drop-shadow(10px 12px 10px black);
+    font-size: 1rem;
+    text-align: center;
+    position: absolute;
+    top: 75%;
+    left: 11%;
+    background-color: transparent;
+    width: 85%;
+    border: none;
+}
 }
 
 
