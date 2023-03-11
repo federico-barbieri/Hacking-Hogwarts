@@ -1231,15 +1231,23 @@ function start(){
     fetchBlood();
     fetchStudents();
 
-    // hack myself
+    // snitch position
     
     setInterval(randomPosition, 800);
 
+    // hack myself
+
     document.onkeydown = function (e) {
-        if (e.code === "KeyH"){
+        if (e.key === "5"){
         hackingTime();
-      }};
+      }
+   // console.log(e);
+};
+
+
 }
+
+
 
     // a counter prevents from this to be called more than once
 
