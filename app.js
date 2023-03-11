@@ -180,7 +180,11 @@ function findMiddleName(element){
         let firstQuote = middleName.indexOf('"');
         let middleNameWithoutFirstQuote = middleName.substring(1, middleName.length -1);
 
-        return `${middleNameWithoutFirstQuote} nickname`;
+        let firstCap = middleNameWithoutFirstQuote.charAt(0).toUpperCase();
+
+        let newNick = firstCap.concat(middleNameWithoutFirstQuote.slice(1));
+
+        return `${newNick} nickname`;
     
     } else{   
         return middleName;
