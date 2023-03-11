@@ -177,11 +177,13 @@ function findMiddleName(element){
     middleName = middleNameFirstChar.concat(lowerMiddleName.slice(1));
 
     if (middleName.includes('"')){
-        return "This is actually a nickname"
-    } else{
+        let firstQuote = middleName.indexOf('"');
+        let middleNameWithoutFirstQuote = middleName.substring(1, middleName.length -1);
 
-       
-    return middleName;
+        return `${middleNameWithoutFirstQuote} nickname`;
+    
+    } else{   
+        return middleName;
 
     }
 
@@ -292,7 +294,16 @@ function handleWizards(wizards){
         newStudent.name = findFirstName(wizard);
 
         // ASSIGN MIDDLE NAME
-        newStudent.middleName = findMiddleName(wizard);
+        let potentialNickName = findMiddleName(wizard);
+
+        if(potentialNickName.includes("nickname")){
+            let trimSpace = potentialNickName.indexOf(" ");
+           let actualNickName =  potentialNickName.substring(0, trimSpace);
+           newStudent.middleName = actualNickName;
+        } else {
+            newStudent.middleName = potentialNickName;
+        }
+        
 
         // ASSIGN NICK NAME
       //  newStudent.nickName = findNickName(wizard);
