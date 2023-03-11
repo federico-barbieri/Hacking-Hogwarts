@@ -1317,6 +1317,11 @@ function hackingTime(){
 
     if(hackCount === 1){
 
+        const body = document.querySelector("body");
+
+        body.style.background = "url(imgs/background/castle-fire.webp)";
+        body.style.backgroundSize = "cover";
+        body.style.backgroundRepeat = "no-repeat";
     // create an object of myself and fill it up
 
     let myself = Object.create(Wizard);
