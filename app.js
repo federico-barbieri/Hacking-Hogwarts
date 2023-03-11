@@ -244,6 +244,33 @@ function findLastName(element){
 
     lastName = lastNameFirstChar.concat(lowerLastName.slice(1));
 
+    if (lastName.includes("-")){
+
+        // index of hyphen 
+        let hyphen = lastName.indexOf("-");
+
+        // add 1 so you reach the next character
+        hyphen++;
+
+        // grab first half of surname
+        let firstHalf = lastName.substring(0, hyphen);
+
+        // capitalize the first character
+        let capitalized = lastName.charAt(hyphen).toUpperCase();
+
+        // add 1 so you can cut the rest of the word
+        hyphen++;
+
+        // grab second half of surname without capital letter
+        let secondHalf = lastName.substring(hyphen);
+
+        // concat first half, capital letter and second half
+        
+        let lastNameTransformed = firstHalf.concat(capitalized).concat(secondHalf);
+        
+        return lastNameTransformed;
+    }
+
  
     return lastName;
 
