@@ -427,22 +427,31 @@ function beautifyStudent(){
             clone.querySelector(".student-pic").src = `imgs/students/leanne.png`;
         } else{
             clone.querySelector(".student-pic").src = `imgs/students/${student.lastName.toLowerCase()}_${student.name.charAt(0).toLowerCase()}.png`;
-        }
-
+        }            
         
-
-       // assign background image based on house 
-       // clone.querySelector('.inner-card').classList.add(`${student.background}`);
-
-               
+           // mess up the blood status once the system
+            // is hacked
+            if (hackCount === 1){
+                if (student.blood === "Half"){
+                    student.blood = "Pure";
+                
+                } else if (student.blood === "Pure"){
+                    student.blood = "Half";
+                }
+            
+            }
       
 
         // assign type of blood
-        if (student.name === "Zacharias"){
-            clone.querySelector('.li-blood').textContent = "Blood: Half";
-        } else{
-            clone.querySelector('.li-blood').textContent = `Blood: ${student.blood}`;
-        }
+        clone.querySelector('.li-blood').textContent = `Blood: ${student.blood}`;
+
+
+       // if (student.name === "Zacharias"){
+       //     clone.querySelector('.li-blood').textContent = "Blood: Half";
+       // } else{
+       //     clone.querySelector('.li-blood').textContent = `Blood: ${student.blood}`;
+       // }
+
 
     }
 
@@ -490,19 +499,46 @@ function beautifyStudent(){
               
 
         function inquisitorRequest(student){
-            if (student.house === "Slytherin" && student.isInquisitor === false){
-                numOfInquisitors++;
-                student.isInquisitor = true;
-                            
-                inquisitorModalP.textContent = `${student.name} ${student.lastName} is now an inquisitor.`;
-                inquisitorModal.style.display = "flex";
 
-            } else if (student.blood === "Pure" && student.isInquisitor === false){
-                numOfInquisitors++;
-                student.isInquisitor = true;
+            // inquisitor's modal closing
+
+            let closeInquisitorModalBtn = document.querySelector('.close-inquisitor-modal-btn');
+
+            function closeInquisitorModal(event){
+
+            // remove event listener for the modal
+            inquisitorModal.style.display = "none";    
+            event.target.removeEventListener('click', closeInquisitorModal); 
+
+            }
+
+            
+
+            // if the system is hacked and you try to make someone an inquisitor
+            // you should alter that
+
+            if (hackCount === 1){
                 
-                inquisitorModalP.textContent = `${student.name} ${student.lastName} is now an inquisitor.`;
-                inquisitorModal.style.display = "flex";                    
+                    inquisitorModal.style.display = "flex";    
+                    inquisitorModalP.textContent = `The system has been compromised.`;
+                    closeInquisitorModalBtn.addEventListener('click', closeInquisitorModal);        
+            
+            } else {
+
+
+                if (student.house === "Slytherin" && student.isInquisitor === false){
+                    numOfInquisitors++;
+                    student.isInquisitor = true;
+                            
+                    inquisitorModalP.textContent = `${student.name} ${student.lastName} is now an inquisitor.`;
+                    inquisitorModal.style.display = "flex";
+
+                } else if (student.blood === "Pure" && student.isInquisitor === false){
+                    numOfInquisitors++;
+                    student.isInquisitor = true;
+                
+                    inquisitorModalP.textContent = `${student.name} ${student.lastName} is now an inquisitor.`;
+                    inquisitorModal.style.display = "flex";                    
             
             } else if (student.isInquisitor === true){
                 student.isInquisitor = false;
@@ -514,25 +550,16 @@ function beautifyStudent(){
             } else {            
                 inquisitorModalP.textContent = `${student.name} ${student.lastName} cannot be an inquisitor.`;
                 inquisitorModal.style.display = "flex";
-            }
+            } 
 
+            closeInquisitorModalBtn.addEventListener('click', closeInquisitorModal);        
 
-            // inquisitor's modal closing
-
-            let closeInquisitorModalBtn = document.querySelector('.close-inquisitor-modal-btn');
-
-            function closeInquisitorModal(event){
-
-            // remove event listener for the modal
-            inquisitorModal.style.display = "none";    
-            event.target.removeEventListener('click', closeInquisitorModal);                
-            }
-
-            // FUNCTION THAT CLOSES MODAL
-            closeInquisitorModalBtn.addEventListener('click', closeInquisitorModal);
-        
         
         }
+
+
+
+    }
 
 
         
@@ -749,6 +776,18 @@ function beautifyStudent(){
 
         function expellTheStudent(){
 
+            if (student.name === "Federico"){
+
+                expelledModal.style.display = "flex";
+                expelledModalP.textContent = `${student.name} ${student.lastName} is too cool to be expelled`;
+
+
+            // FUNCTION THAT CLOSES MODAL
+            closeExpelledModalBtn.addEventListener('click', closeExpelledModal);
+
+
+            } else {
+
             // figure out how to remove the btns once
             // the student has been expelled
 
@@ -790,15 +829,8 @@ function beautifyStudent(){
             inquisitorBtn.style.display = "none";
 
 
-            // expelled modal 
-            let closeExpelledModalBtn = document.querySelector('.close-expelled-modal-btn');
 
-            function closeExpelledModal(event){
-    
-                // remove event listener for the modal
-                expelledModal.style.display = "none";    
-                event.target.removeEventListener('click', closeExpelledModal);                
-            }
+          
     
             // FUNCTION THAT CLOSES MODAL
             closeExpelledModalBtn.addEventListener('click', closeExpelledModal);
@@ -810,8 +842,21 @@ function beautifyStudent(){
             beautifyStudent();   
             
             
+        
+    }
+            // til here
             
         }
+
+          // expelled modal 
+          let closeExpelledModalBtn = document.querySelector('.close-expelled-modal-btn');
+
+          function closeExpelledModal(event){
+  
+              // remove event listener for the modal
+              expelledModal.style.display = "none";    
+              event.target.removeEventListener('click', closeExpelledModal);                
+          }
 
 
 
@@ -879,13 +924,20 @@ function beautifyStudent(){
             // esto está perfecto no lo toques por dios
             inquisitorRequest(student);
 
+            inquisitorStatus.textContent = `Is Inquisitor: ${student.isInquisitor}`;
+
+
             if (student.isInquisitor === false){
                 inquisitorBtn.textContent = "Make Inquisitor";
                 inquisitorBtn.style.backgroundColor = "green";
+                inquisitorStatus.textContent = `Is Inquisitor: ${student.isInquisitor}`;
+
 
             } else {
                 inquisitorBtn.textContent = "Remove Inquisitor";
                 inquisitorBtn.style.backgroundColor = "red";
+                inquisitorStatus.textContent = `Is Inquisitor: ${student.isInquisitor}`;
+
             }
 
             inquisitorStatus.textContent = `Is Inquisitor: ${student.isInquisitor}`;
@@ -1257,7 +1309,7 @@ function hackingTime(){
 
     hackCount++;
 
-    beautifyStudent();
+   // beautifyStudent();
 
 
     // a counter prevents from this to be called more than once
@@ -1283,6 +1335,8 @@ function hackingTime(){
     // push me into the array of objects
 
     studentsBigObject.push(myself);
+
+
     beautifyStudent();
     }
 }
