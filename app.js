@@ -1323,7 +1323,7 @@ function hackingTime(){
 
         const body = document.querySelector("body");
 
-        body.classList.add("makingThingsAppearSlow")
+        body.classList.add("makingThingsAppearSlow");
 
         body.style.background = "url(imgs/background/castle-fire.webp)";
         body.style.backgroundSize = "cover";
