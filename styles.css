@@ -596,8 +596,8 @@ animation: openModalSlowly 2s ease-in 0.1s 1 forwards;
 }
 
 .prefect-modal-p{
-    font-family: var(--deco);
-    font-size: 2rem;
+    font-family: var(--owl-font);
+    font-size: 1.5rem;
     padding: 3rem;
     color: white;
     filter: drop-shadow(10px 12px 10px black);
@@ -611,13 +611,13 @@ animation: openModalSlowly 2s ease-in 0.1s 1 forwards;
 
 .close-prefect-modal > button{
     display: block;
-    margin-top: 3rem;
-    font-size: 2rem;
+    margin: 3rem 4rem 0 0;
+    font-size: 1rem;
     background-color: transparent;
     border: 2px dashed white;
     color: red;
     cursor: pointer;
-    padding: 1rem;
+    padding: 0.5rem;
 }
 
 .close-prefect-modal > button:hover{
@@ -650,8 +650,8 @@ animation: openModalSlowly 2s ease-in 0.1s 1 forwards;
 }
 
 .inquisitor-modal-p{
-    font-family: var(--deco);
-    font-size: 2rem;
+    font-family: var(--owl-font);
+    font-size: 1.5rem;
     padding: 3rem;
     color: white;
     filter: drop-shadow(10px 12px 10px black);
@@ -665,13 +665,13 @@ animation: openModalSlowly 2s ease-in 0.1s 1 forwards;
 
 .close-inquisitor-modal > button{
     display: block;
-    margin-top: 3rem;
-    font-size: 2rem;
+    margin: 3rem 2rem 0 0;
+    font-size: 1rem;
     background-color: transparent;
     border: 2px dashed white;
     color: red;
     cursor: pointer;
-    padding: 1rem;
+    padding: 0.5rem;
 }
 
 .close-inquisitor-modal > button:hover{
@@ -704,8 +704,8 @@ animation: openModalSlowly 2s ease-in 0.1s 1 forwards;
 }
 
 .expelled-modal-p{
-    font-family: var(--deco);
-    font-size: 2rem;
+    font-family: var(--owl-font);
+    font-size: 1.5rem;
     padding: 3rem;
     color: white;
     filter: drop-shadow(10px 12px 10px black);
@@ -714,19 +714,19 @@ animation: openModalSlowly 2s ease-in 0.1s 1 forwards;
 
 /* close expelled modal */
 
-.close-inquisitor-modal{
+.close-expelled-modal{
     height: 100%;
 }
 
 .close-expelled-modal > button{
     display: block;
-    margin-top: 3rem;
-    font-size: 2rem;
+    margin: 3rem 4rem 0 0;
+    font-size: 1rem;
     background-color: transparent;
     border: 2px dashed white;
     color: red;
     cursor: pointer;
-    padding: 1rem;
+    padding: 0.5rem;
 }
 
 .close-expelled-modal > button:hover{
@@ -880,66 +880,10 @@ animation: openModalSlowly 2s ease-in 0.1s 1 forwards;
 }
 
 .close-modal > button:hover{
-    border: 3px solid red;
+    border: 2px solid red;
 }
 
-/* options for the h2 according to each house */
 
-.Gryffindor-h2{
-    font-size: 4rem;
-    background-color: rgba(255, 255, 255, 0.5);
-    color: var(--gryffindor);
-    font-family: var(--Gryffindor-font);
-    padding: 1rem;
-    width: 80%;
-    text-align: center;
-    outline-style: double;
-    outline-width: 0.5rem;
-    outline-offset: 4rem;
-    outline-color: var(--gryffindor);
-}
-
-.Slytherin-h2{
-    font-size: 4rem;
-    background-color: rgba(255, 255, 255, 0.5);
-    color: var(--slytherin);
-    font-family: var(--Slytherin-font);
-    padding: 1rem;
-    width: 80%;
-    text-align: center;
-    outline-style: double;
-    outline-width: 0.5rem;
-    outline-offset: 4rem;
-    outline-color: var(--slytherin);
-}
-
-.Hufflepuff-h2{
-    font-size: 4rem;
-    background-color: rgba(255, 255, 255, 0.5);
-    color: var(--hufflepuff);
-    font-family: var(--Hufflepuff-font);
-    padding: 1rem;
-    width: 80%;
-    text-align: center;
-    outline-style: double;
-    outline-width: 0.5rem;
-    outline-offset: 4rem;
-    outline-color: var(--hufflepuff);
-}
-
-.Ravenclaw-h2{
-    font-size: 4rem;
-    background-color: rgba(255, 255, 255, 0.5);
-    color: var(--ravenclaw);
-    font-family: var(--Ravenclaw-font);
-    padding: 1rem;
-    width: 80%;
-    text-align: center;
-    outline-style: double;
-    outline-width: 0.5rem;
-    outline-offset: 4rem;
-    outline-color: var(--ravenclaw);
-}
 
 /* student picture */
 
@@ -1279,6 +1223,93 @@ animation: openModalSlowly 2s ease-in 0.1s 1 forwards;
         position: relative;
         display: none;
     }
+
+    /* INQUISITOR MODAL */
+
+#inquisitor-modal{
+    width: 60%;
+    height: 30%;
+    top: 35%;
+    left: 25%;
+    align-items: center;
+    justify-content: center;
+}
+
+.inquisitor-modal-p{
+    font-size: 1rem;
+    padding: 2rem;
+}
+
+/* close inquisitor modal */
+
+.close-inquisitor-modal{
+    height: 100%;
+}
+
+.close-inquisitor-modal > button{
+    margin: 3rem 0rem 0 0;
+    font-size: 1rem;
+    padding: 0.5rem;
+}
+
+/* PREFECT MODAL */
+
+#prefect-modal{
+    width: 60%;
+    height: 30%;
+    top: 35%;
+    left: 25%;
+    align-items: center;
+    justify-content: center;
+}
+
+.prefect-modal-p{
+    font-size: 1rem;
+    padding: 2rem;
+    margin-left: 3rem;
+}
+
+/* close prefect modal */
+
+.close-prefect-modal{
+    height: 100%;
+}
+
+.close-prefect-modal > button{
+    margin: 3rem 5rem 0 0;
+    font-size: 1rem;
+    padding: 0.5rem;
+}
+
+/* expelled MODAL */
+
+#expelled-modal{
+    width: 60%;
+    height: 30%;
+    top: 35%;
+    left: 25%;
+    align-items: center;
+    justify-content: center;
+}
+
+.expelled-modal-p{
+    font-size: 1rem;
+    padding: 2rem;
+    margin-left: 3rem;
+}
+
+/* close expelled modal */
+
+.close-expelled-modal{
+    height: 100%;
+}
+
+.close-expelled-modal > button{
+    margin: 3rem 5rem 0 0;
+    font-size: 1rem;
+    padding: 0.5rem;
+}
+
 }
 
 
@@ -1489,12 +1520,197 @@ animation: openModalSlowly 2s ease-in 0.1s 1 forwards;
     .student-info-btn{
         font-size: 1rem;
     }
+
+    /* close inquisitor modal */
+
+    #inquisitor-modal{
+        width: 80%;
+        height: 30%;
+        top: 35%;
+        left: 13%;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .close-inquisitor-modal{
+        height: 100%;
+        position: relative;
+    }
+
+    .close-inquisitor-modal > button{
+        margin: 3rem 0rem 0 0;
+        font-size: 1rem;
+        padding-right: 0.5rem;
+        display: block;
+    }
+
+    /* PREFECT MODAL */
+
+#prefect-modal{
+        width: 80%;
+        height: 30%;
+        top: 35%;
+        left: 13%;
+        align-items: center;
+        justify-content: center;
+}
+
+.prefect-modal-p{
+    font-size: 1rem;
+    padding: 2rem;
+}
+
+/* close prefect modal */
+
+.close-prefect-modal{
+        height: 100%;
+        position: relative;
+}
+
+.close-prefect-modal > button{
+    margin: 3rem 3rem 0 0;
+    font-size: 1rem;
+    padding-right: 0.5rem;
+    display: block;
+}
+
+/* expelled MODAL */
+
+#expelled-modal{
+        width: 80%;
+        height: 30%;
+        top: 35%;
+        left: 13%;
+        align-items: center;
+        justify-content: center;
+}
+
+.expelled-modal-p{
+    font-size: 1rem;
+    padding: 2rem;
+}
+
+/* close expelled modal */
+
+.close-expelled-modal{
+    height: 100%;
+    position: relative;
+}
+
+.close-expelled-modal > button{
+    margin: 3rem 3rem 0 0;
+    font-size: 1rem;
+    padding-right: 0.5rem;
+    display: block;
+}
+
+
 }
 
 @media only screen and (max-width: 700px){
     .student-info-btn{
         padding: 0.5rem 2rem;
     }
+}
+
+@media only screen and (max-width: 600px){
+     /* close inquisitor modal */
+
+     #inquisitor-modal{
+        width: 85%;
+        height: 30%;
+        top: 35%;
+        left: 8%;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .close-inquisitor-modal{
+        height: 100%;
+        position: relative;
+    }
+
+    .close-inquisitor-modal > button{
+        margin: 3rem 0rem 0 0;
+        font-size: 1rem;
+        padding: 0.2rem;
+        display: block;
+    }
+
+    .inquisitor-modal-p{
+        font-size: 1rem;
+        padding: 0rem;
+        text-align: center;
+        transform: scale(0.8);
+    }
+    
+     /* PREFECT MODAL */
+
+#prefect-modal{
+    width: 85%;
+    height: 30%;
+    top: 35%;
+    left: 8%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.prefect-modal-p{
+        font-size: 1rem;
+        padding: 0rem;
+        text-align: center;
+        transform: scale(0.8);
+}
+
+/* close prefect modal */
+
+.close-prefect-modal{
+        height: 100%;
+        position: relative;
+}
+
+.close-prefect-modal > button{
+        margin: 3rem 3rem 0 0;
+        font-size: 1rem;
+        padding: 0.2rem;
+        display: block;
+}
+
+/* expelled MODAL */
+
+#expelled-modal{
+    width: 85%;
+    height: 30%;
+    top: 35%;
+    left: 8%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.expelled-modal-p{
+    font-size: 1rem;
+    padding: 0rem;
+    text-align: center;
+    transform: scale(0.8);
+}
+
+/* close expelled modal */
+
+.close-expelled-modal{
+height: 100%;
+position: relative;
+}
+
+.close-expelled-modal > button{
+    margin: 3rem 3rem 0 0;
+    font-size: 1rem;
+    padding: 0.2rem;
+    display: block;
+}
+
+
 }
 
 @media only screen and (max-width: 500px){
@@ -1693,6 +1909,114 @@ animation: openModalSlowly 2s ease-in 0.1s 1 forwards;
        right: 5%;
        padding: 1;
    }
+
+    /* close inquisitor modal */
+
+    #inquisitor-modal{
+        width: 85%;
+        height: 30%;
+        top: 35%;
+        left: 8%;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .close-inquisitor-modal{
+        height: 100%;
+        position: relative;
+    }
+
+    .close-inquisitor-modal > button{
+        margin: 3rem 5rem 0 0;
+        font-size: 1rem;
+        padding: 0.2rem;
+        display: block;
+    }
+
+    .inquisitor-modal-p{
+        font-size: 1rem;
+        padding: 0rem;
+        text-align: center;
+        transform: scale(0.8);
+        margin: 0rem 0rem 0 7rem;
+    }
+
+    /* PREFECT MODAL */
+
+#prefect-modal{
+    width: 85%;
+    height: 30%;
+    top: 35%;
+    left: 8%;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.prefect-modal-p{
+    font-size: 1rem;
+    padding: 0rem;
+    text-align: center;
+    transform: scale(0.8);
+    margin: 0rem 0rem 0 0rem;
+    position: absolute;
+    width: 20rem;
+    left: 5%;
+}
+
+/* close prefect modal */
+
+.close-prefect-modal{
+    height: 100%;
+    position: relative;
+}
+
+.close-prefect-modal > button{
+        margin: 3rem 0rem 0 0;
+        font-size: 1rem;
+        padding: 0.2rem;
+        display: block;
+        position: absolute;
+        left: 30%;
+}
+
+/* expelled MODAL */
+
+#expelled-modal{
+    width: 85%;
+    height: 30%;
+    top: 35%;
+    left: 8%;
+    align-items: center;
+    justify-content: center;
+}
+
+.expelled-modal-p{
+    font-size: 1rem;
+    padding: 0rem;
+    text-align: center;
+    transform: scale(0.8);
+    margin: 0rem 0rem 0 0rem;
+    position: absolute;
+    width: 20rem;
+    left: 5%;
+}
+
+/* close expelled modal */
+
+.close-expelled-modal{
+height: 100%;
+position: relative;
+}
+
+.close-expelled-modal > button{
+    margin: 3rem 0rem 0 0;
+    font-size: 1rem;
+    padding: 0.2rem;
+    display: block;
+    position: absolute;
+    left: 30%;
+}
    
 }
 
@@ -1749,6 +2073,42 @@ animation: openModalSlowly 2s ease-in 0.1s 1 forwards;
         padding: 0.5rem 1rem;
         transform: scale(0.8);
     }
+
+
+.prefect-modal-p{
+    font-size: 1rem;
+    padding: 0rem;
+    text-align: center;
+    transform: scale(0.8);
+    margin: 0rem 0rem 0 0rem;
+    position: absolute;
+    width: 13rem;
+    left: 20%;
+}
+}
+
+@media only screen and (max-width: 350px){
+
+.prefect-modal-p{
+    font-size: 1rem;
+    padding: 0rem;
+    text-align: center;
+    transform: scale(0.8);
+    margin: 0rem 0rem 0 0rem;
+    position: absolute;
+    width: 13rem;
+    left: 15%;
+}
+.expelled-modal-p{
+    font-size: 1rem;
+    padding: 0rem;
+    text-align: center;
+    transform: scale(0.8);
+    margin: 0rem 0rem 0 0rem;
+    position: absolute;
+    width: 13rem;
+    left: 15%;
+}
 }
 
 
