@@ -1,3 +1,5 @@
+"use strict";
+
 // MVC model view controller
 
 // model is the json fetching and object creation
