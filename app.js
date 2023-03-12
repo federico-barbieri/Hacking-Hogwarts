@@ -1257,8 +1257,6 @@ function showDashboard(event){
     event.target.removeEventListener('click', showDashboard);
 }
 
-let systemHacked = false;
-
 
 // start the show
 

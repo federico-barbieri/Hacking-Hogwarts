@@ -536,28 +536,28 @@ main{
 /* backgrounds for each house */
 
 .Gryffindor-background{
-    background: url("imgs/houses/gryffindor/gryffindor1.png");
+    background: url("imgs/houses/gryffindor/gryffindor1.webp");
     background-position: top;
     background-size: cover;
     background-repeat: no-repeat;
 }
 
 .Slytherin-background{
-    background: url("imgs/houses/slytherin/slytherin3.png");
+    background: url("imgs/houses/slytherin/slytherin3.webp");
     background-position: top;
     background-size: cover;
     background-repeat: no-repeat;
 }
 
 .Ravenclaw-background{
-    background: url("imgs/houses/ravenclaw/ravenclaw2.png");
+    background: url("imgs/houses/ravenclaw/ravenclaw2.webp");
     background-position: top;
     background-size: cover;
     background-repeat: no-repeat;
 }
 
 .Hufflepuff-background{
-    background: url("imgs/houses/hufflepuff/hufflepuff2.png");
+    background: url("imgs/houses/hufflepuff/hufflepuff1.webp");
     background-position: top;
     background-size: cover;
     background-repeat: no-repeat;
