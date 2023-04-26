@@ -1,20 +1,6 @@
 "use strict";
 
-// MVC model view controller
-
-// model is the json fetching and object creation
-
-// view is using the template and assigning stuff to it + appending
-
-// controller 
-
-
 window.addEventListener('DOMContentLoaded', start);
-
-
-
-"use strict";
-
 
 //blood list JSON
 const blood = "https://petlatkea.dk/2021/hogwarts/families.json";
@@ -1257,18 +1243,20 @@ function showDashboard(event){
     gameArea.classList.add('makingThingsAppearSlow');
     gameArea.style.display = "flex";
     event.target.removeEventListener('click', showDashboard);
+
+    fetchStudents();
 }
 
 
 // start the show
 
 function start(){
-   
+    fetchBlood();
     welcomingModal.classList.add('makingThingsAppearSlow');
    // welcomingModalBtn.addEventListener('click', showDashboard);
    welcomingModalImg.addEventListener('click', showDashboard);
-    fetchBlood();
-    fetchStudents();
+  //  fetchBlood();
+  //  fetchStudents();
 
     // snitch position
     
